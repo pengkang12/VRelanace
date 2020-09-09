@@ -41,8 +41,8 @@ def calculate_latency(appName="ETLTopologySys"):
                 latency += int(sink[word[3]])-int(word[1]),     
         if len(latency) > 0:
             latency = sorted(latency)
-            tail_latency = latency[int(len(latency)*0.9)]
-            print(len(msgs), len(latency), tail_latency, latency[int(len(latency)*0.95)-1])
+            tail_latency = latency[int(len(latency)*0.95-1)]
+            print(len(msgs), len(latency), tail_latency, latency[int(len(latency)*0.9)])
         # delete old data before 10 mins
         timestamp -= 180
         msgs=[]

@@ -8,6 +8,8 @@ import sys
 import json
 import warnings
 
+os.system("grep \"latency'\" /tmp/bo.log > /tmp/latency.log")
+
 #3. read input data from file'
 a = []
 throughput = []
@@ -29,13 +31,12 @@ for key in keys:
     temp = [x[key] for x in d]
     print(temp)
         
-print("{}, {}, {}\n".format(a, throughput, c))
-
 with open("/tmp/bo_cpulimit.txt") as f:
     d = []
     for line in f:
         app_info = line.split(",")
         d.append([int(x) for x in app_info])
-print(d) 
-print([sum(a) for a in d])
-print(list(zip(*d)))
+print("latency = {}\n throughput = {}\n measured_cpu = {}".format(a, throughput, c))
+print("cpu = {}".format([sum(a) for a in d]))
+for i, a in enumerate(list(zip(*d))):
+    print("container{} = {}".format(i+1, list(a)))
