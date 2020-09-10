@@ -41,12 +41,12 @@ def calculate_latency(appName="ETLTopologySys"):
                 latency += int(sink[word[3]])-int(word[1]),     
         if len(latency) > 0:
             latency = sorted(latency)
-            tail_latency = latency[int(len(latency)*0.95-1)]
+            tail_latency = latency[int(len(latency)*0.95)-2]
             print(len(msgs), len(latency), tail_latency, latency[int(len(latency)*0.9)])
         # delete old data before 10 mins
-        timestamp -= 180
+        timestamp -= 120
         msgs=[]
-        for i in range(60):
+        for i in range(120):
             msgs += r.keys(appName+"_"+str(timestamp+i)+"*_MSGID_*")
         p = r.pipeline()
         for msg in msgs:

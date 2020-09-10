@@ -12,7 +12,7 @@ if not sys.warnoptions:
 cpu_limit_filename="/tmp/bo_cpulimit.txt"
 input_app_name = "/tmp/skopt_app_name.txt"
 model_filename = "/tmp/skopt.model"
-threshold = [100, 200]
+threshold = [50, 200]
 
 def change_cpu(kubename="test", quota=40000, hostname="kube-slave1"):
     os.system("ssh -t {0} 'echo syscloud | sudo -S bash cpu.sh {1} {2}' 2>&1".format(hostname, kubename, quota))
@@ -34,7 +34,7 @@ def normalized(a):
         a = [int((4000/total)*val) for val in a]
         print(sum(a)) 
     for v in a:
-        t = int((v+25)/50 + 1)*5000
+        t = int(v/50 + 2)*5000
         if t >= 395000:
             t = 395000
         if t <= 10000:
@@ -56,7 +56,7 @@ def bo_function(app_info):
     stop_update = False
     for i in range(len(app_name)):
         ret += (t[i]-threshold[i])*(t[i]-threshold[i])/(threshold[i]**2)
-        if abs(t[i]-threshold[i]) < 50:
+        if abs(t[i]-threshold[i]) > 50:
            #if t[i] - threshold[i] < 0:
            #    ret += 10*(t[i]-threshold[i]/threshold[i])
            stop_update = True
@@ -85,12 +85,12 @@ def ask_BO(measured, keys, motivation, last_cpu_limit):
      
     suggested = normalized(suggested)
     # use new kube cpu quota to system.    
-    print('iteration:', suggested, measured, keys)
-    if motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit):
-        suggested = [5000+val for val in last_cpu_limit] 
-    if motivation[0] < 0 and sum(suggested) > sum(last_cpu_limit):
-        suggested = [val-5000 for val in last_cpu_limit] 
-
+    print('iteration:', suggested, measured, keys, last_cpu_limit)
+    if motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit)*100:
+        suggested = [(50+val)*100 for val in last_cpu_limit] 
+    if motivation[0] < 0 and sum(suggested) > sum(last_cpu_limit)*100:
+        suggested = [(val-50)*100 for val in last_cpu_limit] 
+    print(suggested)
     for i in range(len(keys)):
         change_cpu(keys[i], suggested[i]) 
     print("update model")
@@ -109,7 +109,7 @@ def read_measured_data(app_info, keys):
         for value in app_info.values():
             if key in value["cpu_usage"]:
                 #measured.append(value['cpu_usage'][key]+50*value['capacity'][key])
-                measured.append(value['cpu_usage'][key])
+                measured.append(int((value['cpu_usage'][key])/50+1)*50)
  
     print("last cpu limit {}, measured cpu {}".format(last_cpu_limit, measured))
     return last_cpu_limit, measured
@@ -169,14 +169,19 @@ motivation, y, stop = bo_function(app_info)
 opt.tell(measured, y)
 if stop == False:
     print(y, stop)
-    print("-----")
     ask_BO(measured, keys, motivation, last_cpu_limit)
 else:
-    print("Don't need to update model")
-    os.system("tail -n 1 {0} >> {0}".format(cpu_limit_filename))
+    print("update model partially")
+    print(last_cpu_limit, measured)
     for i in range(len(keys)):
-        get_cpu_info(keys[i])
+        x = abs((last_cpu_limit[i]- measured[i])/measured[i])
+        if x >= 0.3:
+            last_cpu_limit[i] = int(measured[i]*1.3/50)*50
+            change_cpu(keys[i], last_cpu_limit[i]*100) 
+    
+    with open(cpu_limit_filename, "a") as f2:
+        f2.write(",".join([ str(i) for i in last_cpu_limit])+"\n") 
     
 # save the model
 skopt_utils.dump(opt, model_filename)
- 
+print("-----------------------------------------------------------------") 

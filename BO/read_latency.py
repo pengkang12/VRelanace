@@ -36,7 +36,7 @@ with open("/tmp/bo_cpulimit.txt") as f:
     for line in f:
         app_info = line.split(",")
         d.append([int(x) for x in app_info])
-print("latency = {}\n throughput = {}\n measured_cpu = {}".format(a, throughput, c))
+print("latency = {}\nthroughput = {}\nmeasured_cpu = {}".format(a, throughput, c))
 print("cpu = {}".format([sum(a) for a in d]))
 for i, a in enumerate(list(zip(*d))):
     print("container{} = {}".format(i+1, list(a)))

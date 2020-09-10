@@ -6,3 +6,7 @@ do
 sleep 60
 python ui.py ETL &
 done
+
+sleep 60
+kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
+
