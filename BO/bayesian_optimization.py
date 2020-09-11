@@ -45,17 +45,19 @@ def normalized(a):
 
 def bo_function(app_info):
     t = [] # measured tail latency 
+    throughput = []
     motivation = [] # we need to allocate more cpu or less cpu for different application.
     #use x to update the container, and read new tail latency. 
     for key, value in app_info.items():
-        t.append(value["latency"]) 
-        motivation.append(0)
-    ret = 0
-       
+        t += value["latency"],
+        throughput += value['throughput'],
+        motivation += 0,
+    ret = 0       
 
     stop_update = False
     for i in range(len(app_name)):
         ret += (t[i]-threshold[i])*(t[i]-threshold[i])/(threshold[i]**2)
+        #ret += (throughput[i]/10000)**2
         if abs(t[i]-threshold[i]) > 50:
            #if t[i] - threshold[i] < 0:
            #    ret += 10*(t[i]-threshold[i]/threshold[i])
@@ -82,14 +84,15 @@ def ask_BO(measured, keys, motivation, last_cpu_limit):
         if check_cpu(suggested) == True:
             break
         count += 1
+    
      
-    suggested = normalized(suggested)
     # use new kube cpu quota to system.    
     print('iteration:', suggested, measured, keys, last_cpu_limit)
-    if motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit)*100:
-        suggested = [(50+val)*100 for val in last_cpu_limit] 
-    if motivation[0] < 0 and sum(suggested) > sum(last_cpu_limit)*100:
-        suggested = [(val-50)*100 for val in last_cpu_limit] 
+    if motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit):
+        suggested = [(50+val) for val in last_cpu_limit] 
+    if motivation[0] < 0 and sum(suggested) > sum(last_cpu_limit):
+        suggested = [(val-50) for val in last_cpu_limit] 
+    suggested = normalized(suggested)
     print(suggested)
     for i in range(len(keys)):
         change_cpu(keys[i], suggested[i]) 
@@ -172,15 +175,15 @@ if stop == False:
     ask_BO(measured, keys, motivation, last_cpu_limit)
 else:
     print("update model partially")
-    print(last_cpu_limit, measured)
     for i in range(len(keys)):
         x = abs((last_cpu_limit[i]- measured[i])/measured[i])
-        if x >= 0.3:
-            last_cpu_limit[i] = int(measured[i]*1.3/50)*50
+        if x >= 0.2:
+            last_cpu_limit[i] = int(measured[i]*1.25/50)*50
             change_cpu(keys[i], last_cpu_limit[i]*100) 
-    
+            get_cpu_info(keys[i], last_cpu_limit[i]*100)    
     with open(cpu_limit_filename, "a") as f2:
         f2.write(",".join([ str(i) for i in last_cpu_limit])+"\n") 
+    print("new cpu limit is ", last_cpu_limit)
     
 # save the model
 skopt_utils.dump(opt, model_filename)
