@@ -2,6 +2,7 @@ rm /tmp/skopt.model
 rm /tmp/bo.log
 rm /tmp/bo_cpulimit.txt
 rm /tmp/kube-cpu.txt
+rm /tmp/skopt_input_ETLTopologySys.txt
 
 kubectl delete -f ~/storm-peng/kube-storm/storm-worker-controller.json
 sleep 15
@@ -21,10 +22,11 @@ sleep 120
 
 #4
 delay="600"
-scale="0.04"
+scale="0.01"
 fileDir="test_redis_latency"+$scale
+#kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
 kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-sleep 300
+sleep 60
 #sleep $delay 
 #sleep $delay 
 #

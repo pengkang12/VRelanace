@@ -15,10 +15,21 @@ redis_host = "master"
 redis_port = 6379
 redis_password = ""
 
+bucket = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
+
+def get_power(number):
+     for i in range(17):
+         if number < bucket[i]: 
+             return i - 1
+     return 16
+     
 
 def calculate_latency(appName="ETLTopologySys"):
-    """calculate latency from Redis data"""
-    latency = [0] 
+    """calculate latency from Redis data
+    https://blog.bramp.net/post/2018/01/16/measuring-percentile-latency/
+    """
+    throughput = 0 
+    tail_latency = 0
     try:
         r = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
         msgs = []
@@ -28,36 +39,71 @@ def calculate_latency(appName="ETLTopologySys"):
         # for test 
         #timestamp = 1595026134
         #print(msgs_all)
+        p = r.pipeline()
         for i in range(60):
-            msgs += r.keys(appName+"_"+str(timestamp+i)+"*_MSGID_*")
+            p.keys(appName+"_"+str(timestamp+i)+"*")
+        results = p.execute()
+        for result in results:
+            msgs += result
+        #print(msgs)
         #print("msg length is ", len(msgs))
         # use pipeline to improve redis effiency. 
         sink = r.hgetall(appName+"_sink")
-        latency = [] 
+        #latency = []
+        print("testestrfsestwsew") 
+        latency_bucket = [ 0 for i in range(len(bucket))]
         tail_latency = -1
         for i in range(len(msgs)):
             word = msgs[i].split("_") 
             if word[3] in sink:
-                latency += int(sink[word[3]])-int(word[1]),     
+                new_latency = int(sink[word[3]])-int(word[1])
+                index = get_power(new_latency)
+                latency_bucket[index] += 1 
+                #latency += new_latency,
+        print(latency_bucket)
+        latency_ratio = []
+        count = 0
+        throughput = sum(latency_bucket)
+        for i in range(len(bucket)):
+            count += latency_bucket[i]
+            latency_ratio.append(count*1.0/throughput)
+        for i in range(len(bucket)):
+            if latency_ratio[i] >= 0.95:
+                break
+ 
+        #print(i, bucket[i],bucket[i+1], latency_ratio[i-1], latency_ratio[i])
+        if i == 16:
+            tail_latency = 65536
+        else:
+            tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
+        print(bucket)
+        print(len(msgs), tail_latency)
+        """ 
         if len(latency) > 0:
             latency = sorted(latency)
             tail_latency = latency[int(len(latency)*0.95)-2]
             print(len(msgs), len(latency), tail_latency, latency[int(len(latency)*0.9)])
-        # delete old data before 10 mins
+         
+     
+        #delete redis data 
         timestamp -= 120
         msgs=[]
         for i in range(60):
-            msgs += r.keys(appName+"_"+str(timestamp+i)+"*_MSGID_*")
+            msgs += r.keys(appname+"_"+str(timestamp+i)+"*")
         p = r.pipeline()
+          
         for msg in msgs:
             word = msg.split("_")
-            p.hdel(appName+"_sink", word[3])
-            p.delete(msg)
+            p.hdel(appname+"_sink", word[3])
+        p.delete(appName+"_sink")
         ret=p.execute()
-        print("delete old message",len(msgs), len(ret)) 
+        """ 
+        keys = r.keys(appName+"_*")
+        r.delete(*keys)
+
     except Exception as e:
         print(e)
-    return tail_latency, len(latency)
+    return tail_latency, throughput
 
 
 url = "http://localhost:8080/api/v1/topology/"
@@ -123,7 +169,7 @@ def statistic_info(app_id):
         """
         #cpu[each['host']].sort()
         print(cpu[each['host']])
-        app_cpu[each['host']] = max(cpu[each['host']])
+        app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
 #[int(len(cpu[each['host']])*0.9)]
 
     print("The name of application is {0}, count is {1}".format(data['name'], count))
