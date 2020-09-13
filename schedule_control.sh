@@ -1,8 +1,14 @@
+rm /tmp/skopt.model 
+rm /tmp/bo.log 
+rm /tmp/bo_cpulimit.txt 
+rm /tmp/kube-cpu.txt 
+rm /tmp/skopt_input_ETLTopologySys.txt 
+
 python collect_container_cpu.py &
-sleep 60
-for i in {1..31}
+sleep 120
+for i in {1..61}
 do
-time python ui.py ETL &
+python ui.py ETL &
 sleep 120
 done
 
