@@ -18,7 +18,7 @@ redis_password = ""
 bucket = [1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768, 65536]
 
 def get_power(number):
-     for i in range(17):
+     for i in range(16):
          if number < bucket[i]: 
              return i - 1
      return 16
@@ -72,7 +72,7 @@ def calculate_latency(appName="ETLTopologySys"):
                 break
  
         #print(i, bucket[i],bucket[i+1], latency_ratio[i-1], latency_ratio[i])
-        if i == 16:
+        if i >= 16:
             tail_latency = 65536
         else:
             tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
@@ -169,7 +169,9 @@ def statistic_info(app_id):
         """
         #cpu[each['host']].sort()
         print(cpu[each['host']])
-        app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
+        #app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
+        app_cpu[each['host']] = max(cpu[each['host']])
+#
 #[int(len(cpu[each['host']])*0.9)]
 
     print("The name of application is {0}, count is {1}".format(data['name'], count))

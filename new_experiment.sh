@@ -1,9 +1,3 @@
-rm /tmp/skopt.model
-rm /tmp/bo.log
-rm /tmp/bo_cpulimit.txt
-rm /tmp/kube-cpu.txt
-rm /tmp/skopt_input_ETLTopologySys.txt
-
 kubectl delete -f ~/storm-peng/kube-storm/storm-worker-controller.json
 sleep 15
 kubectl cordon kube-slave2
@@ -14,24 +8,26 @@ kubectl uncordon kube-slave2
 bash ~/storm-peng/kube-storm/change_worker_hosts.sh
 
 kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
-kubectl exec nimbus -- /opt/apache-storm/bin/storm kill Stats_SQL_Topology_SYS
-kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
+#kubectl exec nimbus -- /opt/apache-storm/bin/storm kill Stats_SQL_Topology_SYS
+#kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
 
 
-sleep 120
+sleep 60
 
 #4
 delay="600"
-scale="0.01"
+scale=0.01
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-sleep 60
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Staircase
+sleep 120
 #sleep $delay 
 #sleep $delay 
 #
 bash script/redis-data.sh
 bash schedule_control.sh > data/control_${scale}.log &
+#bash schedule_rebalance.sh > data/control_${scale}_rebalance.log &
+
 exit
 
 bash test.sh $scale $fileDir & 

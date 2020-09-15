@@ -28,6 +28,7 @@ def check_cpu(arr):
             return False
     return True
 
+
 def normalized(a):
     ret = []
 
@@ -55,12 +56,12 @@ def bo_function(app_info, cpu_limit, measured_cpu):
         throughput += value['throughput'],
         motivation += 0,
     ret_y = 0
-    #ret_y = sum(cpu_limit)/QUOTA    
     
     is_violate_target = False
     for i in range(len(app_name)):
-        tmp = 5*(t[i]-threshold[i])*(t[i]-threshold[i])/(threshold[i]**2)
-        tmp += (throughput[i]/100000)**2
+        tmp = 1*(t[i]-threshold[i])
+	#*(t[i]-threshold[i])/(threshold[i]**2)
+        #tmp += (throughput[i]/10000)
         ret_y += tmp
         if t[i]-threshold[i] > 0:
            is_violate_target = True
@@ -69,7 +70,9 @@ def bo_function(app_info, cpu_limit, measured_cpu):
         else:
             motivation[i] = -1 * tmp
     print("latency is {}".format(t))
-    return motivation, ret_y, is_violate_target
+    if sum(measured_cpu)/ sum(cpu_limit) < 0.8:
+        is_violate_target = True
+    return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
 
 def ask_model():
     suggested = []
@@ -88,7 +91,6 @@ def ask_model():
 
 def update_system(measured, keys, motivation, last_cpu_limit, is_violated):
     suggested = ask_model()
-   
     if is_violated == True: 
         # use new kube cpu quota to system.    
         print('iteration: suggeseted is {}, measured is {}, last cpu limit is {}'.format(suggested, measured, last_cpu_limit))
@@ -110,28 +112,11 @@ def update_system(measured, keys, motivation, last_cpu_limit, is_violated):
         with open(cpu_limit_filename, "a") as f2:
             f2.write(",".join([ str(int(i/100)) for i in suggested])+"\n") 
     else:    
-        print("update model partially")
-        is_update_model = False
-        suggested = normalized(suggested)
-        print("suggested cpu limit is ",suggested)
+        print("dont update model")
        
-        if sum(suggested) > sum(last_cpu_limit)*100:
-            print("don't update model")
-        else:
-            for i in range(len(keys)):
-                change_cpu(keys[i], suggested[i]) 
-            """ 
-            for i in range(len(keys)):
-                x = abs((last_cpu_limit[i]- measured[i])/measured[i])
-                if x >= 0.2:
-                    last_cpu_limit[i] = int(measured[i]*1.25/50)*50
-                    change_cpu(keys[i], last_cpu_limit[i]*100) 
-                    get_cpu_info(keys[i], last_cpu_limit[i]*100)    
-                    is_update_model = True
-            """
-            with open(cpu_limit_filename, "a") as f2:
-                f2.write(",".join([ str(int(i/100)) for i in suggested])+"\n") 
-            print("new cpu limit is ", suggested)
+        with open(cpu_limit_filename, "a") as f2:
+            f2.write(",".join([ str(i) for i in last_cpu_limit])+"\n") 
+        print("new cpu limit is ", suggested)
  
 def read_measured_data(app_info, keys):
     with open(cpu_limit_filename) as f1:
@@ -147,7 +132,7 @@ def read_measured_data(app_info, keys):
                 #measured.append(value['cpu_usage'][key]+50*value['capacity'][key])
                 measured.append(value['cpu_usage'][key])
  
-    print("last cpu limit {}, measured cpu {}".format(last_cpu_limit, measured))
+    print("last cpu limit {}, measured cpu {}, ratio is {}".format(last_cpu_limit, measured, sum(measured)/sum(last_cpu_limit)))
     return last_cpu_limit, measured
 
 def read_container_info():
@@ -202,6 +187,7 @@ measured = []
 last_cpu_limit, measured = read_measured_data(app_info, keys)
 
 motivation, y, is_violate_target= bo_function(app_info, last_cpu_limit, measured)
+
 opt.tell(measured, y)
 opt.tell(last_cpu_limit, y)
 update_system(measured, keys, motivation, last_cpu_limit, is_violate_target)

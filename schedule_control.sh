@@ -6,7 +6,7 @@ rm /tmp/skopt_input_ETLTopologySys.txt
 
 python collect_container_cpu.py &
 sleep 120
-for i in {1..61}
+for i in {1..121}
 do
 python ui.py ETL &
 sleep 120
