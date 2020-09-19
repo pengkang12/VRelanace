@@ -11,32 +11,51 @@ import warnings
 os.system("grep \"latency'\" /tmp/bo.log > /tmp/latency.log")
 
 #3. read input data from file'
-a = []
-throughput = []
-c=[]
-d=[]
+latency = {}
+throughput = {}
+cpu={}
+measured_cpu={}
 input_filename = "/tmp/latency.log"
+app_name = ['ETLTopologySys', "IoTPredictionTopologySYS"]
+
+for name in app_name:
+    latency[name] = []
+    throughput[name] = []
+    cpu[name] = []
+    measured_cpu[name] = []
+
 with open(input_filename) as f:
     for line in f:
-        app_info = json.loads(line.replace("'", "\""))
-        
-        a.append(app_info['ETLTopologySys']['latency']) 
-        throughput.append(app_info['ETLTopologySys']['throughput']) 
-        d.append(app_info['ETLTopologySys']['cpu_usage'])
-        c.append(sum(app_info['ETLTopologySys']['cpu_usage'].values())) 
-print(d)
-keys = d[1].keys()
+        info = json.loads(line.replace("'", "\""))
+        for name in app_name: 
+            latency[name] += info[name]['latency'],
+            throughput[name] += info[name]['throughput'],
+            cpu[name] += info[name]['cpu_usage'],
+            measured_cpu[name] += sum(info[name]['cpu_usage'].values()),
 
-for key in keys:
-    temp = [x[key] for x in d]
-    print(temp)
-        
-with open("/tmp/bo_cpulimit.txt") as f:
-    d = []
-    for line in f:
-        app_info = line.split(",")
-        d.append([int(x) for x in app_info])
-print("latency = {}\nthroughput = {}\nmeasured_cpu = {}".format(a, throughput, c))
-print("cpu = {}".format([sum(a) for a in d]))
-for i, a in enumerate(list(zip(*d))):
-    print("container{} = {}".format(i+1, list(a)))
+keys = []
+for name in app_name:
+    keys += cpu[name][1].keys()
+keys = sorted(keys)
+print(keys)
+
+for name in app_name:
+    print("latency{0} = {1}\nthroughput{0} = {2}\nmeasured_cpu{0} = {3}".format(name,latency[name], throughput[name], measured_cpu[name]))
+
+for name in app_name:
+    loc = []
+    for key in cpu[name][1].keys():
+        for i in range(len(keys)):
+            if key == keys[i]:
+                break
+        loc += i,
+ 
+    cpu_limit = []
+    with open("/tmp/bo_cpulimit.txt") as f:
+        #find all cpu limit for each application
+        for line in f:
+            info = line.split(",")
+            cpu_limit += [int(info[x]) for x in loc],
+    print("cpu{} = {}".format(name, [sum(a) for a in cpu_limit]))
+    for i, a in enumerate(list(zip(*cpu_limit))):
+        print("container{}{} = {}".format(name,i+1, list(a)))

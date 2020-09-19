@@ -141,8 +141,8 @@ def statistic_info(app_id):
                 cpu[words[0]] = []
             cpu[words[0]] += int(words[1][:-1]),
    
-
-    os.system("python collect_container_cpu.py &")
+    
+    #os.system("python collect_container_cpu.py &")
    
     # calculate cpu usage for application's worker .
     app_cpu = {}
@@ -170,7 +170,7 @@ def statistic_info(app_id):
         #cpu[each['host']].sort()
         print(cpu[each['host']])
         #app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
-        app_cpu[each['host']] = max(cpu[each['host']])
+        app_cpu[each['host']] = max(max(cpu[each['host']]), 100)
 #
 #[int(len(cpu[each['host']])*0.9)]
 
@@ -215,4 +215,6 @@ def getTopologySummary():
     print("end experiments")            
 getTopologySummary()
 #os.system("python BO/bayesian_optimization.py")
-os.system("python BO/bayesian_optimization.py >> /tmp/bo.log")
+if app == "IoT":
+    #os.system("python BO/bayesian_optimization.py >> /tmp/bo.log")
+    pass

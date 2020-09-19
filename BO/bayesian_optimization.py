@@ -12,7 +12,7 @@ if not sys.warnoptions:
 cpu_limit_filename="/tmp/bo_cpulimit.txt"
 input_app_name = "/tmp/skopt_app_name.txt"
 model_filename = "/tmp/skopt.model"
-threshold = [100, 200]
+threshold = [100, 100]
 threshold_range = 25
 QUOTA = 4000
 
@@ -73,6 +73,36 @@ def bo_function(app_info, cpu_limit, measured_cpu):
     if sum(measured_cpu)/ sum(cpu_limit) < 0.8:
         is_violate_target = True
     return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
+
+"""
+max(0, W1*(latency1-threshold1)/threshold1, W2*(latency1-threshold2)/threshold2)) + sum(cpu_limit)/QUATA. 
+
+latency1 = 10
+latency2 = 1000
+app1: worker1, worker2, worker3.
+app2: worker4, worker5, worker6.
+total cpu limit = 4000
+
+do first optimization app1 is static workload. worker1 700, worker2 800, worker3 1000.
+
+do second optimization(app1, app2):  app1(700, 1000), app2(100, 4000-2500). 
+
+frequence: slow 
+
+
+"""
+
+
+
+
+
+
+
+
+
+
+
+
 
 def ask_model():
     suggested = []
@@ -183,6 +213,7 @@ else:
 app_info, keys = read_container_info()
 cpu = []
 measured = []
+print(keys)
 
 last_cpu_limit, measured = read_measured_data(app_info, keys)
 
