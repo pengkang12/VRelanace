@@ -12,7 +12,7 @@ kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
 #kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
 
 
-sleep 60
+sleep 120
 
 #4
 delay="600"
