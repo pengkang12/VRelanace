@@ -1,0 +1,833 @@
+[sudo] password for cc: storm-worker-controller-5b4rj
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podf95da1e4-0a23-4ab7-b28f-37194cb765c9/1caa88eb65040e15ceaf0bfe7eda0c6ab87151ea97da3710f22d7aba2ed79af7/cpu.cfs_quota_us
+sh: echo: I/O error
+40000
+35000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fdcps
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod983b33b2-bf89-4af5-9579-3bf306d84985/8e165bbe249143ca4fc22a57cad1cb69434df20d79ea850b32e994c1a13e0723/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-kqpcl
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podab0c7e97-5431-475c-8214-854a690b5afb/9f731b9647381a36d027062f6e1464cb3c85dcc4cad0013d93cfc269dd81960f/cpu.cfs_quota_us
+45000
+45000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-q96qf
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod04cdc259-1283-4daf-9a83-0a813d7edb53/c68a15e9ccc6b8cfc4c83990f0a2962bc05ca09b4d405ab16fde87e325eb1312/cpu.cfs_quota_us
+165000
+165000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-tk77t
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod38711c16-98ff-4de0-98ad-44a67c5c3c08/c360cc4a79a923d2e39421e94454edbe69cda8e6307bfb76aa7408eeee38a54d/cpu.cfs_quota_us
+sh: echo: I/O error
+40000
+10000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-x2q5d
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/poddbbd750f-8110-4b6d-9a70-2699b6a32e49/9cdb9a1f3408e13426b2f526e50035135207d56a6b2aaef9e70f033774656d54/cpu.cfs_quota_us
+105000
+105000
+Connection to kube-slave1 closed.
+{'IoTPredictionTopologySYS': {'throughput': 9255, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'cpu_usage': {'storm-worker-controller-5b4rj': 281, 'storm-worker-controller-tk77t': 310, 'storm-worker-controller-kqpcl': 336}, 'latency': 30.862295081967204}, 'ETLTopologySys': {'throughput': 91983, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'cpu_usage': {'storm-worker-controller-x2q5d': 400, 'storm-worker-controller-fdcps': 400, 'storm-worker-controller-q96qf': 402}, 'latency': 3898.0451539338646}}
+iteration: [2718, 2913, 1941, 692, 2678, 2707]
+iteration: [793, 3361, 293, 2613, 210, 1532]
+iteration: [822, 1377, 599, 3346, 330, 1728]
+iteration: [3254, 2005, 1522, 3558, 2250, 3888]
+iteration: [2750, 283, 3761, 2159, 730, 3811]
+iteration: [2350, 2503, 3050, 2345, 281, 2553]
+iteration: [1741, 2338, 1878, 1410, 3042, 3089]
+iteration: [782, 1177, 861, 2981, 1453, 1044]
+iteration: [770, 2145, 1032, 2827, 1706, 426]
+iteration: [763, 1259, 963, 3894, 234, 2464]
+iteration: suggeseted is [763, 1259, 963, 3894, 234, 2464], measured is [], last cpu limit is []
+3997
+suggested cpu limit is  [35000, 55000, 45000, 165000, 10000, 105000]
+update model for Bayesian optimization
+[sudo] password for cc: storm-worker-controller-5b4rj
+ found.
+40000
+35000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podf95da1e4-0a23-4ab7-b28f-37194cb765c9/1caa88eb65040e15ceaf0bfe7eda0c6ab87151ea97da3710f22d7aba2ed79af7/cpu.cfs_quota_us
+sh: echo: I/O error
+40000
+30000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fdcps
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod983b33b2-bf89-4af5-9579-3bf306d84985/8e165bbe249143ca4fc22a57cad1cb69434df20d79ea850b32e994c1a13e0723/cpu.cfs_quota_us
+70000
+70000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-kqpcl
+ found.
+45000
+45000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podab0c7e97-5431-475c-8214-854a690b5afb/9f731b9647381a36d027062f6e1464cb3c85dcc4cad0013d93cfc269dd81960f/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-q96qf
+ found.
+165000
+165000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod04cdc259-1283-4daf-9a83-0a813d7edb53/c68a15e9ccc6b8cfc4c83990f0a2962bc05ca09b4d405ab16fde87e325eb1312/cpu.cfs_quota_us
+sh: echo: I/O error
+165000
+130000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-tk77t
+ found.
+40000
+10000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod38711c16-98ff-4de0-98ad-44a67c5c3c08/c360cc4a79a923d2e39421e94454edbe69cda8e6307bfb76aa7408eeee38a54d/cpu.cfs_quota_us
+25000
+25000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-x2q5d
+ found.
+105000
+105000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/poddbbd750f-8110-4b6d-9a70-2699b6a32e49/9cdb9a1f3408e13426b2f526e50035135207d56a6b2aaef9e70f033774656d54/cpu.cfs_quota_us
+sh: echo: I/O error
+105000
+70000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 65.87864834756773, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 599, 'storm-worker-controller-fdcps': 522, 'storm-worker-controller-x2q5d': 519}, 'throughput': 94319}, 'IoTPredictionTopologySYS': {'latency': 224.82051282051276, 'throughput': 9320, 'cpu_usage': {'storm-worker-controller-tk77t': 101, 'storm-worker-controller-5b4rj': 266, 'storm-worker-controller-kqpcl': 359}, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [350, 550, 450, 1650, 100, 1050], measured cpu [266, 522, 359, 599, 101, 519], ratio is 0.5701204819277108
+latency is [65.87864834756773, 224.82051282051276]
+iteration: [303, 1585, 1226, 1866, 1336, 232]
+iteration: [287, 664, 465, 1277, 227, 667]
+iteration: suggeseted is [287, 664, 465, 1277, 227, 667], measured is [266, 522, 359, 599, 101, 519], last cpu limit is [350, 550, 450, 1650, 100, 1050]
+iteration: [287, 664, 465, 1277, 227, 667]
+iteration: [287, 664, 465, 1277, 227, 667]
+iteration: [287, 664, 465, 1277, 227, 667]
+suggested cpu limit is  [30000, 70000, 50000, 130000, 25000, 70000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-5b4rj
+ found.
+40000
+30000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podf95da1e4-0a23-4ab7-b28f-37194cb765c9/1caa88eb65040e15ceaf0bfe7eda0c6ab87151ea97da3710f22d7aba2ed79af7/cpu.cfs_quota_us
+sh: echo: I/O error
+40000
+25000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fdcps
+ found.
+70000
+70000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod983b33b2-bf89-4af5-9579-3bf306d84985/8e165bbe249143ca4fc22a57cad1cb69434df20d79ea850b32e994c1a13e0723/cpu.cfs_quota_us
+sh: echo: I/O error
+70000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-kqpcl
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podab0c7e97-5431-475c-8214-854a690b5afb/9f731b9647381a36d027062f6e1464cb3c85dcc4cad0013d93cfc269dd81960f/cpu.cfs_quota_us
+sh: echo: I/O error
+50000
+40000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-q96qf
+ found.
+165000
+130000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod04cdc259-1283-4daf-9a83-0a813d7edb53/c68a15e9ccc6b8cfc4c83990f0a2962bc05ca09b4d405ab16fde87e325eb1312/cpu.cfs_quota_us
+sh: echo: I/O error
+165000
+90000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-tk77t
+ found.
+25000
+25000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod38711c16-98ff-4de0-98ad-44a67c5c3c08/c360cc4a79a923d2e39421e94454edbe69cda8e6307bfb76aa7408eeee38a54d/cpu.cfs_quota_us
+sh: echo: I/O error
+25000
+20000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-x2q5d
+ found.
+105000
+70000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/poddbbd750f-8110-4b6d-9a70-2699b6a32e49/9cdb9a1f3408e13426b2f526e50035135207d56a6b2aaef9e70f033774656d54/cpu.cfs_quota_us
+sh: echo: I/O error
+105000
+60000
+Connection to kube-slave1 closed.
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9411, 'cpu_usage': {'storm-worker-controller-tk77t': 249, 'storm-worker-controller-kqpcl': 349, 'storm-worker-controller-5b4rj': 280}, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'latency': 32.03302752293573}, 'ETLTopologySys': {'throughput': 95453, 'cpu_usage': {'storm-worker-controller-q96qf': 537, 'storm-worker-controller-x2q5d': 517, 'storm-worker-controller-fdcps': 602}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1}, 'latency': 31.479582641688403}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [300, 700, 500, 1300, 250, 700], measured cpu [280, 602, 349, 537, 249, 517], ratio is 0.6757333333333333
+latency is [32.03302752293573, 31.479582641688403]
+iteration: [244, 515, 396, 870, 155, 577]
+iteration: suggeseted is [244, 515, 396, 870, 155, 577], measured is [280, 602, 349, 537, 249, 517], last cpu limit is [300, 700, 500, 1300, 250, 700]
+iteration: [244, 515, 396, 870, 155, 577]
+iteration: [244, 515, 396, 870, 155, 577]
+iteration: [244, 515, 396, 870, 155, 577]
+suggested cpu limit is  [25000, 55000, 40000, 90000, 20000, 60000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9284, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 247, 'storm-worker-controller-kqpcl': 374}, 'latency': 33.13149171270719, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}}, 'ETLTopologySys': {'throughput': 94713, 'cpu_usage': {'storm-worker-controller-q96qf': 571, 'storm-worker-controller-fdcps': 546, 'storm-worker-controller-x2q5d': 530}, 'latency': 53.77990674014411, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [247, 546, 374, 571, 200, 530], ratio is 0.8510344827586207
+latency is [33.13149171270719, 53.77990674014411]
+iteration: [152, 530, 312, 809, 206, 581]
+dont update model
+new cpu limit is  [152, 530, 312, 809, 206, 581]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 95085, 'cpu_usage': {'storm-worker-controller-q96qf': 574, 'storm-worker-controller-x2q5d': 538, 'storm-worker-controller-fdcps': 538}, 'latency': 47.649568308786165, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1}}, 'IoTPredictionTopologySYS': {'throughput': 9332, 'cpu_usage': {'storm-worker-controller-5b4rj': 248, 'storm-worker-controller-kqpcl': 391, 'storm-worker-controller-tk77t': 201}, 'latency': 35.44712871287128, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [248, 538, 391, 574, 201, 538], ratio is 0.8586206896551725
+latency is [47.649568308786165, 35.44712871287128]
+iteration: [1620, 537, 352, 570, 1056, 572]
+iteration: [233, 537, 371, 757, 192, 571]
+dont update model
+new cpu limit is  [233, 537, 371, 757, 192, 571]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-x2q5d': 560, 'storm-worker-controller-q96qf': 513, 'storm-worker-controller-fdcps': 528}, 'latency': 41.098719772403975, 'throughput': 94538, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 382, 'storm-worker-controller-5b4rj': 237}, 'latency': 49.339893048128324, 'throughput': 9267, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [237, 528, 382, 513, 200, 560], ratio is 0.8344827586206897
+latency is [41.098719772403975, 49.339893048128324]
+iteration: [1598, 544, 373, 634, 548, 469]
+iteration: [277, 544, 372, 762, 184, 574]
+dont update model
+new cpu limit is  [277, 544, 372, 762, 184, 574]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94255, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-fdcps': 530, 'storm-worker-controller-q96qf': 545, 'storm-worker-controller-x2q5d': 537}, 'latency': 35.65023112480736}, 'IoTPredictionTopologySYS': {'throughput': 9170, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}, 'latency': 48.31231231231227, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 224, 'storm-worker-controller-kqpcl': 377}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [224, 530, 377, 545, 200, 537], ratio is 0.8320689655172414
+latency is [35.65023112480736, 48.31231231231227]
+iteration: [243, 541, 371, 747, 174, 566]
+dont update model
+new cpu limit is  [243, 541, 371, 747, 174, 566]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9117, 'cpu_usage': {'storm-worker-controller-tk77t': 198, 'storm-worker-controller-kqpcl': 361, 'storm-worker-controller-5b4rj': 249}, 'latency': 42.19192245557349}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 50.09945732609768, 'cpu_usage': {'storm-worker-controller-fdcps': 537, 'storm-worker-controller-x2q5d': 521, 'storm-worker-controller-q96qf': 528}, 'throughput': 93881}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [249, 537, 361, 528, 198, 521], ratio is 0.8255172413793104
+latency is [42.19192245557349, 50.09945732609768]
+iteration: [2328, 539, 370, 2260, 968, 348]
+iteration: [243, 546, 364, 738, 225, 562]
+dont update model
+new cpu limit is  [243, 546, 364, 738, 225, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94546, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1}, 'latency': 47.33391196528208, 'cpu_usage': {'storm-worker-controller-q96qf': 563, 'storm-worker-controller-x2q5d': 515, 'storm-worker-controller-fdcps': 513}}, 'IoTPredictionTopologySYS': {'throughput': 9217, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'latency': 38.12193732193728, 'cpu_usage': {'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 340, 'storm-worker-controller-5b4rj': 250}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [250, 513, 340, 563, 201, 515], ratio is 0.8213793103448276
+latency is [47.33391196528208, 38.12193732193728]
+iteration: [243, 544, 378, 747, 195, 579]
+dont update model
+new cpu limit is  [243, 544, 378, 747, 195, 579]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 93995, 'latency': 30.136315868488214, 'cpu_usage': {'storm-worker-controller-x2q5d': 521, 'storm-worker-controller-q96qf': 523, 'storm-worker-controller-fdcps': 508}}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9224, 'latency': 50.67926509186349, 'cpu_usage': {'storm-worker-controller-5b4rj': 238, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 377}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [238, 508, 377, 523, 201, 521], ratio is 0.8165517241379311
+latency is [30.136315868488214, 50.67926509186349]
+iteration: [242, 542, 111, 3611, 2120, 2970]
+iteration: [254, 1540, 323, 1422, 193, 510]
+iteration: [254, 536, 389, 756, 193, 583]
+dont update model
+new cpu limit is  [254, 536, 389, 756, 193, 583]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 251, 'storm-worker-controller-kqpcl': 372}, 'throughput': 9156, 'latency': 46.58798955613577, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}}, 'ETLTopologySys': {'latency': 52.268859198355585, 'throughput': 94046, 'cpu_usage': {'storm-worker-controller-fdcps': 523, 'storm-worker-controller-q96qf': 586, 'storm-worker-controller-x2q5d': 496}, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [251, 523, 372, 586, 200, 496], ratio is 0.8372413793103448
+latency is [46.58798955613577, 52.268859198355585]
+iteration: [254, 535, 1191, 995, 193, 1488]
+iteration: [253, 545, 388, 449, 193, 543]
+dont update model
+new cpu limit is  [253, 545, 388, 449, 193, 543]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 38.95684944413037, 'cpu_usage': {'storm-worker-controller-fdcps': 527, 'storm-worker-controller-q96qf': 524, 'storm-worker-controller-x2q5d': 505}, 'throughput': 92625, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}}, 'IoTPredictionTopologySYS': {'latency': 50.05914786967418, 'cpu_usage': {'storm-worker-controller-5b4rj': 245, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 350}, 'throughput': 9033, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [245, 527, 350, 524, 200, 505], ratio is 0.8106896551724138
+latency is [38.95684944413037, 50.05914786967418]
+iteration: [253, 544, 386, 1095, 194, 401]
+dont update model
+new cpu limit is  [253, 544, 386, 1095, 194, 401]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 508, 'storm-worker-controller-fdcps': 538, 'storm-worker-controller-x2q5d': 552}, 'latency': 33.869592782248226, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 92948}, 'IoTPredictionTopologySYS': {'latency': 48.15006605019814, 'cpu_usage': {'storm-worker-controller-kqpcl': 350, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 243}, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9059}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [243, 538, 350, 508, 200, 552], ratio is 0.8244827586206896
+latency is [33.869592782248226, 48.15006605019814]
+iteration: [252, 544, 385, 975, 194, 1832]
+iteration: [251, 544, 385, 1105, 195, 571]
+dont update model
+new cpu limit is  [251, 544, 385, 1105, 195, 571]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 504, 'storm-worker-controller-fdcps': 513, 'storm-worker-controller-x2q5d': 523}, 'latency': 32.907860886136255, 'throughput': 93338, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-kqpcl': 386, 'storm-worker-controller-5b4rj': 248, 'storm-worker-controller-tk77t': 201}, 'latency': 34.66781115879827, 'throughput': 9123, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [248, 513, 386, 504, 201, 523], ratio is 0.8189655172413793
+latency is [32.907860886136255, 34.66781115879827]
+iteration: [251, 543, 386, 1745, 195, 569]
+dont update model
+new cpu limit is  [251, 543, 386, 1745, 195, 569]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9225, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}, 'cpu_usage': {'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 247, 'storm-worker-controller-kqpcl': 380}, 'latency': 40.12825651302601}, 'ETLTopologySys': {'throughput': 94200, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'cpu_usage': {'storm-worker-controller-x2q5d': 514, 'storm-worker-controller-q96qf': 568, 'storm-worker-controller-fdcps': 544}, 'latency': 56.36694406812462}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [247, 544, 380, 568, 201, 514], ratio is 0.8462068965517241
+latency is [40.12825651302601, 56.36694406812462]
+iteration: [251, 544, 386, 381, 196, 568]
+dont update model
+new cpu limit is  [251, 544, 386, 381, 196, 568]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-x2q5d': 522, 'storm-worker-controller-q96qf': 573, 'storm-worker-controller-fdcps': 517}, 'latency': 49.428252326783856, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 94014}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 251, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 338}, 'latency': 84.21381381381376, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9233}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [251, 517, 338, 573, 201, 522], ratio is 0.8282758620689655
+latency is [49.428252326783856, 84.21381381381376]
+iteration: [247, 541, 226, 2035, 3266, 562]
+iteration: [251, 543, 385, 770, 196, 567]
+dont update model
+new cpu limit is  [251, 543, 385, 770, 196, 567]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 248, 'storm-worker-controller-kqpcl': 355, 'storm-worker-controller-tk77t': 200}, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'throughput': 9093, 'latency': 45.86075388026606}, 'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 561, 'storm-worker-controller-fdcps': 526, 'storm-worker-controller-x2q5d': 535}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 93685, 'latency': 49.88690239703348}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [248, 526, 355, 561, 200, 535], ratio is 0.8362068965517241
+latency is [45.86075388026606, 49.88690239703348]
+iteration: [251, 543, 384, 1968, 197, 567]
+dont update model
+new cpu limit is  [251, 543, 384, 1968, 197, 567]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 544, 'storm-worker-controller-fdcps': 528, 'storm-worker-controller-x2q5d': 519}, 'latency': 51.8536250988663, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 93209}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-kqpcl': 350, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 247}, 'latency': 54.09481065918651, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9154}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [247, 528, 350, 544, 200, 519], ratio is 0.8234482758620689
+latency is [51.8536250988663, 54.09481065918651]
+iteration: [251, 542, 383, 619, 197, 566]
+dont update model
+new cpu limit is  [251, 542, 383, 619, 197, 566]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94677, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 50.565712934499864, 'cpu_usage': {'storm-worker-controller-x2q5d': 498, 'storm-worker-controller-fdcps': 540, 'storm-worker-controller-q96qf': 576}}, 'IoTPredictionTopologySYS': {'throughput': 9288, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'latency': 41.65632, 'cpu_usage': {'storm-worker-controller-5b4rj': 249, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 364}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [249, 540, 364, 576, 200, 498], ratio is 0.8368965517241379
+latency is [50.565712934499864, 41.65632]
+iteration: [251, 542, 383, 304, 197, 565]
+dont update model
+new cpu limit is  [251, 542, 383, 304, 197, 565]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 40.20035625222654, 'cpu_usage': {'storm-worker-controller-x2q5d': 540, 'storm-worker-controller-fdcps': 536, 'storm-worker-controller-q96qf': 531}, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'throughput': 94207}, 'IoTPredictionTopologySYS': {'latency': 56.43153526970953, 'cpu_usage': {'storm-worker-controller-5b4rj': 245, 'storm-worker-controller-kqpcl': 366, 'storm-worker-controller-tk77t': 201}, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'throughput': 9160}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [245, 536, 366, 531, 201, 540], ratio is 0.8341379310344827
+latency is [40.20035625222654, 56.43153526970953]
+iteration: [250, 542, 383, 1265, 197, 565]
+dont update model
+new cpu limit is  [250, 542, 383, 1265, 197, 565]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 42.39334825711541, 'throughput': 94675, 'cpu_usage': {'storm-worker-controller-q96qf': 561, 'storm-worker-controller-fdcps': 537, 'storm-worker-controller-x2q5d': 525}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}}, 'IoTPredictionTopologySYS': {'latency': 48.507797537619695, 'throughput': 9238, 'cpu_usage': {'storm-worker-controller-kqpcl': 391, 'storm-worker-controller-5b4rj': 248, 'storm-worker-controller-tk77t': 200}, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [248, 537, 391, 561, 200, 525], ratio is 0.8489655172413794
+latency is [42.39334825711541, 48.507797537619695]
+iteration: [250, 542, 384, 1093, 197, 565]
+dont update model
+new cpu limit is  [250, 542, 384, 1093, 197, 565]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94429, 'latency': 50.08204802708133, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-fdcps': 525, 'storm-worker-controller-q96qf': 594, 'storm-worker-controller-x2q5d': 544}}, 'IoTPredictionTopologySYS': {'throughput': 9269, 'latency': 44.255135135135106, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'cpu_usage': {'storm-worker-controller-kqpcl': 376, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 247}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [247, 525, 376, 594, 200, 544], ratio is 0.8572413793103448
+latency is [50.08204802708133, 44.255135135135106]
+iteration: [250, 542, 384, 986, 197, 565]
+dont update model
+new cpu limit is  [250, 542, 384, 986, 197, 565]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 245, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 376}, 'latency': 35.21596009975057, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9334}, 'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fdcps': 519, 'storm-worker-controller-x2q5d': 511, 'storm-worker-controller-q96qf': 538}, 'latency': 31.041544763019303, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5}, 'throughput': 95075}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [245, 519, 376, 538, 200, 511], ratio is 0.8237931034482758
+latency is [35.21596009975057, 31.041544763019303]
+iteration: [250, 542, 384, 989, 197, 564]
+dont update model
+new cpu limit is  [250, 542, 384, 989, 197, 564]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'latency': 51.76586845812112, 'cpu_usage': {'storm-worker-controller-q96qf': 558, 'storm-worker-controller-fdcps': 525, 'storm-worker-controller-x2q5d': 536}, 'throughput': 95228}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'latency': 51.65584045584043, 'cpu_usage': {'storm-worker-controller-kqpcl': 374, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 251}, 'throughput': 9324}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [251, 525, 374, 558, 201, 536], ratio is 0.843103448275862
+latency is [51.76586845812112, 51.65584045584043]
+iteration: [250, 542, 384, 443, 198, 564]
+dont update model
+new cpu limit is  [250, 542, 384, 443, 198, 564]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 565, 'storm-worker-controller-fdcps': 533, 'storm-worker-controller-x2q5d': 506}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 94752, 'latency': 46.67544567338971}, 'IoTPredictionTopologySYS': {'throughput': 9306, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'cpu_usage': {'storm-worker-controller-5b4rj': 234, 'storm-worker-controller-kqpcl': 367, 'storm-worker-controller-tk77t': 201}, 'latency': 41.34664371772802}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [234, 533, 367, 565, 201, 506], ratio is 0.829655172413793
+latency is [46.67544567338971, 41.34664371772802]
+iteration: [250, 542, 384, 350, 198, 564]
+dont update model
+new cpu limit is  [250, 542, 384, 350, 198, 564]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-5b4rj
+ found.
+40000
+25000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podf95da1e4-0a23-4ab7-b28f-37194cb765c9/1caa88eb65040e15ceaf0bfe7eda0c6ab87151ea97da3710f22d7aba2ed79af7/cpu.cfs_quota_us
+25000
+25000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fdcps
+ found.
+70000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod983b33b2-bf89-4af5-9579-3bf306d84985/8e165bbe249143ca4fc22a57cad1cb69434df20d79ea850b32e994c1a13e0723/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-kqpcl
+ found.
+50000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podab0c7e97-5431-475c-8214-854a690b5afb/9f731b9647381a36d027062f6e1464cb3c85dcc4cad0013d93cfc269dd81960f/cpu.cfs_quota_us
+40000
+40000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-q96qf
+ found.
+165000
+90000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod04cdc259-1283-4daf-9a83-0a813d7edb53/c68a15e9ccc6b8cfc4c83990f0a2962bc05ca09b4d405ab16fde87e325eb1312/cpu.cfs_quota_us
+sh: echo: I/O error
+165000
+70000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-tk77t
+ found.
+25000
+20000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod38711c16-98ff-4de0-98ad-44a67c5c3c08/c360cc4a79a923d2e39421e94454edbe69cda8e6307bfb76aa7408eeee38a54d/cpu.cfs_quota_us
+20000
+20000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-x2q5d
+ found.
+105000
+60000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/poddbbd750f-8110-4b6d-9a70-2699b6a32e49/9cdb9a1f3408e13426b2f526e50035135207d56a6b2aaef9e70f033774656d54/cpu.cfs_quota_us
+60000
+60000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 33.3905011807924, 'cpu_usage': {'storm-worker-controller-x2q5d': 512, 'storm-worker-controller-q96qf': 469, 'storm-worker-controller-fdcps': 511}, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 94968}, 'IoTPredictionTopologySYS': {'latency': 44.72494669509592, 'cpu_usage': {'storm-worker-controller-kqpcl': 355, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 245}, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9290}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 900, 200, 600], measured cpu [245, 511, 355, 469, 201, 512], ratio is 0.7906896551724137
+latency is [33.3905011807924, 44.72494669509592]
+iteration: [249, 541, 384, 684, 198, 563]
+iteration: suggeseted is [249, 541, 384, 684, 198, 563], measured is [245, 511, 355, 469, 201, 512], last cpu limit is [250, 550, 400, 900, 200, 600]
+iteration: [249, 541, 384, 684, 198, 563]
+iteration: [249, 541, 384, 684, 198, 563]
+iteration: [249, 541, 384, 684, 198, 563]
+suggested cpu limit is  [25000, 55000, 40000, 70000, 20000, 60000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-fdcps': 536, 'storm-worker-controller-q96qf': 556, 'storm-worker-controller-x2q5d': 502}, 'throughput': 94742, 'latency': 51.52860881398512}, 'IoTPredictionTopologySYS': {'throughput': 9342, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 366, 'storm-worker-controller-5b4rj': 242}, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'latency': 41.32300683371297}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [242, 536, 366, 556, 200, 502], ratio is 0.8896296296296297
+latency is [51.52860881398512, 41.32300683371297]
+iteration: [249, 541, 384, 2182, 198, 563]
+iteration: [249, 541, 384, 700, 198, 562]
+dont update model
+new cpu limit is  [249, 541, 384, 700, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fdcps': 516, 'storm-worker-controller-q96qf': 513, 'storm-worker-controller-x2q5d': 518}, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'throughput': 94862, 'latency': 31.666145919893623}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 381, 'storm-worker-controller-5b4rj': 245}, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9371, 'latency': 41.83316582914572}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [245, 516, 381, 513, 200, 518], ratio is 0.8788888888888889
+latency is [31.666145919893623, 41.83316582914572]
+iteration: [249, 541, 384, 696, 198, 562]
+dont update model
+new cpu limit is  [249, 541, 384, 696, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9354, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1}, 'latency': 41.6337434094903, 'cpu_usage': {'storm-worker-controller-kqpcl': 363, 'storm-worker-controller-5b4rj': 248, 'storm-worker-controller-tk77t': 201}}, 'ETLTopologySys': {'throughput': 94541, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'latency': 31.438261629176672, 'cpu_usage': {'storm-worker-controller-x2q5d': 565, 'storm-worker-controller-q96qf': 499, 'storm-worker-controller-fdcps': 538}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [248, 538, 363, 499, 201, 565], ratio is 0.894074074074074
+latency is [41.6337434094903, 31.438261629176672]
+iteration: [249, 541, 384, 691, 198, 562]
+dont update model
+new cpu limit is  [249, 541, 384, 691, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'cpu_usage': {'storm-worker-controller-5b4rj': 241, 'storm-worker-controller-kqpcl': 355, 'storm-worker-controller-tk77t': 200}, 'latency': 46.94993514915692, 'throughput': 9316}, 'ETLTopologySys': {'throughput': 93756, 'cpu_usage': {'storm-worker-controller-q96qf': 588, 'storm-worker-controller-fdcps': 531, 'storm-worker-controller-x2q5d': 532}, 'latency': 54.9111066799601, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [241, 531, 355, 588, 200, 532], ratio is 0.9062962962962963
+latency is [46.94993514915692, 54.9111066799601]
+iteration: [249, 541, 383, 689, 198, 562]
+dont update model
+new cpu limit is  [249, 541, 383, 689, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 92553, 'latency': 48.36678336367455, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'cpu_usage': {'storm-worker-controller-x2q5d': 532, 'storm-worker-controller-q96qf': 572, 'storm-worker-controller-fdcps': 526}}, 'IoTPredictionTopologySYS': {'throughput': 9197, 'latency': 55.298857736240905, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'cpu_usage': {'storm-worker-controller-kqpcl': 382, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 240}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [240, 526, 382, 572, 201, 532], ratio is 0.9085185185185185
+latency is [48.36678336367455, 55.298857736240905]
+iteration: [249, 541, 384, 687, 198, 562]
+dont update model
+new cpu limit is  [249, 541, 384, 687, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 240, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 315}, 'throughput': 9312, 'latency': 33.288888888888884, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}}, 'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-x2q5d': 530, 'storm-worker-controller-fdcps': 523, 'storm-worker-controller-q96qf': 534}, 'throughput': 93098, 'latency': 38.92616101846871, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [240, 523, 315, 534, 200, 530], ratio is 0.8674074074074074
+latency is [33.288888888888884, 38.92616101846871]
+iteration: [249, 540, 383, 684, 198, 562]
+dont update model
+new cpu limit is  [249, 540, 383, 684, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 28.972568578553613, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'cpu_usage': {'storm-worker-controller-kqpcl': 352, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 237}, 'throughput': 9195}, 'ETLTopologySys': {'latency': 30.828562892142216, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 571, 'storm-worker-controller-fdcps': 532, 'storm-worker-controller-x2q5d': 529}, 'throughput': 93184}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [237, 532, 352, 571, 200, 529], ratio is 0.8966666666666666
+latency is [28.972568578553613, 30.828562892142216]
+iteration: [248, 540, 382, 682, 198, 562]
+dont update model
+new cpu limit is  [248, 540, 382, 682, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5}, 'cpu_usage': {'storm-worker-controller-fdcps': 524, 'storm-worker-controller-x2q5d': 565, 'storm-worker-controller-q96qf': 585}, 'throughput': 94651, 'latency': 55.48102658111823}, 'IoTPredictionTopologySYS': {'latency': 52.61897302001739, 'cpu_usage': {'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 366, 'storm-worker-controller-5b4rj': 248}, 'throughput': 9273, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [248, 524, 366, 585, 201, 565], ratio is 0.9218518518518518
+latency is [55.48102658111823, 52.61897302001739]
+iteration: [248, 540, 382, 681, 198, 563]
+dont update model
+new cpu limit is  [248, 540, 382, 681, 198, 563]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9126, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'latency': 41.50529595015573, 'cpu_usage': {'storm-worker-controller-5b4rj': 249, 'storm-worker-controller-kqpcl': 372, 'storm-worker-controller-tk77t': 200}}, 'ETLTopologySys': {'throughput': 93154, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 54.804641579004425, 'cpu_usage': {'storm-worker-controller-x2q5d': 536, 'storm-worker-controller-fdcps': 536, 'storm-worker-controller-q96qf': 561}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [249, 536, 372, 561, 200, 536], ratio is 0.9088888888888889
+latency is [41.50529595015573, 54.804641579004425]
+iteration: [248, 540, 382, 679, 198, 563]
+dont update model
+new cpu limit is  [248, 540, 382, 679, 198, 563]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9028, 'cpu_usage': {'storm-worker-controller-5b4rj': 237, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 398}, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'latency': 42.83889908256879}, 'ETLTopologySys': {'latency': 44.68853285328531, 'throughput': 93527, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 565, 'storm-worker-controller-fdcps': 513, 'storm-worker-controller-x2q5d': 520}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [237, 513, 398, 565, 200, 520], ratio is 0.9011111111111111
+latency is [42.83889908256879, 44.68853285328531]
+iteration: [248, 540, 383, 677, 198, 563]
+dont update model
+new cpu limit is  [248, 540, 383, 677, 198, 563]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'latency': 39.939240506329064, 'cpu_usage': {'storm-worker-controller-kqpcl': 368, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 250}, 'throughput': 9208}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'latency': 52.93292433537832, 'cpu_usage': {'storm-worker-controller-x2q5d': 535, 'storm-worker-controller-q96qf': 580, 'storm-worker-controller-fdcps': 537}, 'throughput': 94558}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 537, 368, 580, 201, 535], ratio is 0.9151851851851852
+latency is [39.939240506329064, 52.93292433537832]
+iteration: [248, 540, 383, 676, 198, 563]
+dont update model
+new cpu limit is  [248, 540, 383, 676, 198, 563]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-kqpcl': 383, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 248}, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9265, 'latency': 33.23595505617975}, 'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-x2q5d': 521, 'storm-worker-controller-q96qf': 545, 'storm-worker-controller-fdcps': 508}, 'throughput': 94884, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'latency': 47.29502375593896}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [248, 508, 383, 545, 201, 521], ratio is 0.8911111111111111
+latency is [33.23595505617975, 47.29502375593896]
+iteration: [248, 540, 383, 674, 198, 562]
+dont update model
+new cpu limit is  [248, 540, 383, 674, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 56.56835016835016, 'cpu_usage': {'storm-worker-controller-5b4rj': 231, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 368}, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9239}, 'ETLTopologySys': {'latency': 31.16752282410225, 'cpu_usage': {'storm-worker-controller-q96qf': 541, 'storm-worker-controller-fdcps': 532, 'storm-worker-controller-x2q5d': 541}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 94877}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [231, 532, 368, 541, 201, 541], ratio is 0.894074074074074
+latency is [56.56835016835016, 31.16752282410225]
+iteration: [248, 540, 383, 672, 198, 563]
+dont update model
+new cpu limit is  [248, 540, 383, 672, 198, 563]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'latency': 46.60146412884332, 'throughput': 9127, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 362, 'storm-worker-controller-5b4rj': 249}}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 508, 'storm-worker-controller-fdcps': 541, 'storm-worker-controller-x2q5d': 479}, 'throughput': 95155, 'latency': 35.34812132186504}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [249, 541, 362, 508, 200, 479], ratio is 0.8662962962962963
+latency is [46.60146412884332, 35.34812132186504]
+iteration: [248, 540, 383, 670, 198, 562]
+dont update model
+new cpu limit is  [248, 540, 383, 670, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fdcps': 512, 'storm-worker-controller-q96qf': 570, 'storm-worker-controller-x2q5d': 533}, 'throughput': 95083, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'latency': 31.811609340296528}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-kqpcl': 377, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-5b4rj': 243}, 'throughput': 9239, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'latency': 46.628282828282806}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [243, 512, 377, 570, 201, 533], ratio is 0.9022222222222223
+latency is [31.811609340296528, 46.628282828282806]
+iteration: [248, 540, 383, 669, 198, 562]
+dont update model
+new cpu limit is  [248, 540, 383, 669, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 542, 'storm-worker-controller-fdcps': 531, 'storm-worker-controller-x2q5d': 467}, 'latency': 39.65877489665539, 'throughput': 94525, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 251, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 370}, 'latency': 40.37978021978019, 'throughput': 9297, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [251, 531, 370, 542, 201, 467], ratio is 0.8748148148148148
+latency is [39.65877489665539, 40.37978021978019]
+iteration: [248, 540, 383, 667, 198, 561]
+dont update model
+new cpu limit is  [248, 540, 383, 667, 198, 561]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 390, 'storm-worker-controller-5b4rj': 252}, 'latency': 62.29706293706293, 'throughput': 9361}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 576, 'storm-worker-controller-fdcps': 535, 'storm-worker-controller-x2q5d': 548}, 'latency': 57.79635757647898, 'throughput': 95013}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [252, 535, 390, 576, 200, 548], ratio is 0.9262962962962963
+latency is [62.29706293706293, 57.79635757647898]
+iteration: [248, 540, 383, 666, 198, 561]
+dont update model
+new cpu limit is  [248, 540, 383, 666, 198, 561]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-5b4rj
+ found.
+25000
+25000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podf95da1e4-0a23-4ab7-b28f-37194cb765c9/1caa88eb65040e15ceaf0bfe7eda0c6ab87151ea97da3710f22d7aba2ed79af7/cpu.cfs_quota_us
+25000
+25000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fdcps
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod983b33b2-bf89-4af5-9579-3bf306d84985/8e165bbe249143ca4fc22a57cad1cb69434df20d79ea850b32e994c1a13e0723/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-kqpcl
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/podab0c7e97-5431-475c-8214-854a690b5afb/9f731b9647381a36d027062f6e1464cb3c85dcc4cad0013d93cfc269dd81960f/cpu.cfs_quota_us
+40000
+40000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-q96qf
+ found.
+165000
+70000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod04cdc259-1283-4daf-9a83-0a813d7edb53/c68a15e9ccc6b8cfc4c83990f0a2962bc05ca09b4d405ab16fde87e325eb1312/cpu.cfs_quota_us
+70000
+70000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-tk77t
+ found.
+20000
+20000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod38711c16-98ff-4de0-98ad-44a67c5c3c08/c360cc4a79a923d2e39421e94454edbe69cda8e6307bfb76aa7408eeee38a54d/cpu.cfs_quota_us
+20000
+20000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-x2q5d
+ found.
+60000
+60000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/poddbbd750f-8110-4b6d-9a70-2699b6a32e49/9cdb9a1f3408e13426b2f526e50035135207d56a6b2aaef9e70f033774656d54/cpu.cfs_quota_us
+60000
+60000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 121.18192771084338, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-fdcps': 540, 'storm-worker-controller-q96qf': 578, 'storm-worker-controller-x2q5d': 526}, 'throughput': 93498}, 'IoTPredictionTopologySYS': {'latency': 42.88611111111109, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'cpu_usage': {'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 328, 'storm-worker-controller-5b4rj': 233}, 'throughput': 9361}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [233, 540, 328, 578, 201, 526], ratio is 0.8911111111111111
+latency is [121.18192771084338, 42.88611111111109]
+iteration: [248, 540, 383, 665, 198, 561]
+iteration: suggeseted is [248, 540, 383, 665, 198, 561], measured is [233, 540, 328, 578, 201, 526], last cpu limit is [250, 550, 400, 700, 200, 600]
+iteration: [248, 540, 383, 665, 198, 561]
+iteration: [248, 540, 383, 665, 198, 561]
+iteration: [248, 540, 383, 665, 198, 561]
+suggested cpu limit is  [25000, 55000, 40000, 70000, 20000, 60000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-q96qf': 495, 'storm-worker-controller-x2q5d': 550, 'storm-worker-controller-fdcps': 549}, 'latency': 43.409978014544215, 'throughput': 93953, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1}}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-5b4rj': 251, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 375}, 'latency': 32.9494505494505, 'throughput': 9310, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [251, 549, 375, 495, 201, 550], ratio is 0.8966666666666666
+latency is [43.409978014544215, 32.9494505494505]
+iteration: [248, 540, 383, 664, 198, 561]
+dont update model
+new cpu limit is  [248, 540, 383, 664, 198, 561]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 30.97997982555034, 'cpu_usage': {'storm-worker-controller-x2q5d': 579, 'storm-worker-controller-fdcps': 484, 'storm-worker-controller-q96qf': 559}, 'throughput': 93688}, 'IoTPredictionTopologySYS': {'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 352, 'storm-worker-controller-5b4rj': 222}, 'latency': 36.47706422018348, 'throughput': 9375, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [222, 484, 352, 559, 200, 579], ratio is 0.8874074074074074
+latency is [30.97997982555034, 36.47706422018348]
+iteration: [248, 539, 383, 663, 198, 562]
+dont update model
+new cpu limit is  [248, 539, 383, 663, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 93768, 'latency': 31.743908908585098, 'cpu_usage': {'storm-worker-controller-x2q5d': 540, 'storm-worker-controller-q96qf': 521, 'storm-worker-controller-fdcps': 508}}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1}, 'latency': 32.480829015543996, 'cpu_usage': {'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 354, 'storm-worker-controller-5b4rj': 251}, 'throughput': 9324}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [251, 508, 354, 521, 201, 540], ratio is 0.8796296296296297
+latency is [31.743908908585098, 32.480829015543996]
+iteration: [248, 539, 382, 661, 198, 562]
+dont update model
+new cpu limit is  [248, 539, 382, 661, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'throughput': 9204, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'latency': 30.16982456140351, 'cpu_usage': {'storm-worker-controller-kqpcl': 390, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 236}}, 'ETLTopologySys': {'throughput': 94253, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 31.623198514935023, 'cpu_usage': {'storm-worker-controller-x2q5d': 537, 'storm-worker-controller-fdcps': 527, 'storm-worker-controller-q96qf': 512}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [236, 527, 390, 512, 200, 537], ratio is 0.8896296296296297
+latency is [30.16982456140351, 31.623198514935023]
+iteration: [248, 539, 383, 660, 198, 562]
+dont update model
+new cpu limit is  [248, 539, 383, 660, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 48.731428571428566, 'throughput': 93844, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'cpu_usage': {'storm-worker-controller-x2q5d': 546, 'storm-worker-controller-fdcps': 532, 'storm-worker-controller-q96qf': 597}}, 'IoTPredictionTopologySYS': {'latency': 50.5827633378933, 'throughput': 9090, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'cpu_usage': {'storm-worker-controller-5b4rj': 233, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 373}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [233, 532, 373, 597, 201, 546], ratio is 0.9192592592592592
+latency is [48.731428571428566, 50.5827633378933]
+iteration: [148, 417, 276, 529, 100, 390]
+dont update model
+new cpu limit is  [148, 417, 276, 529, 100, 390]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'throughput': 94795, 'latency': 36.480063795853226, 'cpu_usage': {'storm-worker-controller-fdcps': 544, 'storm-worker-controller-q96qf': 601, 'storm-worker-controller-x2q5d': 529}}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'throughput': 9324, 'latency': 45.676307692307674, 'cpu_usage': {'storm-worker-controller-kqpcl': 374, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 250}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 544, 374, 601, 200, 529], ratio is 0.9251851851851852
+latency is [36.480063795853226, 45.676307692307674]
+iteration: [247, 539, 383, 659, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 659, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 34.75021459227466, 'cpu_usage': {'storm-worker-controller-5b4rj': 234, 'storm-worker-controller-kqpcl': 378, 'storm-worker-controller-tk77t': 200}, 'throughput': 9279, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}}, 'ETLTopologySys': {'latency': 57.63130249867089, 'cpu_usage': {'storm-worker-controller-x2q5d': 566, 'storm-worker-controller-q96qf': 553, 'storm-worker-controller-fdcps': 537}, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 94956}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [234, 537, 378, 553, 200, 566], ratio is 0.914074074074074
+latency is [34.75021459227466, 57.63130249867089]
+iteration: [247, 539, 383, 658, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 658, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 47.522727272727266, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9230, 'cpu_usage': {'storm-worker-controller-5b4rj': 236, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-kqpcl': 356}}, 'ETLTopologySys': {'latency': 31.199376121032508, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5}, 'throughput': 95313, 'cpu_usage': {'storm-worker-controller-fdcps': 522, 'storm-worker-controller-x2q5d': 520, 'storm-worker-controller-q96qf': 555}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [236, 522, 356, 555, 200, 520], ratio is 0.8848148148148148
+latency is [47.522727272727266, 31.199376121032508]
+iteration: [247, 539, 383, 657, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 657, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 39.06693386773543, 'cpu_usage': {'storm-worker-controller-kqpcl': 397, 'storm-worker-controller-5b4rj': 251, 'storm-worker-controller-tk77t': 201}, 'throughput': 9236, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1}}, 'ETLTopologySys': {'throughput': 94972, 'latency': 29.46100587851077, 'cpu_usage': {'storm-worker-controller-fdcps': 486, 'storm-worker-controller-x2q5d': 527, 'storm-worker-controller-q96qf': 483}, 'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [251, 486, 397, 483, 201, 527], ratio is 0.8685185185185185
+latency is [39.06693386773543, 29.46100587851077]
+iteration: [247, 539, 383, 656, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 656, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 30.946621760945764, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'throughput': 94397, 'cpu_usage': {'storm-worker-controller-q96qf': 518, 'storm-worker-controller-fdcps': 529, 'storm-worker-controller-x2q5d': 522}}, 'IoTPredictionTopologySYS': {'latency': 29.781132075471668, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9288, 'cpu_usage': {'storm-worker-controller-5b4rj': 250, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 365}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 529, 365, 518, 201, 522], ratio is 0.8833333333333333
+latency is [30.946621760945764, 29.781132075471668]
+iteration: [247, 539, 383, 654, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 654, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 28.9712800519818, 'throughput': 93832, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'cpu_usage': {'storm-worker-controller-x2q5d': 536, 'storm-worker-controller-fdcps': 515, 'storm-worker-controller-q96qf': 541}}, 'IoTPredictionTopologySYS': {'latency': 53.31146161934803, 'throughput': 9313, 'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-kqpcl': 2}, 'cpu_usage': {'storm-worker-controller-5b4rj': 236, 'storm-worker-controller-tk77t': 201, 'storm-worker-controller-kqpcl': 368}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [236, 515, 368, 541, 201, 536], ratio is 0.8877777777777778
+latency is [28.9712800519818, 53.31146161934803]
+iteration: [247, 539, 383, 654, 198, 562]
+dont update model
+new cpu limit is  [247, 539, 383, 654, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94219, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'latency': 29.02954058949448, 'cpu_usage': {'storm-worker-controller-x2q5d': 527, 'storm-worker-controller-fdcps': 498, 'storm-worker-controller-q96qf': 500}}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1}, 'latency': 49.082889733840304, 'throughput': 9376, 'cpu_usage': {'storm-worker-controller-kqpcl': 343, 'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 249}}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [249, 498, 343, 500, 200, 527], ratio is 0.8581481481481481
+latency is [29.02954058949448, 49.082889733840304]
+iteration: [247, 538, 383, 652, 198, 562]
+dont update model
+new cpu limit is  [247, 538, 383, 652, 198, 562]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5}, 'throughput': 92380, 'cpu_usage': {'storm-worker-controller-x2q5d': 506, 'storm-worker-controller-fdcps': 514, 'storm-worker-controller-q96qf': 567}, 'latency': 40.096803323099124}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'throughput': 9361, 'cpu_usage': {'storm-worker-controller-5b4rj': 250, 'storm-worker-controller-kqpcl': 304, 'storm-worker-controller-tk77t': 201}, 'latency': 55.34382022471908}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 514, 304, 567, 201, 506], ratio is 0.8674074074074074
+latency is [40.096803323099124, 55.34382022471908]
+iteration: [113, 379, 245, 499, 100, 345]
+dont update model
+new cpu limit is  [113, 379, 245, 499, 100, 345]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'latency': 41.94608985024956, 'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}, 'throughput': 9344, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 250, 'storm-worker-controller-kqpcl': 389}}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-fdcps': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-x2q5d': 1}, 'latency': 35.76492027334849, 'cpu_usage': {'storm-worker-controller-fdcps': 520, 'storm-worker-controller-q96qf': 512, 'storm-worker-controller-x2q5d': 539}, 'throughput': 93637}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 520, 389, 512, 200, 539], ratio is 0.8925925925925926
+latency is [41.94608985024956, 35.76492027334849]
+iteration: [247, 538, 382, 651, 198, 562]
+dont update model
+new cpu limit is  [247, 538, 382, 651, 198, 562]
+-----------------------------------------------------------------
+read model
+{'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-tk77t': 1}, 'cpu_usage': {'storm-worker-controller-5b4rj': 241, 'storm-worker-controller-kqpcl': 389, 'storm-worker-controller-tk77t': 200}, 'latency': 52.72399672399671, 'throughput': 9305}, 'ETLTopologySys': {'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'cpu_usage': {'storm-worker-controller-q96qf': 554, 'storm-worker-controller-fdcps': 535, 'storm-worker-controller-x2q5d': 534}, 'latency': 29.938148265987902, 'throughput': 95022}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [241, 535, 389, 554, 200, 534], ratio is 0.9085185185185185
+latency is [52.72399672399671, 29.938148265987902]
+iteration: [100, 343, 142, 508, 100, 247]
+dont update model
+new cpu limit is  [100, 343, 142, 508, 100, 247]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94976, 'cpu_usage': {'storm-worker-controller-q96qf': 543, 'storm-worker-controller-fdcps': 533, 'storm-worker-controller-x2q5d': 554}, 'capacity': {'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1, 'storm-worker-controller-x2q5d': 1}, 'latency': 31.81765191091558}, 'IoTPredictionTopologySYS': {'throughput': 9170, 'cpu_usage': {'storm-worker-controller-kqpcl': 366, 'storm-worker-controller-5b4rj': 250, 'storm-worker-controller-tk77t': 200}, 'capacity': {'storm-worker-controller-kqpcl': 2, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-tk77t': 1}, 'latency': 39.24812030075188}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 533, 366, 543, 200, 554], ratio is 0.9059259259259259
+latency is [31.81765191091558, 39.24812030075188]
+iteration: [100, 344, 155, 504, 100, 259]
+dont update model
+new cpu limit is  [100, 344, 155, 504, 100, 259]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-x2q5d': 522, 'storm-worker-controller-q96qf': 547, 'storm-worker-controller-fdcps': 536}, 'capacity': {'storm-worker-controller-x2q5d': 1, 'storm-worker-controller-q96qf': 1.5, 'storm-worker-controller-fdcps': 1}, 'throughput': 94821, 'latency': 45.19957646346995}, 'IoTPredictionTopologySYS': {'capacity': {'storm-worker-controller-tk77t': 1, 'storm-worker-controller-5b4rj': 1, 'storm-worker-controller-kqpcl': 2}, 'cpu_usage': {'storm-worker-controller-tk77t': 200, 'storm-worker-controller-5b4rj': 250, 'storm-worker-controller-kqpcl': 336}, 'latency': 38.086530612244864, 'throughput': 9216}}
+['storm-worker-controller-5b4rj', 'storm-worker-controller-fdcps', 'storm-worker-controller-kqpcl', 'storm-worker-controller-q96qf', 'storm-worker-controller-tk77t', 'storm-worker-controller-x2q5d']
+last cpu limit [250, 550, 400, 700, 200, 600], measured cpu [250, 536, 336, 547, 200, 522], ratio is 0.8855555555555555
+latency is [45.19957646346995, 38.086530612244864]
+iteration: [100, 317, 100, 486, 100, 177]
+dont update model
+new cpu limit is  [100, 317, 100, 486, 100, 177]
+-----------------------------------------------------------------

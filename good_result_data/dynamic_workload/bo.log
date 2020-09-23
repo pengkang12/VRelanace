@@ -1,0 +1,1413 @@
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+70000
+70000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+65000
+65000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+40000
+40000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+210000
+210000
+Connection to kube-slave1 closed.
+{'ETLTopologySys': {'throughput': 31122, 'latency': 62.4519205298013, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 384, 'storm-worker-controller-c7dtv': 394, 'storm-worker-controller-xvk5t': 381}}}
+iteration: [667, 626, 2095]
+iteration: suggeseted is [667, 626, 2095], measured is [], last cpu limit is []
+suggested cpu limit is  [70000, 65000, 210000]
+update model for Bayesian optimization
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+70000
+70000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+180000
+180000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+65000
+65000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+120000
+120000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+210000
+210000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+sh: echo: I/O error
+210000
+90000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 448, 'storm-worker-controller-xvk5t': 435, 'storm-worker-controller-c7dtv': 458}, 'throughput': 31161, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1.5}, 'latency': 24.136631779257844}}
+last cpu limit [700, 650, 2100], measured cpu [458, 448, 435], ratio is 0.38869565217391305
+latency is [24.136631779257844]
+iteration: [191, 1447, 513]
+iteration: suggeseted is [191, 1447, 513], measured is [458, 448, 435], last cpu limit is [700, 650, 2100]
+iteration: [2804, 1135, 657]
+iteration: [1781, 1179, 894]
+suggested cpu limit is  [180000, 120000, 90000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+180000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+180000
+110000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+120000
+120000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+160000
+160000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+210000
+90000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+130000
+130000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1.5, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 19.07354838709676, 'throughput': 31214, 'cpu_usage': {'storm-worker-controller-c7dtv': 509, 'storm-worker-controller-fllct': 536, 'storm-worker-controller-xvk5t': 539}}}
+last cpu limit [1800, 1200, 900], measured cpu [509, 536, 539], ratio is 0.40615384615384614
+latency is [19.07354838709676]
+iteration: [1089, 1553, 1261]
+iteration: suggeseted is [1089, 1553, 1261], measured is [509, 536, 539], last cpu limit is [1800, 1200, 900]
+suggested cpu limit is  [110000, 160000, 130000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+110000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+180000
+80000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+160000
+160000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+190000
+190000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+130000
+130000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+sh: echo: I/O error
+130000
+75000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 16.239427456083266, 'cpu_usage': {'storm-worker-controller-xvk5t': 479, 'storm-worker-controller-c7dtv': 494, 'storm-worker-controller-fllct': 446}, 'throughput': 31180, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1.5, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [1100, 1600, 1300], measured cpu [494, 446, 479], ratio is 0.35475
+latency is [16.239427456083266]
+iteration: [753, 1886, 720]
+iteration: suggeseted is [753, 1886, 720], measured is [494, 446, 479], last cpu limit is [1100, 1600, 1300]
+iteration: [753, 1886, 720]
+iteration: [753, 1886, 720]
+iteration: [753, 1886, 720]
+suggested cpu limit is  [80000, 190000, 75000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+80000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+180000
+75000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+190000
+190000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+sh: echo: I/O error
+190000
+30000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+130000
+75000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+sh: echo: I/O error
+130000
+65000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 15.985489296155418, 'cpu_usage': {'storm-worker-controller-c7dtv': 483, 'storm-worker-controller-xvk5t': 498, 'storm-worker-controller-fllct': 539}, 'capacity': {'storm-worker-controller-c7dtv': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 62774}}
+last cpu limit [800, 1900, 750], measured cpu [483, 539, 498], ratio is 0.4405797101449275
+latency is [15.985489296155418]
+iteration: [716, 294, 645]
+iteration: suggeseted is [716, 294, 645], measured is [483, 539, 498], last cpu limit is [800, 1900, 750]
+iteration: [716, 294, 645]
+iteration: [716, 294, 645]
+iteration: [716, 294, 645]
+suggested cpu limit is  [75000, 30000, 65000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+75000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+180000
+60000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+190000
+30000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+130000
+65000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+sh: echo: I/O error
+130000
+35000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'throughput': 62817, 'latency': 3662.7793103448275, 'cpu_usage': {'storm-worker-controller-c7dtv': 493, 'storm-worker-controller-xvk5t': 516, 'storm-worker-controller-fllct': 301}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 2}}}
+last cpu limit [750, 300, 650], measured cpu [493, 301, 516], ratio is 0.7705882352941177
+latency is [3662.7793103448275]
+iteration: [593, 503, 327]
+iteration: suggeseted is [593, 503, 327], measured is [493, 301, 516], last cpu limit is [750, 300, 650]
+iteration: [593, 503, 327]
+iteration: [593, 503, 327]
+iteration: [593, 503, 327]
+suggested cpu limit is  [60000, 55000, 35000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62898, 'cpu_usage': {'storm-worker-controller-c7dtv': 505, 'storm-worker-controller-xvk5t': 351, 'storm-worker-controller-fllct': 475}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 2}, 'latency': 97.33538624900444}}
+last cpu limit [600, 550, 350], measured cpu [505, 475, 351], ratio is 0.8873333333333333
+latency is [97.33538624900444]
+iteration: [521, 512, 808]
+dont update model
+new cpu limit is  [521, 512, 808]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 350, 'storm-worker-controller-c7dtv': 494, 'storm-worker-controller-fllct': 492}, 'throughput': 62814, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 2}, 'latency': 90.25703971119131}}
+last cpu limit [600, 550, 350], measured cpu [494, 492, 350], ratio is 0.8906666666666667
+latency is [90.25703971119131]
+iteration: [526, 521, 642]
+dont update model
+new cpu limit is  [526, 521, 642]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 350, 'storm-worker-controller-c7dtv': 519, 'storm-worker-controller-fllct': 459}, 'latency': 62.47371885284437, 'throughput': 62745}}
+last cpu limit [600, 550, 350], measured cpu [519, 459, 350], ratio is 0.8853333333333333
+latency is [62.47371885284437]
+iteration: [604, 513, 1402]
+dont update model
+new cpu limit is  [604, 513, 1402]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+60000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+180000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+130000
+35000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+35000
+35000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'throughput': 94665, 'cpu_usage': {'storm-worker-controller-c7dtv': 524, 'storm-worker-controller-xvk5t': 350, 'storm-worker-controller-fllct': 509}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 203.20271993200166}}
+last cpu limit [600, 550, 350], measured cpu [524, 509, 350], ratio is 0.922
+latency is [203.20271993200166]
+iteration: [539, 523, 335]
+iteration: suggeseted is [539, 523, 335], measured is [524, 509, 350], last cpu limit is [600, 550, 350]
+iteration: [539, 523, 335]
+iteration: [539, 523, 335]
+iteration: [539, 523, 335]
+suggested cpu limit is  [55000, 55000, 35000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+180000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+35000
+35000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+110000
+110000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'throughput': 94611, 'latency': 213.51240875912407, 'capacity': {'storm-worker-controller-xvk5t': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 351, 'storm-worker-controller-c7dtv': 522, 'storm-worker-controller-fllct': 505}}}
+last cpu limit [550, 550, 350], measured cpu [522, 505, 351], ratio is 0.9503448275862069
+latency is [213.51240875912407]
+iteration: [539, 524, 1068]
+iteration: suggeseted is [539, 524, 1068], measured is [522, 505, 351], last cpu limit is [550, 550, 350]
+suggested cpu limit is  [55000, 55000, 110000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+110000
+110000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+sh: echo: I/O error
+110000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 546, 'storm-worker-controller-c7dtv': 524, 'storm-worker-controller-xvk5t': 570}, 'throughput': 94780, 'latency': 30.4291400313593, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1.5}}}
+last cpu limit [550, 550, 1100], measured cpu [524, 546, 570], ratio is 0.7454545454545455
+latency is [30.4291400313593]
+iteration: [540, 530, 497]
+iteration: suggeseted is [540, 530, 497], measured is [524, 546, 570], last cpu limit is [550, 550, 1100]
+iteration: [540, 530, 497]
+iteration: [540, 530, 497]
+iteration: [540, 530, 497]
+suggested cpu limit is  [55000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 94693, 'cpu_usage': {'storm-worker-controller-xvk5t': 488, 'storm-worker-controller-c7dtv': 515, 'storm-worker-controller-fllct': 474}, 'latency': 31.166968698517284}}
+last cpu limit [550, 550, 500], measured cpu [515, 474, 488], ratio is 0.923125
+latency is [31.166968698517284]
+iteration: [539, 529, 1049]
+dont update model
+new cpu limit is  [539, 529, 1049]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 514, 'storm-worker-controller-c7dtv': 508, 'storm-worker-controller-xvk5t': 498}, 'latency': 34.04174282677999, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'throughput': 94576}}
+last cpu limit [550, 550, 500], measured cpu [508, 514, 498], ratio is 0.95
+latency is [34.04174282677999]
+iteration: [538, 530, 728]
+dont update model
+new cpu limit is  [538, 530, 728]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 18.016029366778803, 'cpu_usage': {'storm-worker-controller-fllct': 505, 'storm-worker-controller-xvk5t': 475, 'storm-worker-controller-c7dtv': 496}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 66662}}
+last cpu limit [550, 550, 500], measured cpu [496, 505, 475], ratio is 0.9225
+latency is [18.016029366778803]
+iteration: [536, 530, 388]
+dont update model
+new cpu limit is  [536, 530, 388]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 62603, 'latency': 23.33081302664541, 'cpu_usage': {'storm-worker-controller-c7dtv': 496, 'storm-worker-controller-fllct': 483, 'storm-worker-controller-xvk5t': 454}}}
+last cpu limit [550, 550, 500], measured cpu [496, 483, 454], ratio is 0.895625
+latency is [23.33081302664541]
+iteration: [535, 529, 736]
+dont update model
+new cpu limit is  [535, 529, 736]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 27.678865507776745, 'cpu_usage': {'storm-worker-controller-xvk5t': 470, 'storm-worker-controller-fllct': 461, 'storm-worker-controller-c7dtv': 475}, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'throughput': 62575}}
+last cpu limit [550, 550, 500], measured cpu [475, 461, 470], ratio is 0.87875
+latency is [27.678865507776745]
+iteration: [744, 528, 678]
+dont update model
+new cpu limit is  [744, 528, 678]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62399, 'cpu_usage': {'storm-worker-controller-xvk5t': 497, 'storm-worker-controller-c7dtv': 487, 'storm-worker-controller-fllct': 495}, 'latency': 29.52082130253448, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [550, 550, 500], measured cpu [487, 495, 497], ratio is 0.924375
+latency is [29.52082130253448]
+iteration: [308, 528, 1738]
+dont update model
+new cpu limit is  [308, 528, 1738]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 470, 'storm-worker-controller-fllct': 451, 'storm-worker-controller-c7dtv': 481}, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'latency': 26.430452372195653, 'throughput': 62499}}
+last cpu limit [550, 550, 500], measured cpu [481, 451, 470], ratio is 0.87625
+latency is [26.430452372195653]
+iteration: [606, 527, 632]
+dont update model
+new cpu limit is  [606, 527, 632]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 414, 'storm-worker-controller-c7dtv': 427, 'storm-worker-controller-fllct': 485}, 'latency': 15.826986682277184, 'throughput': 35571, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [550, 550, 500], measured cpu [427, 485, 414], ratio is 0.82875
+latency is [15.826986682277184]
+iteration: [664, 527, 474]
+dont update model
+new cpu limit is  [664, 527, 474]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 17.636907730673297, 'cpu_usage': {'storm-worker-controller-c7dtv': 396, 'storm-worker-controller-fllct': 467, 'storm-worker-controller-xvk5t': 425}, 'throughput': 31078, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [550, 550, 500], measured cpu [396, 467, 425], ratio is 0.805
+latency is [17.636907730673297]
+iteration: [530, 526, 3088]
+iteration: [554, 532, 460]
+dont update model
+new cpu limit is  [554, 532, 460]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+sh: echo: I/O error
+55000
+35000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+110000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 440, 'storm-worker-controller-c7dtv': 423, 'storm-worker-controller-fllct': 546}, 'throughput': 31072, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 109.89051167411822}}
+last cpu limit [550, 550, 500], measured cpu [423, 546, 440], ratio is 0.880625
+latency is [109.89051167411822]
+iteration: [302, 522, 483]
+iteration: suggeseted is [302, 522, 483], measured is [423, 546, 440], last cpu limit is [550, 550, 500]
+iteration: [302, 522, 483]
+iteration: [302, 522, 483]
+iteration: [302, 522, 483]
+suggested cpu limit is  [35000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 34.688483322844526, 'cpu_usage': {'storm-worker-controller-c7dtv': 350, 'storm-worker-controller-fllct': 468, 'storm-worker-controller-xvk5t': 459}, 'throughput': 30870, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [350, 550, 500], measured cpu [350, 468, 459], ratio is 0.9121428571428571
+latency is [34.688483322844526]
+iteration: [1534, 521, 484]
+dont update model
+new cpu limit is  [1534, 521, 484]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 31.316844349680167, 'cpu_usage': {'storm-worker-controller-xvk5t': 410, 'storm-worker-controller-fllct': 433, 'storm-worker-controller-c7dtv': 350}, 'throughput': 30983, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [350, 550, 500], measured cpu [350, 433, 410], ratio is 0.8521428571428571
+latency is [31.316844349680167]
+iteration: [3160, 516, 497]
+iteration: [610, 510, 477]
+dont update model
+new cpu limit is  [610, 510, 477]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 421, 'storm-worker-controller-xvk5t': 390, 'storm-worker-controller-c7dtv': 345}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'latency': 42.52077294685991, 'throughput': 31051}}
+last cpu limit [350, 550, 500], measured cpu [345, 421, 390], ratio is 0.8257142857142857
+latency is [42.52077294685991]
+iteration: [346, 551, 513]
+dont update model
+new cpu limit is  [346, 551, 513]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 413, 'storm-worker-controller-xvk5t': 397, 'storm-worker-controller-c7dtv': 337}, 'throughput': 31093, 'latency': 29.022573153738954}}
+last cpu limit [350, 550, 500], measured cpu [337, 413, 397], ratio is 0.8192857142857143
+latency is [29.022573153738954]
+iteration: [489, 525, 463]
+dont update model
+new cpu limit is  [489, 525, 463]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 349, 'storm-worker-controller-fllct': 447, 'storm-worker-controller-xvk5t': 413}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 31064, 'latency': 45.71919108543128}}
+last cpu limit [350, 550, 500], measured cpu [349, 447, 413], ratio is 0.8635714285714285
+latency is [45.71919108543128]
+iteration: [483, 524, 463]
+dont update model
+new cpu limit is  [483, 524, 463]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 31015, 'cpu_usage': {'storm-worker-controller-xvk5t': 426, 'storm-worker-controller-fllct': 457, 'storm-worker-controller-c7dtv': 342}, 'latency': 48.82793650793649, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [350, 550, 500], measured cpu [342, 457, 426], ratio is 0.875
+latency is [48.82793650793649]
+iteration: [476, 524, 463]
+dont update model
+new cpu limit is  [476, 524, 463]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 31046, 'cpu_usage': {'storm-worker-controller-c7dtv': 340, 'storm-worker-controller-xvk5t': 415, 'storm-worker-controller-fllct': 396}, 'latency': 36.947815230961254}}
+last cpu limit [350, 550, 500], measured cpu [340, 396, 415], ratio is 0.8221428571428572
+latency is [36.947815230961254]
+iteration: [471, 523, 464]
+dont update model
+new cpu limit is  [471, 523, 464]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 54.719183673469374, 'throughput': 55947, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-c7dtv': 350, 'storm-worker-controller-fllct': 454, 'storm-worker-controller-xvk5t': 431}}}
+last cpu limit [350, 550, 500], measured cpu [350, 454, 431], ratio is 0.8821428571428571
+latency is [54.719183673469374]
+iteration: [465, 523, 464]
+dont update model
+new cpu limit is  [465, 523, 464]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 460, 'storm-worker-controller-c7dtv': 351, 'storm-worker-controller-xvk5t': 448}, 'throughput': 61932, 'latency': 54.932702169625216, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [350, 550, 500], measured cpu [351, 460, 448], ratio is 0.8992857142857142
+latency is [54.932702169625216]
+iteration: [460, 522, 465]
+dont update model
+new cpu limit is  [460, 522, 465]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+55000
+35000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 502, 'storm-worker-controller-c7dtv': 352, 'storm-worker-controller-xvk5t': 445}, 'latency': 316.06595267745945, 'throughput': 61459}}
+last cpu limit [350, 550, 500], measured cpu [352, 502, 445], ratio is 0.9278571428571428
+latency is [316.06595267745945]
+iteration: [461, 522, 465]
+iteration: suggeseted is [461, 522, 465], measured is [352, 502, 445], last cpu limit is [350, 550, 500]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 478, 'storm-worker-controller-xvk5t': 466, 'storm-worker-controller-fllct': 489}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 24.318263410561453, 'throughput': 62464}}
+last cpu limit [500, 550, 500], measured cpu [478, 489, 466], ratio is 0.9245161290322581
+latency is [24.318263410561453]
+iteration: [462, 522, 466]
+dont update model
+new cpu limit is  [462, 522, 466]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 62509, 'latency': 23.694404789316128, 'cpu_usage': {'storm-worker-controller-c7dtv': 498, 'storm-worker-controller-fllct': 427, 'storm-worker-controller-xvk5t': 454}}}
+last cpu limit [500, 550, 500], measured cpu [498, 427, 454], ratio is 0.8896774193548387
+latency is [23.694404789316128]
+iteration: [463, 522, 466]
+dont update model
+new cpu limit is  [463, 522, 466]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 483, 'storm-worker-controller-xvk5t': 482, 'storm-worker-controller-fllct': 494}, 'latency': 57.934960609582824, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 86831}}
+last cpu limit [500, 550, 500], measured cpu [483, 494, 482], ratio is 0.9412903225806452
+latency is [57.934960609582824]
+iteration: [463, 522, 467]
+dont update model
+new cpu limit is  [463, 522, 467]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 94285, 'latency': 56.3939601921757, 'cpu_usage': {'storm-worker-controller-c7dtv': 492, 'storm-worker-controller-fllct': 524, 'storm-worker-controller-xvk5t': 484}}}
+last cpu limit [500, 550, 500], measured cpu [492, 524, 484], ratio is 0.967741935483871
+latency is [56.3939601921757]
+iteration: [465, 523, 469]
+dont update model
+new cpu limit is  [465, 523, 469]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 93606, 'cpu_usage': {'storm-worker-controller-fllct': 503, 'storm-worker-controller-c7dtv': 491, 'storm-worker-controller-xvk5t': 492}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 83.51118314424632}}
+last cpu limit [500, 550, 500], measured cpu [491, 503, 492], ratio is 0.9587096774193549
+latency is [83.51118314424632]
+iteration: [466, 523, 470]
+dont update model
+new cpu limit is  [466, 523, 470]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94488, 'latency': 35.58851074100893, 'cpu_usage': {'storm-worker-controller-fllct': 480, 'storm-worker-controller-c7dtv': 457, 'storm-worker-controller-xvk5t': 472}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [457, 480, 472], ratio is 0.9090322580645162
+latency is [35.58851074100893]
+iteration: [466, 523, 471]
+dont update model
+new cpu limit is  [466, 523, 471]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 495, 'storm-worker-controller-xvk5t': 466, 'storm-worker-controller-c7dtv': 477}, 'throughput': 94603, 'latency': 58.52431697366791, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [477, 495, 466], ratio is 0.927741935483871
+latency is [58.52431697366791]
+iteration: [466, 523, 471]
+dont update model
+new cpu limit is  [466, 523, 471]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 47.59382379654856, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 466, 'storm-worker-controller-c7dtv': 461, 'storm-worker-controller-xvk5t': 467}, 'throughput': 94117}}
+last cpu limit [500, 550, 500], measured cpu [461, 466, 467], ratio is 0.8993548387096775
+latency is [47.59382379654856]
+iteration: [467, 522, 472]
+dont update model
+new cpu limit is  [467, 522, 472]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 462, 'storm-worker-controller-xvk5t': 458, 'storm-worker-controller-fllct': 443}, 'throughput': 62474, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 19.250015174506807}}
+last cpu limit [500, 550, 500], measured cpu [462, 443, 458], ratio is 0.8793548387096775
+latency is [19.250015174506807]
+iteration: [467, 522, 472]
+dont update model
+new cpu limit is  [467, 522, 472]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 478, 'storm-worker-controller-xvk5t': 438, 'storm-worker-controller-c7dtv': 473}, 'latency': 22.439749245414426, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 62390}}
+last cpu limit [500, 550, 500], measured cpu [473, 478, 438], ratio is 0.8961290322580645
+latency is [22.439749245414426]
+iteration: [467, 522, 472]
+dont update model
+new cpu limit is  [467, 522, 472]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 429, 'storm-worker-controller-c7dtv': 455, 'storm-worker-controller-fllct': 458}, 'latency': 18.01631067961164, 'throughput': 62372, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [455, 458, 429], ratio is 0.8658064516129033
+latency is [18.01631067961164]
+iteration: [467, 521, 472]
+dont update model
+new cpu limit is  [467, 521, 472]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-c7dtv': 464, 'storm-worker-controller-fllct': 483, 'storm-worker-controller-xvk5t': 460}, 'throughput': 62574, 'latency': 22.994391657010418}}
+last cpu limit [500, 550, 500], measured cpu [464, 483, 460], ratio is 0.9077419354838709
+latency is [22.994391657010418]
+iteration: [467, 521, 473]
+dont update model
+new cpu limit is  [467, 521, 473]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 463, 'storm-worker-controller-xvk5t': 485, 'storm-worker-controller-fllct': 521}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 64.20871811430406, 'throughput': 62358}}
+last cpu limit [500, 550, 500], measured cpu [463, 521, 485], ratio is 0.947741935483871
+latency is [64.20871811430406]
+iteration: [468, 522, 474]
+dont update model
+new cpu limit is  [468, 522, 474]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 18.290816326530614, 'cpu_usage': {'storm-worker-controller-c7dtv': 425, 'storm-worker-controller-fllct': 516, 'storm-worker-controller-xvk5t': 448}, 'throughput': 30890, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [425, 516, 448], ratio is 0.8961290322580645
+latency is [18.290816326530614]
+iteration: [467, 522, 474]
+dont update model
+new cpu limit is  [467, 522, 474]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 15.894744536218111, 'throughput': 31040, 'cpu_usage': {'storm-worker-controller-fllct': 424, 'storm-worker-controller-xvk5t': 463, 'storm-worker-controller-c7dtv': 416}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [416, 424, 463], ratio is 0.8406451612903226
+latency is [15.894744536218111]
+iteration: [467, 522, 474]
+dont update model
+new cpu limit is  [467, 522, 474]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-xvk5t': 445, 'storm-worker-controller-fllct': 517, 'storm-worker-controller-c7dtv': 458}, 'throughput': 30993, 'latency': 17.924068598462423}}
+last cpu limit [500, 550, 500], measured cpu [458, 517, 445], ratio is 0.9161290322580645
+latency is [17.924068598462423]
+iteration: [467, 522, 474]
+dont update model
+new cpu limit is  [467, 522, 474]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'throughput': 30958, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 404, 'storm-worker-controller-c7dtv': 367, 'storm-worker-controller-fllct': 447}, 'latency': 18.9859628074385}}
+last cpu limit [500, 550, 500], measured cpu [367, 447, 404], ratio is 0.7858064516129032
+latency is [18.9859628074385]
+iteration: [466, 522, 474]
+iteration: suggeseted is [466, 522, 474], measured is [367, 447, 404], last cpu limit is [500, 550, 500]
+iteration: [466, 522, 474]
+iteration: [466, 522, 474]
+iteration: [466, 522, 474]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 31019, 'latency': 19.555976829910456, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 441, 'storm-worker-controller-c7dtv': 421, 'storm-worker-controller-xvk5t': 451}}}
+last cpu limit [500, 550, 500], measured cpu [421, 441, 451], ratio is 0.8470967741935483
+latency is [19.555976829910456]
+iteration: [466, 521, 474]
+dont update model
+new cpu limit is  [466, 521, 474]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 15.801271926759382, 'throughput': 31069, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-c7dtv': 406, 'storm-worker-controller-fllct': 419, 'storm-worker-controller-xvk5t': 407}}}
+last cpu limit [500, 550, 500], measured cpu [406, 419, 407], ratio is 0.7948387096774193
+latency is [15.801271926759382]
+iteration: [466, 521, 474]
+iteration: suggeseted is [466, 521, 474], measured is [406, 419, 407], last cpu limit is [500, 550, 500]
+iteration: [466, 521, 474]
+iteration: [466, 521, 474]
+iteration: [466, 521, 474]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 30950, 'latency': 19.641476274165193, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 457, 'storm-worker-controller-c7dtv': 497, 'storm-worker-controller-fllct': 509}}}
+last cpu limit [500, 550, 500], measured cpu [497, 509, 457], ratio is 0.9438709677419355
+latency is [19.641476274165193]
+iteration: [466, 521, 475]
+dont update model
+new cpu limit is  [466, 521, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 30935, 'latency': 22.12603305785123, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 456, 'storm-worker-controller-xvk5t': 431, 'storm-worker-controller-c7dtv': 436}}}
+last cpu limit [500, 550, 500], measured cpu [436, 456, 431], ratio is 0.8535483870967742
+latency is [22.12603305785123]
+iteration: [466, 521, 475]
+dont update model
+new cpu limit is  [466, 521, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 443, 'storm-worker-controller-fllct': 380, 'storm-worker-controller-c7dtv': 438}, 'throughput': 30976, 'latency': 15.955940290368755, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [438, 380, 443], ratio is 0.8135483870967742
+latency is [15.955940290368755]
+iteration: [466, 520, 475]
+dont update model
+new cpu limit is  [466, 520, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 30943, 'latency': 19.204306220095685, 'cpu_usage': {'storm-worker-controller-c7dtv': 426, 'storm-worker-controller-fllct': 504, 'storm-worker-controller-xvk5t': 416}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [426, 504, 416], ratio is 0.8683870967741936
+latency is [19.204306220095685]
+iteration: [466, 521, 475]
+dont update model
+new cpu limit is  [466, 521, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'latency': 19.85368863955117, 'throughput': 62407, 'cpu_usage': {'storm-worker-controller-fllct': 481, 'storm-worker-controller-xvk5t': 427, 'storm-worker-controller-c7dtv': 444}}}
+last cpu limit [500, 550, 500], measured cpu [444, 481, 427], ratio is 0.8722580645161291
+latency is [19.85368863955117]
+iteration: [465, 520, 475]
+dont update model
+new cpu limit is  [465, 520, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 27.058198535671707, 'cpu_usage': {'storm-worker-controller-fllct': 516, 'storm-worker-controller-c7dtv': 431, 'storm-worker-controller-xvk5t': 444}, 'throughput': 62259, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [431, 516, 444], ratio is 0.8974193548387097
+latency is [27.058198535671707]
+iteration: [465, 521, 475]
+dont update model
+new cpu limit is  [465, 521, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 19.557277255118983, 'throughput': 62390, 'cpu_usage': {'storm-worker-controller-fllct': 456, 'storm-worker-controller-c7dtv': 432, 'storm-worker-controller-xvk5t': 423}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [432, 456, 423], ratio is 0.8458064516129032
+latency is [19.557277255118983]
+iteration: [465, 520, 475]
+dont update model
+new cpu limit is  [465, 520, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 62374, 'latency': 21.633610341643564, 'cpu_usage': {'storm-worker-controller-c7dtv': 442, 'storm-worker-controller-xvk5t': 480, 'storm-worker-controller-fllct': 455}}}
+last cpu limit [500, 550, 500], measured cpu [442, 455, 480], ratio is 0.8883870967741936
+latency is [21.633610341643564]
+iteration: [464, 520, 475]
+dont update model
+new cpu limit is  [464, 520, 475]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 26.54487096074603, 'cpu_usage': {'storm-worker-controller-xvk5t': 473, 'storm-worker-controller-c7dtv': 460, 'storm-worker-controller-fllct': 496}, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 62442}}
+last cpu limit [500, 550, 500], measured cpu [460, 496, 473], ratio is 0.9219354838709677
+latency is [26.54487096074603]
+iteration: [464, 520, 476]
+dont update model
+new cpu limit is  [464, 520, 476]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 496, 'storm-worker-controller-c7dtv': 441, 'storm-worker-controller-xvk5t': 485}, 'throughput': 93757, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 54.56730123180289}}
+last cpu limit [500, 550, 500], measured cpu [441, 496, 485], ratio is 0.9174193548387096
+latency is [54.56730123180289]
+iteration: [464, 520, 476]
+dont update model
+new cpu limit is  [464, 520, 476]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 506, 'storm-worker-controller-c7dtv': 476, 'storm-worker-controller-xvk5t': 445}, 'throughput': 93989, 'latency': 66.5746848209783, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}}}
+last cpu limit [500, 550, 500], measured cpu [476, 506, 445], ratio is 0.9206451612903226
+latency is [66.5746848209783]
+iteration: [464, 520, 476]
+dont update model
+new cpu limit is  [464, 520, 476]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 94068, 'cpu_usage': {'storm-worker-controller-fllct': 446, 'storm-worker-controller-xvk5t': 473, 'storm-worker-controller-c7dtv': 464}, 'latency': 33.94149359257619}}
+last cpu limit [500, 550, 500], measured cpu [464, 446, 473], ratio is 0.892258064516129
+latency is [33.94149359257619]
+iteration: [464, 519, 477]
+dont update model
+new cpu limit is  [464, 519, 477]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 31.250289990645463, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 93938, 'cpu_usage': {'storm-worker-controller-c7dtv': 476, 'storm-worker-controller-fllct': 442, 'storm-worker-controller-xvk5t': 452}}}
+last cpu limit [500, 550, 500], measured cpu [476, 442, 452], ratio is 0.8838709677419355
+latency is [31.250289990645463]
+iteration: [464, 519, 477]
+dont update model
+new cpu limit is  [464, 519, 477]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 481, 'storm-worker-controller-c7dtv': 460, 'storm-worker-controller-xvk5t': 449}, 'throughput': 94427, 'latency': 23.995829223615605}}
+last cpu limit [500, 550, 500], measured cpu [460, 481, 449], ratio is 0.896774193548387
+latency is [23.995829223615605]
+iteration: [464, 519, 477]
+dont update model
+new cpu limit is  [464, 519, 477]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 73758, 'latency': 21.913567042978798, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-xvk5t': 458, 'storm-worker-controller-fllct': 501, 'storm-worker-controller-c7dtv': 479}}}
+last cpu limit [500, 550, 500], measured cpu [479, 501, 458], ratio is 0.927741935483871
+latency is [21.913567042978798]
+iteration: [464, 519, 477]
+dont update model
+new cpu limit is  [464, 519, 477]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62126, 'cpu_usage': {'storm-worker-controller-fllct': 479, 'storm-worker-controller-c7dtv': 469, 'storm-worker-controller-xvk5t': 456}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 18.299248120300753}}
+last cpu limit [500, 550, 500], measured cpu [469, 479, 456], ratio is 0.9058064516129032
+latency is [18.299248120300753]
+iteration: [464, 518, 478]
+dont update model
+new cpu limit is  [464, 518, 478]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 15.920653932392925, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-xvk5t': 472, 'storm-worker-controller-fllct': 524, 'storm-worker-controller-c7dtv': 462}, 'throughput': 62109}}
+last cpu limit [500, 550, 500], measured cpu [462, 524, 472], ratio is 0.9406451612903226
+latency is [15.920653932392925]
+iteration: [464, 519, 478]
+dont update model
+new cpu limit is  [464, 519, 478]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-xvk5t': 477, 'storm-worker-controller-fllct': 477, 'storm-worker-controller-c7dtv': 442}, 'throughput': 62352, 'latency': 19.823804226918774}}
+last cpu limit [500, 550, 500], measured cpu [442, 477, 477], ratio is 0.9006451612903226
+latency is [19.823804226918774]
+iteration: [464, 518, 479]
+dont update model
+new cpu limit is  [464, 518, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'latency': 23.259988931931368, 'throughput': 62083, 'cpu_usage': {'storm-worker-controller-xvk5t': 440, 'storm-worker-controller-fllct': 495, 'storm-worker-controller-c7dtv': 467}}}
+last cpu limit [500, 550, 500], measured cpu [467, 495, 440], ratio is 0.9045161290322581
+latency is [23.259988931931368]
+iteration: [464, 518, 479]
+dont update model
+new cpu limit is  [464, 518, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 418, 'storm-worker-controller-c7dtv': 480, 'storm-worker-controller-fllct': 496}, 'throughput': 42829, 'latency': 16.293714285714287}}
+last cpu limit [500, 550, 500], measured cpu [480, 496, 418], ratio is 0.8993548387096775
+latency is [16.293714285714287]
+iteration: [464, 518, 479]
+dont update model
+new cpu limit is  [464, 518, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 30956, 'cpu_usage': {'storm-worker-controller-xvk5t': 410, 'storm-worker-controller-fllct': 531, 'storm-worker-controller-c7dtv': 441}, 'latency': 16.333462783171495, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [441, 531, 410], ratio is 0.8916129032258064
+latency is [16.333462783171495]
+iteration: [463, 519, 478]
+dont update model
+new cpu limit is  [463, 519, 478]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 395, 'storm-worker-controller-c7dtv': 405, 'storm-worker-controller-fllct': 488}, 'throughput': 30879, 'latency': 20.076595744680834, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [405, 488, 395], ratio is 0.8309677419354838
+latency is [20.076595744680834]
+iteration: [462, 518, 478]
+dont update model
+new cpu limit is  [462, 518, 478]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'throughput': 30915, 'cpu_usage': {'storm-worker-controller-xvk5t': 474, 'storm-worker-controller-fllct': 482, 'storm-worker-controller-c7dtv': 433}, 'latency': 20.0865704772475}}
+last cpu limit [500, 550, 500], measured cpu [433, 482, 474], ratio is 0.8961290322580645
+latency is [20.0865704772475]
+iteration: [462, 518, 479]
+dont update model
+new cpu limit is  [462, 518, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 30952, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 429, 'storm-worker-controller-xvk5t': 441, 'storm-worker-controller-c7dtv': 440}, 'latency': 20.581028240405473}}
+last cpu limit [500, 550, 500], measured cpu [440, 429, 441], ratio is 0.8451612903225807
+latency is [20.581028240405473]
+iteration: [462, 518, 479]
+dont update model
+new cpu limit is  [462, 518, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 407, 'storm-worker-controller-c7dtv': 418, 'storm-worker-controller-fllct': 503}, 'throughput': 30975, 'latency': 22.782881002087667}}
+last cpu limit [500, 550, 500], measured cpu [418, 503, 407], ratio is 0.8567741935483871
+latency is [22.782881002087667]
+iteration: [461, 518, 479]
+dont update model
+new cpu limit is  [461, 518, 479]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'latency': 15.852038448790188, 'throughput': 30904, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 429, 'storm-worker-controller-xvk5t': 369, 'storm-worker-controller-c7dtv': 417}}}
+last cpu limit [500, 550, 500], measured cpu [417, 429, 369], ratio is 0.7838709677419354
+latency is [15.852038448790188]
+iteration: [461, 517, 478]
+iteration: suggeseted is [461, 517, 478], measured is [417, 429, 369], last cpu limit is [500, 550, 500]
+iteration: [461, 517, 478]
+iteration: [461, 517, 478]
+iteration: [461, 517, 478]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'throughput': 30834, 'latency': 17.28921634293366, 'cpu_usage': {'storm-worker-controller-fllct': 435, 'storm-worker-controller-c7dtv': 388, 'storm-worker-controller-xvk5t': 403}}}
+last cpu limit [500, 550, 500], measured cpu [388, 435, 403], ratio is 0.7909677419354839
+latency is [17.28921634293366]
+iteration: [460, 517, 478]
+iteration: suggeseted is [460, 517, 478], measured is [388, 435, 403], last cpu limit is [500, 550, 500]
+iteration: [460, 517, 478]
+iteration: [460, 517, 478]
+iteration: [460, 517, 478]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 420, 'storm-worker-controller-xvk5t': 453, 'storm-worker-controller-c7dtv': 444}, 'throughput': 30963, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'latency': 16.610151615029633}}
+last cpu limit [500, 550, 500], measured cpu [444, 420, 453], ratio is 0.8496774193548388
+latency is [16.610151615029633]
+iteration: [459, 516, 479]
+dont update model
+new cpu limit is  [459, 516, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 411, 'storm-worker-controller-xvk5t': 464, 'storm-worker-controller-c7dtv': 434}, 'latency': 15.948128606760097, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 31093}}
+last cpu limit [500, 550, 500], measured cpu [434, 411, 464], ratio is 0.844516129032258
+latency is [15.948128606760097]
+iteration: [459, 516, 479]
+dont update model
+new cpu limit is  [459, 516, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 20.91475298126063, 'throughput': 48929, 'cpu_usage': {'storm-worker-controller-fllct': 443, 'storm-worker-controller-c7dtv': 463, 'storm-worker-controller-xvk5t': 439}}}
+last cpu limit [500, 550, 500], measured cpu [463, 443, 439], ratio is 0.867741935483871
+latency is [20.91475298126063]
+iteration: [459, 516, 479]
+dont update model
+new cpu limit is  [459, 516, 479]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62383, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 24.512063632346436, 'cpu_usage': {'storm-worker-controller-xvk5t': 447, 'storm-worker-controller-c7dtv': 472, 'storm-worker-controller-fllct': 479}}}
+last cpu limit [500, 550, 500], measured cpu [472, 479, 447], ratio is 0.9019354838709678
+latency is [24.512063632346436]
+iteration: [459, 515, 480]
+dont update model
+new cpu limit is  [459, 515, 480]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'cpu_usage': {'storm-worker-controller-xvk5t': 455, 'storm-worker-controller-c7dtv': 463, 'storm-worker-controller-fllct': 501}, 'throughput': 62541, 'latency': 22.644941332742953}}
+last cpu limit [500, 550, 500], measured cpu [463, 501, 455], ratio is 0.915483870967742
+latency is [22.644941332742953]
+iteration: [458, 515, 480]
+dont update model
+new cpu limit is  [458, 515, 480]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62629, 'cpu_usage': {'storm-worker-controller-c7dtv': 462, 'storm-worker-controller-xvk5t': 395, 'storm-worker-controller-fllct': 465}, 'latency': 20.253944562899772, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [462, 465, 395], ratio is 0.8529032258064516
+latency is [20.253944562899772]
+iteration: [458, 515, 480]
+dont update model
+new cpu limit is  [458, 515, 480]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 481, 'storm-worker-controller-c7dtv': 457, 'storm-worker-controller-fllct': 494}, 'throughput': 62527, 'latency': 22.629783037475335, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [457, 494, 481], ratio is 0.9238709677419354
+latency is [22.629783037475335]
+iteration: [458, 515, 481]
+dont update model
+new cpu limit is  [458, 515, 481]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 79195, 'latency': 32.42632331902717, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-c7dtv': 466, 'storm-worker-controller-fllct': 468, 'storm-worker-controller-xvk5t': 469}}}
+last cpu limit [500, 550, 500], measured cpu [466, 468, 469], ratio is 0.9051612903225806
+latency is [32.42632331902717]
+iteration: [457, 515, 481]
+dont update model
+new cpu limit is  [457, 515, 481]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 497, 'storm-worker-controller-c7dtv': 471, 'storm-worker-controller-xvk5t': 461}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 28.628686147668965, 'throughput': 94544}}
+last cpu limit [500, 550, 500], measured cpu [471, 497, 461], ratio is 0.9219354838709677
+latency is [28.628686147668965]
+iteration: [457, 515, 482]
+dont update model
+new cpu limit is  [457, 515, 482]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'throughput': 94234, 'latency': 41.64780366352478, 'cpu_usage': {'storm-worker-controller-xvk5t': 479, 'storm-worker-controller-fllct': 471, 'storm-worker-controller-c7dtv': 462}}}
+last cpu limit [500, 550, 500], measured cpu [462, 471, 479], ratio is 0.9109677419354839
+latency is [41.64780366352478]
+iteration: [456, 515, 482]
+dont update model
+new cpu limit is  [456, 515, 482]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94257, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 45.29015492253872, 'cpu_usage': {'storm-worker-controller-c7dtv': 473, 'storm-worker-controller-fllct': 509, 'storm-worker-controller-xvk5t': 481}}}
+last cpu limit [500, 550, 500], measured cpu [473, 509, 481], ratio is 0.9438709677419355
+latency is [45.29015492253872]
+iteration: [456, 515, 483]
+dont update model
+new cpu limit is  [456, 515, 483]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 31.732923832923817, 'throughput': 94241, 'capacity': {'storm-worker-controller-xvk5t': 1.5, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-xvk5t': 463, 'storm-worker-controller-fllct': 465, 'storm-worker-controller-c7dtv': 455}}}
+last cpu limit [500, 550, 500], measured cpu [455, 465, 463], ratio is 0.892258064516129
+latency is [31.732923832923817]
+iteration: [455, 514, 483]
+dont update model
+new cpu limit is  [455, 514, 483]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-xvk5t': 463, 'storm-worker-controller-c7dtv': 483, 'storm-worker-controller-fllct': 484}, 'throughput': 94245, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 42.20139012653714}}
+last cpu limit [500, 550, 500], measured cpu [483, 484, 463], ratio is 0.9225806451612903
+latency is [42.20139012653714]
+iteration: [455, 514, 484]
+dont update model
+new cpu limit is  [455, 514, 484]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1.5, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'latency': 26.151345249294437, 'throughput': 62317, 'cpu_usage': {'storm-worker-controller-xvk5t': 446, 'storm-worker-controller-fllct': 488, 'storm-worker-controller-c7dtv': 475}}}
+last cpu limit [500, 550, 500], measured cpu [475, 488, 446], ratio is 0.9090322580645162
+latency is [26.151345249294437]
+iteration: [454, 514, 485]
+dont update model
+new cpu limit is  [454, 514, 485]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 486, 'storm-worker-controller-xvk5t': 451, 'storm-worker-controller-c7dtv': 461}, 'latency': 19.27168546174946, 'throughput': 62402, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1.5, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [461, 486, 451], ratio is 0.9019354838709678
+latency is [19.27168546174946]
+iteration: [454, 514, 485]
+dont update model
+new cpu limit is  [454, 514, 485]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 504, 'storm-worker-controller-c7dtv': 452, 'storm-worker-controller-xvk5t': 458}, 'latency': 27.003661862095818, 'throughput': 62484, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [452, 504, 458], ratio is 0.912258064516129
+latency is [27.003661862095818]
+iteration: [453, 514, 486]
+dont update model
+new cpu limit is  [453, 514, 486]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 444, 'storm-worker-controller-xvk5t': 445, 'storm-worker-controller-c7dtv': 450}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 62520, 'latency': 18.650442477876098}}
+last cpu limit [500, 550, 500], measured cpu [450, 444, 445], ratio is 0.8638709677419355
+latency is [18.650442477876098]
+iteration: [452, 514, 486]
+dont update model
+new cpu limit is  [452, 514, 486]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62644, 'cpu_usage': {'storm-worker-controller-c7dtv': 473, 'storm-worker-controller-xvk5t': 496, 'storm-worker-controller-fllct': 523}, 'latency': 41.00657011656655, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [473, 523, 496], ratio is 0.9625806451612903
+latency is [41.00657011656655]
+iteration: [452, 514, 487]
+dont update model
+new cpu limit is  [452, 514, 487]
+-----------------------------------------------------------------
+[sudo] password for cc: storm-worker-controller-c7dtv
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod18482a07-ccad-46ce-a12c-a97e45212f2b/62dbc03a698eae9bcb840b54ab0b4d47b5e0a168d10cde31828068165f6f9fc8/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-fllct
+ found.
+55000
+55000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pode099b0d4-fccd-4843-a754-62354a1fb7ea/f3e156194ddb426af92f8d96b6f413b707fa1a417aa8be876f04514958d39914/cpu.cfs_quota_us
+55000
+55000
+Connection to kube-slave1 closed.
+[sudo] password for cc: storm-worker-controller-xvk5t
+ found.
+50000
+50000
+/sys/fs/cgroup/cpu,cpuacct/kubepods/burstable/pod36de0efe-7d31-4937-b21b-a078e1d2b90d/d69747171b323b2ab2a026674afe770b19f95b22c429af4df00337d0d8952bc0/cpu.cfs_quota_us
+50000
+50000
+Connection to kube-slave1 closed.
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 31051, 'latency': 15.947655143690127, 'cpu_usage': {'storm-worker-controller-c7dtv': 422, 'storm-worker-controller-fllct': 358, 'storm-worker-controller-xvk5t': 450}}}
+last cpu limit [500, 550, 500], measured cpu [422, 358, 450], ratio is 0.7935483870967742
+latency is [15.947655143690127]
+iteration: [452, 513, 489]
+iteration: suggeseted is [452, 513, 489], measured is [422, 358, 450], last cpu limit is [500, 550, 500]
+iteration: [452, 513, 489]
+iteration: [452, 513, 489]
+iteration: [452, 513, 489]
+suggested cpu limit is  [50000, 55000, 50000]
+update model for Bayesian optimization
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 19.632694248234106, 'cpu_usage': {'storm-worker-controller-c7dtv': 430, 'storm-worker-controller-fllct': 470, 'storm-worker-controller-xvk5t': 398}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 31160}}
+last cpu limit [500, 550, 500], measured cpu [430, 470, 398], ratio is 0.8374193548387097
+latency is [19.632694248234106]
+iteration: [450, 513, 489]
+dont update model
+new cpu limit is  [450, 513, 489]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 31261, 'latency': 15.976614881439083, 'cpu_usage': {'storm-worker-controller-fllct': 434, 'storm-worker-controller-xvk5t': 392, 'storm-worker-controller-c7dtv': 432}}}
+last cpu limit [500, 550, 500], measured cpu [432, 434, 392], ratio is 0.8116129032258065
+latency is [15.976614881439083]
+iteration: [449, 513, 489]
+dont update model
+new cpu limit is  [449, 513, 489]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}, 'latency': 21.604966571155668, 'cpu_usage': {'storm-worker-controller-xvk5t': 480, 'storm-worker-controller-c7dtv': 485, 'storm-worker-controller-fllct': 411}, 'throughput': 31069}}
+last cpu limit [500, 550, 500], measured cpu [485, 411, 480], ratio is 0.8877419354838709
+latency is [21.604966571155668]
+iteration: [449, 512, 490]
+dont update model
+new cpu limit is  [449, 512, 490]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 22.784030418250946, 'cpu_usage': {'storm-worker-controller-c7dtv': 501, 'storm-worker-controller-fllct': 426, 'storm-worker-controller-xvk5t': 417}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'throughput': 30898}}
+last cpu limit [500, 550, 500], measured cpu [501, 426, 417], ratio is 0.8670967741935484
+latency is [22.784030418250946]
+iteration: [449, 512, 491]
+dont update model
+new cpu limit is  [449, 512, 491]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 19.57562076749435, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 497, 'storm-worker-controller-c7dtv': 458, 'storm-worker-controller-xvk5t': 484}, 'throughput': 31240}}
+last cpu limit [500, 550, 500], measured cpu [458, 497, 484], ratio is 0.9283870967741935
+latency is [19.57562076749435]
+iteration: [448, 512, 492]
+dont update model
+new cpu limit is  [448, 512, 492]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 20.143119266055034, 'throughput': 31059, 'cpu_usage': {'storm-worker-controller-c7dtv': 410, 'storm-worker-controller-fllct': 489, 'storm-worker-controller-xvk5t': 469}}}
+last cpu limit [500, 550, 500], measured cpu [410, 489, 469], ratio is 0.8825806451612903
+latency is [20.143119266055034]
+iteration: [447, 512, 493]
+dont update model
+new cpu limit is  [447, 512, 493]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 17.52155876807037, 'throughput': 31174, 'cpu_usage': {'storm-worker-controller-c7dtv': 425, 'storm-worker-controller-xvk5t': 420, 'storm-worker-controller-fllct': 456}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [425, 456, 420], ratio is 0.8393548387096774
+latency is [17.52155876807037]
+iteration: [445, 511, 494]
+dont update model
+new cpu limit is  [445, 511, 494]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 15.90238407530283, 'throughput': 31103, 'cpu_usage': {'storm-worker-controller-c7dtv': 499, 'storm-worker-controller-fllct': 414, 'storm-worker-controller-xvk5t': 427}}}
+last cpu limit [500, 550, 500], measured cpu [499, 414, 427], ratio is 0.864516129032258
+latency is [15.90238407530283]
+iteration: [445, 511, 495]
+dont update model
+new cpu limit is  [445, 511, 495]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 473, 'storm-worker-controller-c7dtv': 427, 'storm-worker-controller-xvk5t': 491}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'throughput': 31109, 'latency': 21.321808246398398}}
+last cpu limit [500, 550, 500], measured cpu [427, 473, 491], ratio is 0.8974193548387097
+latency is [21.321808246398398]
+iteration: [444, 511, 497]
+dont update model
+new cpu limit is  [444, 511, 497]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-fllct': 449, 'storm-worker-controller-xvk5t': 446, 'storm-worker-controller-c7dtv': 420}, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 62572, 'latency': 17.800428790199078}}
+last cpu limit [500, 550, 500], measured cpu [420, 449, 446], ratio is 0.8483870967741935
+latency is [17.800428790199078]
+iteration: [442, 510, 498]
+dont update model
+new cpu limit is  [442, 510, 498]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62710, 'latency': 20.374936321956177, 'cpu_usage': {'storm-worker-controller-xvk5t': 436, 'storm-worker-controller-c7dtv': 388, 'storm-worker-controller-fllct': 416}, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5}}}
+last cpu limit [500, 550, 500], measured cpu [388, 416, 436], ratio is 0.8
+latency is [20.374936321956177]
+iteration: [441, 510, 499]
+dont update model
+new cpu limit is  [441, 510, 499]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62621, 'cpu_usage': {'storm-worker-controller-xvk5t': 444, 'storm-worker-controller-fllct': 452, 'storm-worker-controller-c7dtv': 451}, 'capacity': {'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1}, 'latency': 15.998490942537337}}
+last cpu limit [500, 550, 500], measured cpu [451, 452, 444], ratio is 0.8690322580645161
+latency is [15.998490942537337]
+iteration: [440, 510, 500]
+dont update model
+new cpu limit is  [440, 510, 500]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 461, 'storm-worker-controller-fllct': 507, 'storm-worker-controller-xvk5t': 457}, 'throughput': 62401, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 18.902567060859518}}
+last cpu limit [500, 550, 500], measured cpu [461, 507, 457], ratio is 0.9193548387096774
+latency is [18.902567060859518]
+iteration: [438, 510, 503]
+dont update model
+new cpu limit is  [438, 510, 503]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 400, 'storm-worker-controller-xvk5t': 471, 'storm-worker-controller-fllct': 418}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-fllct': 1.5}, 'throughput': 62617, 'latency': 20.495082857919037}}
+last cpu limit [500, 550, 500], measured cpu [400, 418, 471], ratio is 0.8316129032258065
+latency is [20.495082857919037]
+iteration: [436, 509, 505]
+dont update model
+new cpu limit is  [436, 509, 505]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 37.00434108527128, 'throughput': 94481, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 503, 'storm-worker-controller-c7dtv': 483, 'storm-worker-controller-xvk5t': 467}}}
+last cpu limit [500, 550, 500], measured cpu [483, 503, 467], ratio is 0.9374193548387096
+latency is [37.00434108527128]
+iteration: [434, 509, 507]
+dont update model
+new cpu limit is  [434, 509, 507]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94298, 'latency': 33.235818262020274, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 493, 'storm-worker-controller-c7dtv': 467, 'storm-worker-controller-xvk5t': 456}}}
+last cpu limit [500, 550, 500], measured cpu [467, 493, 456], ratio is 0.9135483870967742
+latency is [33.235818262020274]
+iteration: [431, 509, 510]
+dont update model
+new cpu limit is  [431, 509, 510]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 94357, 'cpu_usage': {'storm-worker-controller-c7dtv': 472, 'storm-worker-controller-fllct': 512, 'storm-worker-controller-xvk5t': 451}, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 48.18075582953631}}
+last cpu limit [500, 550, 500], measured cpu [472, 512, 451], ratio is 0.9258064516129032
+latency is [48.18075582953631]
+iteration: [429, 509, 513]
+dont update model
+new cpu limit is  [429, 509, 513]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 94257, 'latency': 29.644580474934024, 'cpu_usage': {'storm-worker-controller-fllct': 482, 'storm-worker-controller-xvk5t': 448, 'storm-worker-controller-c7dtv': 470}}}
+last cpu limit [500, 550, 500], measured cpu [470, 482, 448], ratio is 0.9032258064516129
+latency is [29.644580474934024]
+iteration: [426, 509, 516]
+dont update model
+new cpu limit is  [426, 509, 516]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'latency': 31.49207856680335, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'cpu_usage': {'storm-worker-controller-fllct': 483, 'storm-worker-controller-xvk5t': 474, 'storm-worker-controller-c7dtv': 451}, 'throughput': 94543}}
+last cpu limit [500, 550, 500], measured cpu [451, 483, 474], ratio is 0.9083870967741936
+latency is [31.49207856680335]
+iteration: [423, 509, 519]
+dont update model
+new cpu limit is  [423, 509, 519]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}, 'throughput': 81374, 'latency': 59.709142653859814, 'cpu_usage': {'storm-worker-controller-fllct': 499, 'storm-worker-controller-xvk5t': 493, 'storm-worker-controller-c7dtv': 474}}}
+last cpu limit [500, 550, 500], measured cpu [474, 499, 493], ratio is 0.9458064516129032
+latency is [59.709142653859814]
+iteration: [419, 509, 523]
+dont update model
+new cpu limit is  [419, 509, 523]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'cpu_usage': {'storm-worker-controller-c7dtv': 426, 'storm-worker-controller-fllct': 479, 'storm-worker-controller-xvk5t': 494}, 'throughput': 62601, 'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'latency': 23.041929824561404}}
+last cpu limit [500, 550, 500], measured cpu [426, 479, 494], ratio is 0.9025806451612903
+latency is [23.041929824561404]
+iteration: [415, 509, 527]
+dont update model
+new cpu limit is  [415, 509, 527]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1}, 'cpu_usage': {'storm-worker-controller-c7dtv': 470, 'storm-worker-controller-fllct': 478, 'storm-worker-controller-xvk5t': 438}, 'throughput': 62518, 'latency': 23.25346437346435}}
+last cpu limit [500, 550, 500], measured cpu [470, 478, 438], ratio is 0.8941935483870967
+latency is [23.25346437346435]
+iteration: [412, 509, 531]
+dont update model
+new cpu limit is  [412, 509, 531]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'throughput': 62808, 'cpu_usage': {'storm-worker-controller-fllct': 499, 'storm-worker-controller-xvk5t': 463, 'storm-worker-controller-c7dtv': 473}, 'latency': 22.11801327534904, 'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-xvk5t': 1, 'storm-worker-controller-c7dtv': 1}}}
+last cpu limit [500, 550, 500], measured cpu [473, 499, 463], ratio is 0.9258064516129032
+latency is [22.11801327534904]
+iteration: [407, 509, 535]
+dont update model
+new cpu limit is  [407, 509, 535]
+-----------------------------------------------------------------
+read model
+{'ETLTopologySys': {'capacity': {'storm-worker-controller-fllct': 1.5, 'storm-worker-controller-c7dtv': 1, 'storm-worker-controller-xvk5t': 1}, 'latency': 24.1640287769784, 'throughput': 62805, 'cpu_usage': {'storm-worker-controller-fllct': 466, 'storm-worker-controller-c7dtv': 458, 'storm-worker-controller-xvk5t': 491}}}
+last cpu limit [500, 550, 500], measured cpu [458, 466, 491], ratio is 0.9129032258064517
+latency is [24.1640287769784]
+iteration: [404, 509, 540]
+dont update model
+new cpu limit is  [404, 509, 540]
+-----------------------------------------------------------------

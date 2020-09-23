@@ -52,7 +52,7 @@ def calculate_latency(appName="ETLTopologySys"):
         #latency = []
         print("testestrfsestwsew") 
         latency_bucket = [ 0 for i in range(len(bucket))]
-        tail_latency = -1
+        tail_latency = 65536
         for i in range(len(msgs)):
             word = msgs[i].split("_") 
             if word[3] in sink:

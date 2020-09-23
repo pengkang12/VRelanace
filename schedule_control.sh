@@ -6,14 +6,14 @@ rm /tmp/skopt_input_ETLTopologySys.txt
 
 python collect_container_cpu.py &
 sleep 120
-for i in {1..61}
+for i in {1..121}
 do
 python collect_container_cpu.py &
 python ui.py ETL &
 python ui.py IoT &
-sleep 35
+sleep 30
 python BO/bayesian_optimization.py >> /tmp/bo.log
-sleep 85
+sleep 90
 done
 
 kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys

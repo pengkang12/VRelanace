@@ -125,6 +125,7 @@ def update_system(measured, keys, motivation, last_cpu_limit, is_violated):
         # use new kube cpu quota to system.    
         print('iteration: suggeseted is {}, measured is {}, last cpu limit is {}'.format(suggested, measured, last_cpu_limit))
         count = 0 
+        """
         while count < 3 and motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit):
             suggested = ask_model()
             count += 1 
@@ -134,6 +135,7 @@ def update_system(measured, keys, motivation, last_cpu_limit, is_violated):
             suggested = ask_model()
             count += 1 
         #suggested = [(val-50) for val in last_cpu_limit] 
+        """
         suggested = normalized(suggested)
         print("suggested cpu limit is ",suggested)
         for i in range(len(keys)):
