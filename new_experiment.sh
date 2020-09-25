@@ -19,13 +19,16 @@ delay="600"
 scale=0.01
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Staircase
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
 sleep 120
 #sleep $delay 
 #sleep $delay 
 #
 bash script/redis-data.sh
-bash schedule_control.sh > data/control_${scale}.log &
+# for bayasian optimization
+#bash schedule_control.sh > data/control_${scale}.log &
+# for hill climb algorithm
+bash schedule_hillclimb.sh > data/contro_hillclimb_${scale}.log &
 #bash schedule_rebalance.sh > data/control_${scale}_rebalance.log &
 
 exit

@@ -62,7 +62,8 @@ def bo_function(app_info, cpu_limit, measured_cpu):
         tmp = 1*(t[i]-threshold[i])
 	#*(t[i]-threshold[i])/(threshold[i]**2)
         #tmp += (throughput[i]/10000)
-        ret_y += tmp
+        if tmp > 0:
+            ret_y += tmp
         if t[i]-threshold[i] > 0:
            is_violate_target = True
         if t[i] - threshold[i] > 0:
@@ -72,7 +73,24 @@ def bo_function(app_info, cpu_limit, measured_cpu):
     print("latency is {}".format(t))
     if sum(measured_cpu)/ sum(cpu_limit) < 0.8:
         is_violate_target = True
-    return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
+        return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
+    return motivation, max(0, ret_y), is_violate_target
+  
+
+    """ 
+    this method is too sensitive to model and the results look very dynamic. 
+    total_cpu = 0
+    for key, value in app_info.items():
+        location = value["container_loc"]
+        if sum([measured_cpu[i] for i in location])/ sum([cpu_limit[i] for i in location]) < 0.8:
+            is_violate_target = True
+            total_cpu += sum(cpu_limit)
+        print("app {} : measured {}, cpu_limit {}".format(key, sum([measured_cpu[i] for i in location]), sum([cpu_limit[i] for i in location])))
+
+    if total_cpu == 0:
+        total_cpu = QUOTA
+    return motivation, max(0, ret_y)+ QUOTA/total_cpu, is_violate_target
+    """
 
 """
 max(0, W1*(latency1-threshold1)/threshold1, W2*(latency1-threshold2)/threshold2)) + sum(cpu_limit)/QUATA. 
@@ -92,22 +110,10 @@ frequence: slow
 
 """
 
-
-
-
-
-
-
-
-
-
-
-
-
 def ask_model():
     suggested = []
     count = 0
-    while count < 10:
+    while count <= 10:
         suggested = opt.ask(strategy='cl_min')
         print('iteration:', suggested)
         if sum(suggested) > QUOTA:
@@ -126,15 +132,6 @@ def update_system(measured, keys, motivation, last_cpu_limit, is_violated):
         print('iteration: suggeseted is {}, measured is {}, last cpu limit is {}'.format(suggested, measured, last_cpu_limit))
         count = 0 
         """
-        while count < 3 and motivation[0] > 0 and sum(suggested) < sum(last_cpu_limit):
-            suggested = ask_model()
-            count += 1 
-        #suggested = [(50+val) for val in last_cpu_limit] 
-        count =0
-        while count < 3 and motivation[0] < 0 and sum(suggested) > sum(last_cpu_limit):
-            suggested = ask_model()
-            count += 1 
-        #suggested = [(val-50) for val in last_cpu_limit] 
         """
         suggested = normalized(suggested)
         print("suggested cpu limit is ",suggested)
@@ -175,7 +172,6 @@ def read_container_info():
             for line in f:
                 pass
             app_info[name] = json.loads(line) 
-    print(app_info) 
     
     # we use lexical sort for container. 
     keys = []
@@ -183,6 +179,17 @@ def read_container_info():
         for key1, val1 in value["cpu_usage"].items():
             keys.append(key1)
     keys.sort()
+    for key, value in app_info.items():
+        location = []
+        for key1 in value["cpu_usage"].keys():
+            loc = 0
+            for key2 in keys:
+                if key2 == key1:
+                    break
+                loc += 1
+            location.append(loc)
+        app_info[key]["container_loc"] = location
+    print(app_info) 
     return app_info, keys
 
 
