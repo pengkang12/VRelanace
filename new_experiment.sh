@@ -26,9 +26,9 @@ sleep 120
 #
 bash script/redis-data.sh
 # for bayasian optimization
-#bash schedule_control.sh > data/control_${scale}.log &
+bash schedule_control.sh > data/control_${scale}.log &
 # for hill climb algorithm
-bash schedule_hillclimb.sh > data/contro_hillclimb_${scale}.log &
+#bash schedule_hillclimb.sh > data/contro_hillclimb_${scale}.log &
 #bash schedule_rebalance.sh > data/control_${scale}_rebalance.log &
 
 exit
