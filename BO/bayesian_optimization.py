@@ -73,9 +73,7 @@ def bo_function(app_info, cpu_limit, measured_cpu):
     print("latency is {}".format(t))
     if sum(measured_cpu)/ sum(cpu_limit) < 0.8:
         is_violate_target = True
-        return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
-    return motivation, max(0, ret_y), is_violate_target
-  
+    return motivation, max(0, ret_y)+ sum(cpu_limit)/QUOTA, is_violate_target
 
     """ 
     this method is too sensitive to model and the results look very dynamic. 

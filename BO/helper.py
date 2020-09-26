@@ -81,7 +81,6 @@ def read_measured_data(app_info, keys):
     return last_cpu_limit, measured
 
 def read_container_info():
-
     app_info = {}
     for name in app_name:
         input_filename = "/tmp/skopt_input_{}.txt".format(name)
