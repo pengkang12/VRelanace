@@ -15,6 +15,7 @@ latency = {}
 throughput = {}
 cpu={}
 measured_cpu={}
+location = {}
 input_filename = "/tmp/latency.log"
 app_name = ['ETLTopologySys', "IoTPredictionTopologySYS"]
 
@@ -23,7 +24,7 @@ for name in app_name:
     throughput[name] = []
     cpu[name] = []
     measured_cpu[name] = []
-
+    location[name] = []
 with open(input_filename) as f:
     for line in f:
         info = json.loads(line.replace("'", "\""))
@@ -32,30 +33,18 @@ with open(input_filename) as f:
             throughput[name] += info[name]['throughput'],
             cpu[name] += info[name]['cpu_usage'],
             measured_cpu[name] += sum(info[name]['cpu_usage'].values()),
-
-keys = []
-for name in app_name:
-    keys += cpu[name][1].keys()
-keys = sorted(keys)
-print(keys)
+            location[name] = info[name]['container_loc']
 
 for name in app_name:
     print("latency{0} = {1}\nthroughput{0} = {2}\nmeasured_cpu{0} = {3}".format(name,latency[name], throughput[name], measured_cpu[name]))
 
 for name in app_name:
-    loc = []
-    for key in cpu[name][1].keys():
-        for i in range(len(keys)):
-            if key == keys[i]:
-                break
-        loc += i,
- 
     cpu_limit = []
     with open("/tmp/bo_cpulimit.txt") as f:
         #find all cpu limit for each application
         for line in f:
             info = line.split(",")
-            cpu_limit += [int(info[x]) for x in loc],
-    print("cpu{} = {}".format(name, [sum(a) for a in cpu_limit]))
+            cpu_limit += [int(info[x]) for x in location[name]],
+    print("cpu{} = {}".format(name, [sum(a) for a in cpu_limit][:-1]))
     for i, a in enumerate(list(zip(*cpu_limit))):
-        print("container{}{} = {}".format(name,i+1, list(a)))
+        print("container{}{} = {}".format(name,i+1, list(a)[:-1]))

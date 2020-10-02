@@ -15,7 +15,6 @@ if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
 cpu_limit_filename="/tmp/bo_cpulimit.txt"
-input_app_name = "/tmp/skopt_app_name.txt"
 model_filename = "/tmp/skopt.model"
 threshold = {
     "ETLTopologySys": 100,
@@ -45,31 +44,34 @@ def normalized(a):
 
     total = sum(a)
     if total > QUOTA:
+        total += 50*len(a)
         a = [int((QUOTA/total)*val) for val in a]
         print(sum(a)) 
     for v in a:
-        t = int(v/50 + 1)*5000
-        if t >= QUOTA*100:
-            t = QUOTA*100 
-        if t <= 10000:
-            t = 10000
+        t = int(v/50 + 1)*50
+        if t >= QUOTA:
+            t = QUOTA 
+        if t <= 100:
+            t = 100
 
         ret.append(t)
     return ret
 
 def read_measured_data(app_info, keys):
+    history_cpu = []
     with open(cpu_limit_filename) as f1:
         line = None
         for line in f1:
-            pass
-        cpu = []
-        if line is None:
-            for i in range(len(app_name)):
-                for j in range(3):
-                    cpu += 400,
-        else:
             cpu = line.split(",")
-    last_cpu_limit = [int(i) for i in cpu]
+            history_cpu.append([int(i) for i in cpu])
+    if len(history_cpu) == 0:
+        cpu = []
+        for i in range(len(app_name)):
+            for j in range(3):
+                cpu += 400,
+        history_cpu.append(cpu)
+        write_cpu_limit_file(cpu)
+
     # peng's method
     measured = [] 
     for key in keys:
@@ -77,36 +79,35 @@ def read_measured_data(app_info, keys):
             if key in value["cpu_usage"]:
                 #measured.append(value['cpu_usage'][key]+50*value['capacity'][key])
                 measured.append(value['cpu_usage'][key])
-    print("last cpu limit {}, measured cpu {}, ratio is {}".format(last_cpu_limit, measured, sum(measured)/sum(last_cpu_limit)))
-    return last_cpu_limit, measured
+    print("last cpu limit {}, measured cpu {}, ratio is {}".format(history_cpu, measured, sum(measured)/sum(history_cpu[-1])))
+    return history_cpu, measured
 
 def read_container_info():
     app_info = {}
+    latency = {}
     for name in app_name:
+        latency[name] = []
         input_filename = "/tmp/skopt_input_{}.txt".format(name)
         with open(input_filename) as f:
-            for line in f:
+            for line in f: 
+                latency[name] += json.loads(line)["latency"],
                 pass
             app_info[name] = json.loads(line)
 
     # we use lexical sort for container. 
     keys = []
-    for key, value in app_info.items():
-        for key1, val1 in value["cpu_usage"].items():
-            keys.append(key1)
-    keys.sort()
-    for key, value in app_info.items():
+    loc  = 0
+    for key in sorted(app_info.keys()):
+        value = app_info[key]
         location = []
-        for key1 in value["cpu_usage"].keys():
-            loc = 0
-            for key2 in keys:
-                if key2 == key1:
-                    break
-                loc += 1
-            location.append(loc)
+        for key1 in sorted(value["cpu_usage"].keys()):
+            keys.append(key1)
+            location += loc,
+            loc += 1
         app_info[key]["container_loc"] = location
     print(app_info)
-    return app_info, keys
+    print(keys)
+    return app_info, keys, latency
 
 def write_cpu_limit_file(last_cpu_limit):
     with open(cpu_limit_filename, "a") as f2:

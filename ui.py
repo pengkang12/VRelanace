@@ -50,7 +50,6 @@ def calculate_latency(appName="ETLTopologySys"):
         # use pipeline to improve redis effiency. 
         sink = r.hgetall(appName+"_sink")
         #latency = []
-        print("testestrfsestwsew") 
         latency_bucket = [ 0 for i in range(len(bucket))]
         tail_latency = 65536
         for i in range(len(msgs)):
@@ -60,7 +59,7 @@ def calculate_latency(appName="ETLTopologySys"):
                 index = get_power(new_latency)
                 latency_bucket[index] += 1 
                 #latency += new_latency,
-        print(latency_bucket)
+        #print(latency_bucket)
         latency_ratio = []
         count = 0
         throughput = sum(latency_bucket)
@@ -76,7 +75,7 @@ def calculate_latency(appName="ETLTopologySys"):
             tail_latency = 65536
         else:
             tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
-        print(bucket)
+        #print(bucket)
         print(len(msgs), tail_latency)
         """ 
         if len(latency) > 0:
@@ -158,9 +157,9 @@ def statistic_info(app_id):
         if capacity/total_capacity < 0.3:  
             capacity_ratio[each['host']] = 1 
         elif capacity/total_capacity < 0.6:  
-            capacity_ratio[each['host']] = 1.5 
+            capacity_ratio[each['host']] = 1.3
         else:
-            capacity_ratio[each['host']] = 2
+            capacity_ratio[each['host']] = 1.6
         """ 
         if 'sink' in each['componentNumTasks']:
             os.system("echo {0} > /tmp/sink.name".format(each['host']))
@@ -168,7 +167,7 @@ def statistic_info(app_id):
             os.system("echo {0} > /tmp/spout.name".format(each['host']))
         """
         #cpu[each['host']].sort()
-        print(cpu[each['host']])
+        #print(cpu[each['host']])
         #app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
         app_cpu[each['host']] = max(max(cpu[each['host']]), 100)
 #
@@ -213,8 +212,19 @@ def getTopologySummary():
         if app in each['id']:
             statistic_info(each['id'])
     print("end experiments")            
+
+print("start program --------------------------")
+import timeit
+
+start = timeit.default_timer()
+
+
 getTopologySummary()
 #os.system("python BO/bayesian_optimization.py")
 if app == "IoT":
     #os.system("python BO/bayesian_optimization.py >> /tmp/bo.log")
     pass
+
+stop = timeit.default_timer()
+
+print('End program Time: ', stop - start)  
