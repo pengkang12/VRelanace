@@ -52,22 +52,28 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
             if suggested[i] == min_one:
                 break 
 
-        print(min_one, i, suggested)
+        print("ask model ", min_one, count, suggested)
         need_ask = False
         # check bottleneck, if minimum cpu limit from suggestion is less than history cpu limit which violate SLO. We need to 
         # ask again
         for index in range(len(history_latency)):
-            if history_cpu[index][location[i]] > min_one and history_latency[index] > 100:
+            if index < len(history_cpu) and history_cpu[index][location[i]] > min_one and history_latency[index] > 100:
                 opt.tell(suggested, history_latency[index]-100+min_one)
                 need_ask = True 
                 count += 1
+                print("suggest less than history ", suggested, history_cpu[index])
+                if count == 4:
+                    suggested = [ history_cpu[index][loc] for loc in location]
                 break
         # check overprovision. if minimum cpu limit from suggestion is great than maximum cpu limit from history and this historical cpu limit is satisfied SLO, we need to ask again. 
         for index in range(len(history_latency)):
-            if history_latency[index] < 100 and max(history_cpu[index]) < min_one :
-                opt.tell(suggested, (100-history_latency[index])*sum(suggested)/QUOTA)
+            if index < len(history_cpu) and history_latency[index] < 100 and max(history_cpu[index]) < min_one :
+                opt.tell(suggested, (100-history_latency[index])*sum(suggested))
                 need_ask = True 
                 count += 1
+                if count == 4:
+                    suggested = [ history_cpu[index][loc] for loc in location]
+                print("suggest greater history ", suggested, history_cpu[index])
                 break
         
         if max(suggested)/ min(suggested) > 5:
