@@ -1,5 +1,12 @@
 from skopt import gp_minimize
 from skopt import Optimizer
+from skopt import acquisition
+from skopt.learning import GaussianProcessRegressor
+from skopt.learning.gaussian_process.kernels import ConstantKernel, Matern
+# Gaussian process with Matérn kernel as surrogate model
+from sklearn.gaussian_process.kernels import (RBF, Matern, RationalQuadratic,
+                                              ExpSineSquared, DotProduct,
+                                              ConstantKernel)
 import skopt.utils as skopt_utils
 import numpy as np
 import os
@@ -13,7 +20,8 @@ import helper
 
 model_filename = "/tmp/skopt_model_"
 QUOTA = 4000
-window = 15
+window = 115
+noise_level = 0.1
 
 def bo_function(app_info, app_name, cpu_limit, measured_cpu):
     t = [] # measured tail latency 
@@ -34,9 +42,12 @@ def bo_function(app_info, app_name, cpu_limit, measured_cpu):
         pass
     #return ret_y, is_violate_target
     if ret_y > 0:
+        # violate target
         ret_val = max(0, ret_y)+ sum(cpu_limit)/QUOTA 
     else:
         ret_val = -1 * ret_y * sum(cpu_limit)/QUOTA 
+    
+    #ret_val = max(0, ret_y)+ sum(cpu_limit)/QUOTA 
     return ret_val, is_violate_target
  
 
@@ -45,7 +56,7 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
     count = 0
     while count < 5:
         suggested = opt.ask(strategy='cl_min')
-        
+    
         #use history data to update model and ask again
         min_one = min(suggested)
         for i in range(len(suggested)):
@@ -120,7 +131,22 @@ def bo_model(app_name, app_info, cpu_limit, measured_cpu, container_name_list, l
         for j in range(3):
             restriction += [(100, QUOTA)]
         #opt = Optimizer(restriction, n_initial_points=2, acq_func="gp_hedge", base_estimator="GP")
-        opt = Optimizer(restriction, n_initial_points=0, acq_func="EI", base_estimator="GP")
+        kernels = [1.0 * RBF(length_scale=1.0, length_scale_bounds=(1e-1, 10.0)),
+           1.0 * RationalQuadratic(length_scale=1.0, alpha=0.1),
+           1.0 * ExpSineSquared(length_scale=1.0, periodicity=3.0,
+                                length_scale_bounds=(0.1, 10.0),
+                                periodicity_bounds=(1.0, 10.0)),
+           ConstantKernel(0.1, (0.01, 10.0))
+               * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
+           1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0),
+                        nu=2.5)]
+ 
+        gpr = GaussianProcessRegressor(kernel=kernels[1], alpha=noise_level ** 2,
+                                   normalize_y=True, noise="gaussian",
+                                   n_restarts_optimizer=2
+                                   )
+
+        opt = Optimizer(restriction, n_initial_points=5, acq_optimizer="sampling", base_estimator="GP")
  
         print("initialize model {}".format(app_name))
     else:
@@ -133,8 +159,23 @@ def bo_model(app_name, app_info, cpu_limit, measured_cpu, container_name_list, l
     app_cpu_limit = [cpu_limit[loc] for loc in location]
  
     #opt.tell(app_measured_cpu, y)
-    opt.tell(app_cpu_limit, y)
-   
+    if len(history_cpu) >= 5:
+        res  = opt.tell(app_cpu_limit, y)
+        next_x = app_cpu_limit 
+        # acquisition 
+        #print("acquisition function ------", res)    
+        x_gp = res.space.transform(history_cpu)
+        gp = res.models[-1]
+    
+        curr_x_iters = res.x_iters
+        curr_func_vals = res.func_vals
+    
+        acq = acquisition.gaussian_ei(x_gp, gp, y_opt=np.min(curr_func_vals))
+     
+        print("acquisition function ", acq)    
+        next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
+        print("next acquistion function ", next_acq)
+
     if is_violate_target == True:
        # save the model
         suggest = ask_model(opt, app_info[app_name]['capacity'], history_cpu, latency, location)
