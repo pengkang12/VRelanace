@@ -85,12 +85,17 @@ def read_measured_data(app_info, keys):
 def read_container_info():
     app_info = {}
     latency = {}
+    throughput = {}
     for name in app_name:
         latency[name] = []
+        throughput[name] = []
+ 
         input_filename = "/tmp/skopt_input_{}.txt".format(name)
         with open(input_filename) as f:
             for line in f: 
-                latency[name] += json.loads(line)["latency"],
+                tmp_line = json.loads(line)
+                latency[name] += tmp_line["latency"],
+                throughput[name] += tmp_line["throughput"],
                 pass
             app_info[name] = json.loads(line)
 
@@ -107,9 +112,25 @@ def read_container_info():
         app_info[key]["container_loc"] = location
     print(app_info)
     print(keys)
-    return app_info, keys, latency
+    print(throughput)
+    return app_info, keys, latency, throughput
 
 def write_cpu_limit_file(last_cpu_limit):
     with open(cpu_limit_filename, "a") as f2:
         f2.write(",".join([str(i) for i in last_cpu_limit])+"\n")
 
+def write_window_file(current_window, window, filename):
+    with open("/tmp/window_{}.txt".format(filename), "w") as f1:
+        f1.write("{},{}".format(str(current_window), str(window)))
+ 
+def read_window_file(filename):
+    current_window = 0
+    window = 10
+
+    line = None 
+    with open("/tmp/window_{}.txt".format(filename)) as f1:
+        for line in f1: 
+            current_window, window = line.split(",") 
+    if line == None:
+        write_window_file(current_window, window, filename)     
+    return int(current_window), int(window)

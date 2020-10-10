@@ -1,11 +1,12 @@
-rm /tmp/skopt.model 
 rm /tmp/bo.log 
 rm /tmp/bo_cpulimit.txt 
 rm /tmp/kube-cpu.txt 
 rm /tmp/skopt_input_ETLTopologySys.txt 
+rm /tmp/skopt_input_IoTPredictionTopologySYS.txt
+
 touch /tmp/bo_cpulimit.txt
 
-
+bash script/redis-data.sh
 python collect_container_cpu.py &
 sleep 120
 for i in {1..121}

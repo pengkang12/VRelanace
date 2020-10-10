@@ -20,7 +20,6 @@ import helper
 
 model_filename = "/tmp/skopt_model_"
 QUOTA = 4000
-window = 115
 noise_level = 0.1
 
 def bo_function(app_info, app_name, cpu_limit, measured_cpu):
@@ -55,8 +54,10 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
     suggested = []
     count = 0
     while count < 5:
+
+        count += 1
         suggested = opt.ask(strategy='cl_min')
-    
+        break
         #use history data to update model and ask again
         min_one = min(suggested)
         for i in range(len(suggested)):
@@ -88,7 +89,6 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
                 break
         
         if max(suggested)/ min(suggested) > 5:
-            count += 1
             continue
         if need_ask == False:
             break
@@ -120,34 +120,37 @@ def check_history_cpu_limit(history_cpu, suggest, history_latency, location, app
             total_cpu = tmp_sum_cpu
             ret_cpu = tmp_cpu
     return ret_cpu 
-                 
+
+def create_model():
+    restriction=[]
+    for j in range(3):
+        restriction += [(100, QUOTA)]
+    #opt = Optimizer(restriction, n_initial_points=2, acq_func="gp_hedge", base_estimator="GP")
+    kernels = [1.0 * RBF(length_scale=1.0, length_scale_bounds=(1e-1, 10.0)),
+       1.0 * RationalQuadratic(length_scale=1.0, alpha=0.1),
+       1.0 * ExpSineSquared(length_scale=1.0, periodicity=3.0,
+                            length_scale_bounds=(0.1, 10.0),
+                            periodicity_bounds=(1.0, 10.0)),
+       ConstantKernel(0.1, (0.01, 10.0))
+           * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
+       1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0),
+                    nu=2.5)]
+ 
+    gpr = GaussianProcessRegressor(kernel=kernels[0], alpha=noise_level ** 2,
+                               normalize_y=True, noise="gaussian",
+                               n_restarts_optimizer=2
+                               )
+
+    opt = Optimizer(restriction, n_initial_points=1, acq_optimizer="sampling", base_estimator=gpr)
+    return opt             
+   
 def bo_model(app_name, app_info, cpu_limit, measured_cpu, container_name_list, latency, history_cpu): 
     #1. first load existed optimization model or build a new model
     # when we first time use model
     opt = None
     model_file = model_filename+app_name
     if os.path.exists(model_file) == False:
-        restriction=[]
-        for j in range(3):
-            restriction += [(100, QUOTA)]
-        #opt = Optimizer(restriction, n_initial_points=2, acq_func="gp_hedge", base_estimator="GP")
-        kernels = [1.0 * RBF(length_scale=1.0, length_scale_bounds=(1e-1, 10.0)),
-           1.0 * RationalQuadratic(length_scale=1.0, alpha=0.1),
-           1.0 * ExpSineSquared(length_scale=1.0, periodicity=3.0,
-                                length_scale_bounds=(0.1, 10.0),
-                                periodicity_bounds=(1.0, 10.0)),
-           ConstantKernel(0.1, (0.01, 10.0))
-               * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
-           1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0),
-                        nu=2.5)]
- 
-        gpr = GaussianProcessRegressor(kernel=kernels[1], alpha=noise_level ** 2,
-                                   normalize_y=True, noise="gaussian",
-                                   n_restarts_optimizer=2
-                                   )
-
-        opt = Optimizer(restriction, n_initial_points=5, acq_optimizer="sampling", base_estimator="GP")
- 
+        opt = create_model()
         print("initialize model {}".format(app_name))
     else:
         opt = skopt_utils.load(model_file)
@@ -158,21 +161,22 @@ def bo_model(app_name, app_info, cpu_limit, measured_cpu, container_name_list, l
     app_measured_cpu = [measured_cpu[loc] for loc in location]
     app_cpu_limit = [cpu_limit[loc] for loc in location]
  
+    res  = opt.tell(app_cpu_limit, y)
     #opt.tell(app_measured_cpu, y)
     if len(history_cpu) >= 5:
-        res  = opt.tell(app_cpu_limit, y)
         next_x = app_cpu_limit 
         # acquisition 
         #print("acquisition function ------", res)    
-        x_gp = res.space.transform(history_cpu)
+        x_gp = res.x_iters
         gp = res.models[-1]
-    
         curr_x_iters = res.x_iters
         curr_func_vals = res.func_vals
     
-        acq = acquisition.gaussian_ei(x_gp, gp, y_opt=np.min(curr_func_vals))
+        acq = acquisition.gaussian_ei(curr_x_iters, gp, y_opt=np.min(curr_func_vals))
      
         print("acquisition function ", acq)    
+
+        # print("xgp and x_iters, ", x_gp, curr_x_iters)
         next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
         print("next acquistion function ", next_acq)
 
@@ -193,66 +197,72 @@ def bo_model(app_name, app_info, cpu_limit, measured_cpu, container_name_list, l
     print("-----------------------------------------------------------------") 
     return cpu_limit
 
-def find_min_index(arr1, location, latency ):
+def find_min_index(arr1, location, latency, throughput ):
+    # we also need to choose maximum throughput
+    max_throughput = max(throughput)*0.7
     bad_arr1 = []
     for i in range(len(arr1)):
         if latency[i] > 100:
             bad_arr1 += arr1[i],
     min_i = -1
     min_sum = helper.QUOTA
-    for i in range(window):
+    for i in range(len(arr1)):
         tmp_sum = sum([arr1[i][loc] for loc in location])
-        if tmp_sum < min_sum and latency[i] < 100 and arr1[i] not in bad_arr1:
-            print(tmp_sum, i, arr1[i])
+        if tmp_sum < min_sum and latency[i] < 100 and arr1[i] not in bad_arr1 and throughput[i] >= max_throughput:
+            print("choose min index ", tmp_sum, i, arr1[i])
             min_i = i
             min_sum = tmp_sum
     
-    print(arr1[min_i], bad_arr1)  
+    print(arr1[min_i], bad_arr1, max_throughput)  
     return min_i 
 
 def system_control():
     # read container information    
-    app_info, container_name_list, latency = helper.read_container_info()
+    app_info, container_name_list, latency, throughput = helper.read_container_info()
   
     history_cpu, measured_cpu = helper.read_measured_data(app_info, container_name_list)
     
     cpu_limit = history_cpu[-1].copy()    
     print('iteration: measured is {}, last cpu limit is {}'.format(measured_cpu, cpu_limit))
-
-    # consistly violate SLO
-    need_recalculate = False
+    # save cpu limit
+    final_cpu_limit = []
     for key in sorted(app_info.keys()):
-        if len(latency) > 2 and latency[key][-2] > 100 and latency[key][-1] > 100:
-            need_recalculate = True
 
-    if len(history_cpu) < window or need_recalculate:
-        for key in sorted(app_info.keys()):
-            value = app_info[key]
-            cpu_limit = bo_model(key, app_info, cpu_limit, measured_cpu, container_name_list, latency[key], history_cpu) 
-        # normalize again for cpu limit
-        if sum(cpu_limit) > helper.QUOTA:
-            cpu_limit = helper.normalized(cpu_limit)      
-            pass
+        current_window, window = helper.read_window_file(key)
+        helper.write_window_file(current_window+1, window, key)
 
-        print('iteration: update cpu limit is {}'.format(cpu_limit))
-        for i in range(len(cpu_limit)):
-            if (history_cpu[-1][i]) != cpu_limit[i]:
-                helper.change_cpu(container_name_list[i], cpu_limit[i]*100)
-    else:
-        history_cpu = history_cpu[-window:]
-        cpu_limit = []
-        for key in sorted(app_info.keys()):
-            latency1 = latency[key][-window:]
+        if len(latency[key]) > 2 and latency[key][-2] > 100 and latency[key][-1] > 100 and current_window > 10:
+            helper.write_window_file(0, 5, key)
+            print("new write thing")
+            current_window = 0
+            os.system("rm {}{}".format(model_filename, key))
+
+        value = app_info[key]
+        location = value["container_loc"]
+        if int(current_window) <= int(window):
             value = app_info[key]
-            location = value["container_loc"]
-            index = find_min_index(history_cpu, location, latency1)
-            cpu_limit += [history_cpu[index][loc] for loc in location]
-        print("this is find optimal value", cpu_limit, history_cpu[-1])
-        for i in range(len(cpu_limit)):
-            if history_cpu[-1][i] != cpu_limit[i]:
-                helper.change_cpu(container_name_list[i], cpu_limit[i]*100)
- 
+            tmp_cpu_limit = bo_model(key, app_info, cpu_limit, measured_cpu, container_name_list, latency[key], history_cpu) 
+            # normalize again for cpu limit
+            #if sum(cpu_limit) > helper.QUOTA:
+            #    cpu_limit = helper.normalized(cpu_limit)      
+            #    pass
+            final_cpu_limit += [tmp_cpu_limit[loc] for loc in location]
+            print('{} iteration: update cpu limit is {}'.format(key, cpu_limit))
+        else:
+            history_cpu = history_cpu[-window:]
+            #for key in sorted(app_info.keys()):
+            latency_app = latency[key][-window:]
+            throughput_app = throughput[key][-window:]
+            index = find_min_index(history_cpu, location, latency_app, throughput_app)
+            final_cpu_limit += [history_cpu[index][loc] for loc in location]
+            print("{} this is find optimal value {}, {}".format(key, cpu_limit, history_cpu[-1]))
+
+    for i in range(len(cpu_limit)):
+        if history_cpu[-1][i] != cpu_limit[i]:
+            helper.change_cpu(container_name_list[i], cpu_limit[i]*100)
+    
     helper.write_cpu_limit_file(cpu_limit)
+ 
     print("end this iteration\n\n")
 
 import timeit
