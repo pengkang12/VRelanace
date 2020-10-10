@@ -1,10 +1,7 @@
 rm /tmp/bo.log 
 rm /tmp/bo_cpulimit.txt 
 rm /tmp/kube-cpu.txt 
-rm /tmp/skopt_input_ETLTopologySys.txt 
-rm /tmp/skopt_input_IoTPredictionTopologySYS.txt
-rm /tmp/skopt_model_ETLTopologySys
-rm /tmp/skopt_model_IoTPredictionTopologySYS
+rm /tmp/skopt_*
 echo "0, 10" > /tmp/window_ETLTopologySys.txt
 echo "0, 10" > /tmp/window_IoTPredictionTopologySYS.txt
 
