@@ -24,7 +24,6 @@ sleep 120
 #sleep $delay 
 #sleep $delay 
 #
-bash script/redis-data.sh
 # for bayasian optimization
 bash schedule_control.sh > data/control_${scale}.log &
 # for hill climb algorithm

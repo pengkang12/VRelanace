@@ -33,6 +33,7 @@ def bo_function(app_info, app_name, app_cpu_limit):
     is_violate_target = False
     
     #return ret_y, is_violate_target
+    is_violate_target = True
     if ret_y > 0:
         # violate target
         ret_val = max(0, ret_y)+ sum(app_cpu_limit)/QUOTA 
@@ -50,7 +51,6 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
 
         count += 1
         suggested = opt.ask(strategy='cl_min')
-        break
         #use history data to update model and ask again
         min_one = min(suggested)
         for i in range(len(suggested)):
@@ -121,24 +121,24 @@ def get_bo_model(app_name):
         restriction=[]
         for j in range(3):
             restriction += [(100, QUOTA)]
+      
+        # default GP kernel 
+        #kernel=1**2 * Matern(length_scale=[1, 1, 1], nu=2.5) + WhiteKernel(noise_level=1),
+        #optimizer='fmin_l_bfgs_b',
         #opt = Optimizer(restriction, n_initial_points=2, acq_func="gp_hedge", base_estimator="GP")
         kernels = [1.0 * RBF(length_scale=1.0, length_scale_bounds=(1e-1, 10.0)),
            1.0 * RationalQuadratic(length_scale=1.0, alpha=0.1),
            1.0 * ExpSineSquared(length_scale=1.0, periodicity=3.0,
                                 length_scale_bounds=(0.1, 10.0),
                                 periodicity_bounds=(1.0, 10.0)),
-           ConstantKernel(0.1, (0.01, 10.0))
-               * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
-           1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0),
-                        nu=2.5)]
+           ConstantKernel(0.1, (0.01, 10.0)) * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
+           1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0), nu=2.5)]
      
         gpr = GaussianProcessRegressor(kernel=kernels[0], alpha=noise_level ** 2,
                                    normalize_y=True, noise="gaussian",
-                                   n_restarts_optimizer=2
-                                   )
+                                   n_restarts_optimizer=2)
     
         opt = Optimizer(restriction, n_initial_points=1, acq_optimizer="sampling", base_estimator=gpr)
- 
         print("initialize model {}".format(app_name))
     else:
         opt = skopt_utils.load(model_file)
@@ -156,10 +156,10 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
  
     res  = opt.tell(app_cpu_limit, y)
 
+    #print("acquisition function ------", res)    
     if len(history_cpu) >= 5:
         next_x = app_cpu_limit 
         # acquisition 
-        #print("acquisition function ------", res)    
         x_gp = res.x_iters
         gp = res.models[-1]
         curr_x_iters = res.x_iters
@@ -239,7 +239,7 @@ def system_control():
         update_model = None
         try:
             X = [[app_info[app_name]["throughput"], sum(app_cpu_limit), min(app_cpu_limit), 3]]
-            update_model = logreg.predict(X)
+            update_model = logreg.predict(X)[0]
             print("logistic regression result is ", update_model)
             print("coef is {}, intercept is {}, decision function is {}, preidct_proba is {}".format(logreg.coef_, logreg.intercept_, logreg.decision_function(X), logreg.predict_proba(X) ))
         except:
@@ -258,7 +258,7 @@ def system_control():
             #    cpu_limit = helper.normalized(cpu_limit)      
             #    pass
             final_cpu_limit += app_cpu_limit
-            print('{} iteration: update cpu limit is {}'.format(key, cpu_limit))
+            print('{} iteration: update cpu limit is {}'.format(key, final_cpu_limit))
         else:
             X = [[app_info[app_name]["throughput"], 300, 100, 3],
                  [app_info[app_name]["throughput"], sum(app_cpu_limit),min(app_cpu_limit), 3]
@@ -272,14 +272,14 @@ def system_control():
             throughput_app = throughput[key][-window:]
             index = find_min_index(history_cpu, location, latency_app, throughput_app)
             final_cpu_limit += [history_cpu[index][loc] for loc in location]
-            print("{} this is find optimal value {}, {}".format(key, cpu_limit, history_cpu[-1]))
+            print("{} this is find optimal value {}, {}".format(key, final_cpu_limit, history_cpu[-1]))
 
     logistic_regression.save_model(logreg, app_name)
     for i in range(len(cpu_limit)):
-        if history_cpu[-1][i] != cpu_limit[i]:
-            helper.change_cpu(container_name_list[i], cpu_limit[i]*100)
+        if history_cpu[-1][i] != final_cpu_limit[i]:
+            helper.change_cpu(container_name_list[i], final_cpu_limit[i]*100)
     
-    helper.write_cpu_limit_file(cpu_limit)
+    helper.write_cpu_limit_file(final_cpu_limit)
  
     print("end this iteration\n\n")
 
