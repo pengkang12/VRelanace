@@ -20,7 +20,7 @@ import helper
 import logistic_regression
 
 model_filename = "/tmp/skopt_model_"
-QUOTA = 4000
+QUOTA = 4000/50
 noise_level = 0.1
 
 def bo_function(app_info, app_name, app_cpu_limit):
@@ -36,9 +36,9 @@ def bo_function(app_info, app_name, app_cpu_limit):
     is_violate_target = True
     if ret_y > 0:
         # violate target
-        ret_val = max(0, ret_y)+ sum(app_cpu_limit)/QUOTA 
+        ret_val = max(0, ret_y)+ sum(app_cpu_limit)
     else:
-        ret_val = -1 * ret_y * sum(app_cpu_limit)/QUOTA 
+        ret_val = -1 * ret_y * sum(app_cpu_limit)/6
     
     #ret_val = max(0, ret_y)+ sum(cpu_limit)/QUOTA 
     return ret_val, is_violate_target
@@ -52,18 +52,21 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
         count += 1
         suggested = opt.ask(strategy='cl_min')
         #use history data to update model and ask again
+        print(suggested)
+        suggested = [ 50*int(val) for val in suggested]
         min_one = min(suggested)
         for i in range(len(suggested)):
             if suggested[i] == min_one:
                 break 
-
         print("ask model ", min_one, count, suggested)
+        break
+
         need_ask = False
         # check bottleneck, if minimum cpu limit from suggestion is less than history cpu limit which violate SLO. We need to 
         # ask again
         for index in range(len(history_latency)):
             if index < len(history_cpu) and history_cpu[index][location[i]] > min_one and history_latency[index] > 100:
-                opt.tell(suggested, history_latency[index]-100+min_one)
+                opt.tell([int(val/50) for val in suggested], history_latency[index]-100+min_one)
                 need_ask = True 
                 count += 1
                 print("suggest less than history ", suggested, history_cpu[index])
@@ -73,7 +76,7 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
         # check overprovision. if minimum cpu limit from suggestion is great than maximum cpu limit from history and this historical cpu limit is satisfied SLO, we need to ask again. 
         for index in range(len(history_latency)):
             if index < len(history_cpu) and history_latency[index] < 100 and max(history_cpu[index]) < min_one :
-                opt.tell(suggested, (100-history_latency[index])*sum(suggested))
+                opt.tell([int(val/50) for val in suggested], (100-history_latency[index])*sum(suggested))
                 need_ask = True 
                 count += 1
                 if count == 4:
@@ -87,13 +90,13 @@ def ask_model(opt, capacity, history_cpu, history_latency, location):
             break
 
         print('iteration:', suggested)
-        """
+        
         if sum(suggested) > QUOTA:
-             opt.tell(suggested, sum(suggested))
+             opt.tell([int(val/50) for val in suggested], sum(suggested))
              count += 1
              continue
         count += 1
-        """
+        
     print(capacity, suggested)
     if sum(suggested) > QUOTA:
         min_cpu = min(suggested)
@@ -120,7 +123,7 @@ def get_bo_model(app_name):
     if os.path.exists(model_file) == False:
         restriction=[]
         for j in range(3):
-            restriction += [(100, QUOTA)]
+            restriction += [(2, int(QUOTA))]
       
         # default GP kernel 
         #kernel=1**2 * Matern(length_scale=[1, 1, 1], nu=2.5) + WhiteKernel(noise_level=1),
@@ -154,11 +157,11 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
     y, is_violate_target= bo_function(app_info, app_name, app_cpu_limit)
     location = app_info[app_name]["container_loc"]
  
-    res  = opt.tell(app_cpu_limit, y)
+    next_x = [ int(val/50)for val in app_cpu_limit]
+    res  = opt.tell(next_x, y)
 
     #print("acquisition function ------", res)    
     if len(history_cpu) >= 5:
-        next_x = app_cpu_limit 
         # acquisition 
         x_gp = res.x_iters
         gp = res.models[-1]
@@ -180,7 +183,7 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
         suggest = helper.normalized(suggest)
         print("normalized ", suggest)      
         #suggest = check_history_cpu_limit(history_cpu, suggest, latency, location, app_name)
-        print("check hisotry ", suggest, app_cpu_limit)		
+        print("check_hisotry ", suggest, app_cpu_limit)		
         for i in range(len(app_cpu_limit)):
             if int(suggest[i]) != app_cpu_limit[i]:
                 app_cpu_limit[i] = int(suggest[i])
@@ -235,7 +238,6 @@ def system_control():
 
         # use logistic regression to decide whether we need to update Bayasian optimization model.
         logreg = logistic_regression.get_model(key)
-        
         update_model = None
         try:
             X = [[app_info[app_name]["throughput"], sum(app_cpu_limit), min(app_cpu_limit), 3]]
@@ -244,37 +246,30 @@ def system_control():
             print("coef is {}, intercept is {}, decision function is {}, preidct_proba is {}".format(logreg.coef_, logreg.intercept_, logreg.decision_function(X), logreg.predict_proba(X) ))
         except:
             print("First time ")
-       
-        #if True or int(current_window) <= int(window):
-        if update_model == None or update_model == 0: 
-            X = [[app_info[app_name]["throughput"], sum(app_cpu_limit),min(app_cpu_limit), 3],[app_info[app_name]["throughput"], QUOTA,QUOTA, 3]]
-            y = [0, 1]
-            X_train = np.reshape(X, (len(X), len(X[0])))
-            logreg.fit(X, y)    
-
-            app_cpu_limit = bo_model(key, app_info, app_cpu_limit, measured_cpu, container_name_list, latency[key], history_cpu) 
-            # normalize again for cpu limit
-            #if sum(cpu_limit) > helper.QUOTA:
-            #    cpu_limit = helper.normalized(cpu_limit)      
-            #    pass
-            final_cpu_limit += app_cpu_limit
-            print('{} iteration: update cpu limit is {}'.format(key, final_cpu_limit))
-        else:
-            X = [[app_info[app_name]["throughput"], 300, 100, 3],
-                 [app_info[app_name]["throughput"], sum(app_cpu_limit),min(app_cpu_limit), 3]
-            ]
-            y = [1, 0]
-            logreg.fit(X, y)    
-
+      
+        # first time to training model 
+        if len(history_cpu) == 10 or update_model == 1:
             history_cpu = history_cpu[-window:]
             #for key in sorted(app_info.keys()):
             latency_app = latency[key][-window:]
             throughput_app = throughput[key][-window:]
             index = find_min_index(history_cpu, location, latency_app, throughput_app)
-            final_cpu_limit += [history_cpu[index][loc] for loc in location]
+            app_cpu_limit = [history_cpu[index][loc] for loc in location]
+            final_cpu_limit += app_cpu_limit
             print("{} this is find optimal value {}, {}".format(key, final_cpu_limit, history_cpu[-1]))
 
-    logistic_regression.save_model(logreg, app_name)
+            X = [[app_info[app_name]["throughput"], 150, 50, 3],
+                 [app_info[app_name]["throughput"], sum(app_cpu_limit),min(app_cpu_limit), 3]]
+            y = [0, 1]
+            X_train = np.reshape(X, (len(X), len(X[0])))
+            logreg.fit(X, y)    
+            logistic_regression.save_model(logreg, app_name)
+        elif len(history_cpu) < 10 or update_model == None or update_model == 0:
+            app_cpu_limit = bo_model(key, app_info, app_cpu_limit, measured_cpu, container_name_list, latency[key], history_cpu) 
+            final_cpu_limit += app_cpu_limit
+            print('{} iteration: update cpu limit is {}'.format(key, final_cpu_limit))
+ 
+
     for i in range(len(cpu_limit)):
         if history_cpu[-1][i] != final_cpu_limit[i]:
             helper.change_cpu(container_name_list[i], final_cpu_limit[i]*100)
