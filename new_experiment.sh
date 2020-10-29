@@ -19,7 +19,7 @@ delay="600"
 scale=0.01
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Staircase
 sleep 120
 #sleep $delay 
 #sleep $delay 
