@@ -19,6 +19,7 @@ def get_model(app_name):
     model_file = LogisticRegression_file+app_name
     if os.path.exists(model_file) == False:
         logreg = linear_model.LogisticRegression(warm_start=True)
+        save_model(logreg, app_name)
         print("initialize logistic regression model {}".format(app_name))
     else:
         logreg = skopt_utils.load(model_file)

@@ -1,15 +1,14 @@
 rm /tmp/bo.log 
-rm /tmp/bo_cpulimit.txt 
+rm /tmp/bo_*
 rm /tmp/kube-cpu.txt 
 rm /tmp/skopt_*
 echo "0, 10" > /tmp/window_ETLTopologySys.txt
 echo "0, 10" > /tmp/window_IoTPredictionTopologySYS.txt
 
 
-touch /tmp/bo_cpulimit.txt
+bash script/redis-data.sh
 
 python collect_container_cpu.py &
-bash script/redis-data.sh
 sleep 120
 for i in {1..61}
 do
