@@ -55,8 +55,8 @@ def normalized(a):
         t = int(v/50 + 0.5)*50
         if t >= QUOTA:
             t = QUOTA 
-        if t <= 100:
-            t = 100
+        if t <= 150:
+            t = 150
 
         ret.append(t)
     return ret
