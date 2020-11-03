@@ -10,7 +10,7 @@ bash script/redis-data.sh
 
 python collect_container_cpu.py &
 sleep 120
-for i in {1..61}
+for i in {1..321}
 do
 python collect_container_cpu.py &
 python ui.py ETL &

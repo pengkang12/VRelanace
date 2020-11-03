@@ -219,7 +219,7 @@ def is_workload_changed(throughput):
         return False
     pivot = throughput[-1]
     for i in range(4):
-        if length - i  > 0 and abs((throughput[length-1-i] - pivot)/pivot) > 20:
+        if pivot == 0 or (length - i  > 0 and abs((throughput[length-1-i] - pivot)/pivot) > 20):
             return True
     return False
 
