@@ -104,13 +104,20 @@ def ask_model(opt, capacity, history_cpu, history_latency):
  
     return suggested 
 
+def choose_category(throughput):
+    category = 4
+    if throughput < 25000:
+        category = 1
+    elif throughput < 55000:
+        category = 2 
+    elif throughput < 80000:
+        category = 3
+    return category
+
+
 def get_bo_model(app_name, throughput):
 
-    category = 3
-    if throughput < 35000:
-        category = 1
-    elif throughput < 70000:
-        category = 2 
+    category = choose_category(throughput)
 
     model_file = model_filename+app_name + str(category)
  
@@ -183,11 +190,7 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
             if int(suggest[i]) != app_cpu_limit[i]:
                 app_cpu_limit[i] = int(suggest[i])
     #save model
-    category = 3
-    if throughput < 35000:
-        category = 1
-    elif throughput < 70000:
-        category = 2 
+    category = choose_category(throughput)
     skopt_utils.dump(opt, model_filename+app_name+str(category))
     print("-----------------------------------------------------------------") 
     return app_cpu_limit
@@ -218,8 +221,8 @@ def is_workload_changed(throughput):
     if length < 2:
         return False
     pivot = throughput[-1]
-    for i in range(4):
-        if pivot == 0 or (length - i  > 0 and abs((throughput[length-1-i] - pivot)/pivot) > 20):
+    for i in range(3):
+        if pivot == 0 or (length - i  > 0 and abs((throughput[length-1-i] - pivot)/pivot) > 0.2):
             return True
     return False
 
@@ -263,7 +266,7 @@ def system_control():
         min_iters = None
         min_vals = 65536*4000
  
-        if len(res.func_vals) < 10 or (is_workload_changed(throughput[app_name])):
+        if len(res.func_vals) < 10  or (len(res.func_vals < 15) and is_workload_changed(throughput[app_name])):
             print("start phase or workload changed")
             pass
         else:

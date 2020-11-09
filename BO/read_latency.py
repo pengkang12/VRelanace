@@ -27,7 +27,10 @@ for name in app_name:
     location[name] = []
 with open(input_filename) as f:
     for line in f:
-        info = json.loads(line.replace("'", "\""))
+        try:
+            info = json.loads(line.replace("'", "\""))
+        except:
+            continue
         for name in app_name: 
             latency[name] += info[name]['latency'],
             throughput[name] += info[name]['throughput'],
