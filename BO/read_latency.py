@@ -1,12 +1,17 @@
+
+
 from skopt import gp_minimize
 from skopt import Optimizer
 import skopt.utils as skopt_utils
 import numpy as np
 
+import helper
+
 import os
 import sys
 import json
 import warnings
+
 
 os.system("grep \"latency'\" /tmp/bo.log > /tmp/latency.log")
 
@@ -17,7 +22,7 @@ cpu={}
 measured_cpu={}
 location = {}
 input_filename = "/tmp/latency.log"
-app_name = ['ETLTopologySys', "IoTPredictionTopologySYS"]
+app_name = helper.threshold.keys()
 
 for name in app_name:
     latency[name] = []

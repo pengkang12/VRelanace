@@ -1,13 +1,14 @@
 kubectl delete -f ~/storm-peng/kube-storm/storm-worker-controller.json
-sleep 15
+sleep 30
 kubectl cordon kube-slave2
 sleep 15
 kubectl create -f ~/storm-peng/kube-storm/storm-worker-controller.json
-sleep 30
+sleep 60
 kubectl uncordon kube-slave2
+sleep 30
 bash ~/storm-peng/kube-storm/change_worker_hosts.sh
 
-kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
+kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologyTaxi
 #kubectl exec nimbus -- /opt/apache-storm/bin/storm kill Stats_SQL_Topology_SYS
 #kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
 
@@ -16,10 +17,10 @@ sleep 120
 
 #4
 delay="600"
-scale=0.01
+scale=0.05
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale StaircaseRandom
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_taxi.sh $scale Dynamic
 sleep 120
 #sleep $delay 
 #sleep $delay 
@@ -64,7 +65,6 @@ python3 copy_message.py ETL
 #11python3 copy_message.py Predict
 #11python3 copy_message.py Stats 
 
-kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopology-sys
 sleep 10
 #kubectl exec nimbus -- /opt/apache-storm/bin/storm kill Stats_SQL_Topology_SYS
 sleep 10

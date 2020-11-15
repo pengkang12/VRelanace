@@ -31,16 +31,13 @@ def bo_function(app_info, app_name, app_cpu_limit):
     #use x to update the container, and read new tail latency. 
     ret_y = app_info[app_name]["latency"] - helper.threshold[app_name]
     
-    is_violate_target = False
-    
     #return ret_y, is_violate_target
-    is_violate_target = True
-    if ret_y > 0:
+    if app_info[app_name]["latency"] > helper.threshold[app_name]:
         # violate target
-        ret_val = max(0, ret_y+100) * sum(app_cpu_limit)/50
+        ret_val = app_info[app_name]["latency"] * sum(app_cpu_limit)/50
     else:
-        ret_val = (100-ret_y)*sum(app_cpu_limit)/50
-    return int(ret_val), is_violate_target
+        ret_val = (helper.threshold[app_name]- app_info[app_name]["latency"])*sum(app_cpu_limit)/50
+    return int(ret_val)
  
 
 def ask_model(opt, capacity, history_cpu, history_latency):
@@ -115,7 +112,7 @@ def choose_category(throughput):
     return category
 
 
-def get_bo_model(app_name, throughput):
+def get_bo_model(app_name, throughput, container_number):
 
     category = choose_category(throughput)
 
@@ -123,7 +120,7 @@ def get_bo_model(app_name, throughput):
  
     if os.path.exists(model_file) == False:
         restriction=[]
-        for j in range(3):
+        for j in range(container_number):
             start = 3
             # leave minimum CPU for other app and container
             end = int(RE_QUOTA) - 3*start*len(helper.threshold.keys()) + 2
@@ -146,6 +143,8 @@ def get_bo_model(app_name, throughput):
                                    n_restarts_optimizer=2)
     
         opt = Optimizer(restriction, n_initial_points=1, acq_optimizer="sampling", base_estimator=gpr)
+        category = choose_category(throughput)
+        skopt_utils.dump(opt, model_filename+app_name+str(category))
         print("initialize model {}".format(app_name))
     else:
         opt = skopt_utils.load(model_file)
@@ -157,9 +156,9 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
     # when we first time use model
     opt = None
     throughput = app_info[app_name]["throughput"]
-    opt = get_bo_model(app_name, throughput)    
+    opt = get_bo_model(app_name, throughput, len(app_info[app_name]['container_loc']))    
  
-    y, is_violate_target= bo_function(app_info, app_name, app_cpu_limit)
+    y = bo_function(app_info, app_name, app_cpu_limit)
  
     next_x = [ int(val/50)for val in app_cpu_limit]
     res  = opt.tell(next_x, y)
@@ -179,8 +178,9 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
         next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
         print("next acquistion function ", next_acq)
 
-    if is_violate_target == True:
-       # save the model
+    #if app_info[app_name]["latency"] > helper.threshold[app_name]:
+    if True:
+        # save the model
         suggest = ask_model(opt, app_info[app_name]['capacity'], history_cpu, latency)
 
         suggest = helper.normalized(suggest)
@@ -239,13 +239,14 @@ def system_control():
         app_name = key
         value = app_info[key]
         location = value["container_loc"]
+
+        opt = get_bo_model(app_name, app_info[app_name]["throughput"], len(location))    
+
         history_cpu = helper.read_history_data(app_name) 
         app_cpu_limit = history_cpu[-1].copy()    
         previous_cpu_limit += app_cpu_limit
  
-        opt = get_bo_model(app_name, app_info[app_name]["throughput"])    
- 
-        y, is_violate_target= bo_function(app_info, app_name, app_cpu_limit)
+        y = bo_function(app_info, app_name, app_cpu_limit)
         print(history_cpu) 
         next_x = [ int(val/50)for val in app_cpu_limit]
         res  = opt.tell(next_x, y)
@@ -264,14 +265,14 @@ def system_control():
             next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
             print("next acquistion function ", next_acq)
         min_iters = None
-        min_vals = 65536*4000
+        min_vals = 65536*40000
  
-        if len(res.func_vals) < 10  or (len(res.func_vals < 15) and is_workload_changed(throughput[app_name])):
+        if len(res.func_vals) < 10  or (len(res.func_vals) < 15 and is_workload_changed(throughput[app_name])):
             print("start phase or workload changed")
             pass
         else:
             for i in range(len(res.func_vals)):
-                if res.func_vals[i] > 100*sum(res.x_iters[i]) and min_vals > res.func_vals[i]:
+                if res.func_vals[i] < helper.threshold[app_name]*sum(res.x_iters[i]) and min_vals > res.func_vals[i]:
                     min_vals = res.func_vals[i]
                     min_iters = res.x_iters[i]
          
