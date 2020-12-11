@@ -12,9 +12,9 @@ import os
 import sys
 import json
 import warnings
+import subprocess
 if not sys.warnoptions:
     warnings.simplefilter("ignore")
-
 
 model_file = "/tmp/skopt_model_"
 best_conf_file = "/tmp/bo_best_conf_"
@@ -22,7 +22,9 @@ cpu_limit_filename="/tmp/bo_cpulimit.txt"
 history_cpu_filename="/tmp/bo_history_"
 threshold = {
     "ETLTopologySys": 100,
+    "ETLTopologyTaxi": 150,
     "IoTPredictionTopologySYS" : 100, 
+    "IoTPredictionTopologyTAXI" : 100, 
 }
 threshold_range = 25
 QUOTA = 4000
@@ -30,10 +32,18 @@ QUOTA = 4000
 app_name = threshold.keys()
 
 def change_cpu(kubename="test", quota=40000, hostname="kube-slave1"):
-    os.system("ssh -t -t {0} 'echo syscloud | sudo -S bash cpu.sh {1} {2}' 2>&1".format(hostname, kubename, quota))
+    #os.system("ssh -t -t {0} 'echo syscloud | sudo -S bash cpu.sh {1} {2}' 2>&1".format(hostname, kubename, quota))
+    cmd = "ssh -t -t {0} 'echo syscloud | sudo -S bash cpu.sh {1} {2}' 2>&1".format(hostname, kubename, quota)
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    #output = ps.communicate()[0]
+    #print(output)
 
 def get_cpu_info(kubename="test", quota=40000, hostname="kube-slave1"):
-    os.system("ssh -t -t {0} 'echo syscloud | sudo -S bash cpu_info.sh {1} {2}'".format(hostname, kubename, quota))
+    #os.system("ssh -t -t {0} 'echo syscloud | sudo -S bash cpu_info.sh {1} {2}'".format(hostname, kubename, quota))
+    cmd = "ssh -t -t {0} 'echo syscloud | sudo -S bash cpu_info.sh {1} {2}'".format(hostname, kubename, quota)
+    ps = subprocess.Popen(cmd,shell=True,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+    output = ps.communicate()[0]
+    print(output)
     pass
 
 def check_cpu(arr):
@@ -48,13 +58,18 @@ def normalized(a):
 
     total = sum(a)
     if total > QUOTA:
-        total += 50*len(a)
+        #total += 50*len(a)
         a = [int((QUOTA/total)*val) for val in a]
-        print(sum(a)) 
+        i = 0
+        while(sum(a) < QUOTA-50):
+            a[i] += 50
+        print("normalized, ", sum(a)) 
     for v in a:
-        t = int(v/50 + 0.5)*50
+        t = int(v/50)*50
+        end = QUOTA - (3*3*len(threshold.keys()) - 2) * 50
+
         if t >= QUOTA:
-            t = QUOTA 
+            t = end 
         if t <= 150:
             t = 150
 
@@ -81,8 +96,10 @@ def read_measured_data(app_info, keys):
     if os.path.exists(cpu_limit_filename) == False:
         cpu = []
         for key in threshold.keys():
-            cpu += [400, 400, 400]
-            write_history_data([400, 400, 400], key)
+            container_number = len(app_info[key]["container_loc"])
+            initial_cpu = [400 for i in range(container_number)]
+            cpu += initial_cpu 
+            write_history_data(initial_cpu, key)
         history_cpu.append(cpu)
         write_cpu_limit_file(cpu)
     history_cpu = []
@@ -127,6 +144,7 @@ def read_container_info():
     for key in sorted(app_info.keys()):
         value = app_info[key]
         location = []
+        print(value, key)
         for key1 in sorted(value["cpu_usage"].keys()):
             keys.append(key1)
             location += loc,
@@ -156,15 +174,43 @@ def read_best_configuration(app_name, throughput, length):
                 return [ int(val) for val in word[1:]] 
     return ret
 
+def compare_best_configuration(app_name, throughput, recommend_conf):
+    ret = {}
+    if os.path.exists(best_conf_file+app_name) == False:
+        with open(best_conf_file+app_name, "w+") as f:
+            pass
+
+    with open(best_conf_file+app_name) as f:
+        for line in f:
+            word = line.split(",") 
+            ret[word[0]] = word[1:]
+    throughput = int(throughput/1000)
+    #greedy algorithm. Make sure we didn't allocate very small cpu to a huge throughput.  
+    for key in ret.keys():   
+        if int(key) < throughput:
+            for i in range(len(recommend_conf)):
+                if int(recommend_conf[i]) < int(ret[key][i]):
+                    recommend_conf[i] = int(ret[key][i])
+    print("recommend conf ", recommend_conf)
+    return recommend_conf 
+
 def write_best_configuration(app_name, throughput, conf):
-    ret = None
-    with open(best_conf_file+app_name, "a") as f:
-        f.write("{},{}\n".format(str(throughput), ",".join([str(val) for val in conf])))
+    ret = {}
+    if os.path.exists(best_conf_file+app_name) == False:
+        with open(best_conf_file+app_name, "w+") as f:
+            pass
+    with open(best_conf_file+app_name) as f:
+        for line in f:
+            word = line.split(",") 
+            ret[word[0]] = word[1:]
+    throughput = str(int(throughput/1000))
+    if len(ret) == 0 or throughput  not in ret:
+        with open(best_conf_file+app_name, "a") as f:
+            f.write("{},{}\n".format(throughput, ",".join([str(val) for val in conf])))
     with open(history_cpu_filename+app_name, "w+") as f:
         pass
-    #if os.path.exists(model_file+app_name) == True:
-    #    os.system("rm {}".format(model_file+app_name))
-
+    write_history_data(conf, app_name)
+ 
 def write_window_file(current_window, window, filename):
     with open("/tmp/window_{}.txt".format(filename), "w") as f1:
         f1.write("{},{}".format(str(current_window), str(window)))
@@ -180,3 +226,6 @@ def read_window_file(filename):
     if line == None:
         write_window_file(current_window, window, filename)     
     return int(current_window), int(window)
+
+#get_cpu_info("storm-ui")
+#change_cpu("storm-ui", "20000")

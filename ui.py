@@ -65,7 +65,10 @@ def calculate_latency(appName="ETLTopologySys"):
         throughput = sum(latency_bucket)
         for i in range(len(bucket)):
             count += latency_bucket[i]
-            latency_ratio.append(count*1.0/throughput)
+            if throughput > 0:
+                latency_ratio.append(count*1.0/throughput)
+            else:
+                latency_ratio.append(1)
         for i in range(len(bucket)):
             if latency_ratio[i] >= 0.95:
                 break
@@ -73,6 +76,8 @@ def calculate_latency(appName="ETLTopologySys"):
         #print(i, bucket[i],bucket[i+1], latency_ratio[i-1], latency_ratio[i])
         if i >= 16:
             tail_latency = 65536
+            if throughput == 0:
+                tail_latency = 0
         else:
             tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
         #print(bucket)
@@ -140,9 +145,6 @@ def statistic_info(app_id):
                 cpu[words[0]] = []
             cpu[words[0]] += int(words[1][:-1]),
    
-    
-    #os.system("python collect_container_cpu.py &")
-   
     # calculate cpu usage for application's worker .
     app_cpu = {}
     capacity_ratio = {}
@@ -168,8 +170,8 @@ def statistic_info(app_id):
         """
         #cpu[each['host']].sort()
         #print(cpu[each['host']])
-        #app_cpu[each['host']] = sum(cpu[each['host']])/len(cpu[each['host']])
-        app_cpu[each['host']] = max(max(cpu[each['host']]), 100)
+        app_cpu[each['host']] = int(sum(cpu[each['host']])/len(cpu[each['host']]))
+        #app_cpu[each['host']] = max(max(cpu[each['host']]), 100)
 #
 #[int(len(cpu[each['host']])*0.9)]
 

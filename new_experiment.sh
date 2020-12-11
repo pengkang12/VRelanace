@@ -4,23 +4,31 @@ kubectl cordon kube-slave2
 sleep 15
 kubectl create -f ~/storm-peng/kube-storm/storm-worker-controller.json
 sleep 60
-kubectl uncordon kube-slave2
+#kubectl uncordon kube-slave2
 sleep 30
 bash ~/storm-peng/kube-storm/change_worker_hosts.sh
 
 kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologyTaxi
-#kubectl exec nimbus -- /opt/apache-storm/bin/storm kill Stats_SQL_Topology_SYS
-#kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
+kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
+kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
+kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologyTAXI
+sleep 30
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh 0.1
+kubectl exec nimbus -- /opt/apache-storm/bin/storm rebalance ETLTopologySys -n 2
 
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_PREDICT_sys.sh 0.08
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_PREDICT_taxi.sh 0.01
 
 sleep 120
 
 #4
 delay="600"
-scale=0.05
+scale=0.01
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
 kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_taxi.sh $scale Dynamic
+kubectl exec nimbus -- /opt/apache-storm/bin/storm rebalance ETLTopologySys -n 3
+
 sleep 120
 #sleep $delay 
 #sleep $delay 
