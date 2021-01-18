@@ -13,7 +13,7 @@ kubectl exec nimbus -- /opt/apache-storm/bin/storm kill ETLTopologySys
 kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologySYS
 kubectl exec nimbus -- /opt/apache-storm/bin/storm kill IoTPredictionTopologyTAXI
 sleep 30
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh 0.1
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh 0.1 Stable
 kubectl exec nimbus -- /opt/apache-storm/bin/storm rebalance ETLTopologySys -n 2
 
 kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_PREDICT_sys.sh 0.08
@@ -26,18 +26,18 @@ delay="600"
 scale=0.01
 fileDir="test_redis_latency"+$scale
 #kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_sys.sh $scale Stable
-kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_taxi.sh $scale Dynamic
-kubectl exec nimbus -- /opt/apache-storm/bin/storm rebalance ETLTopologySys -n 3
+kubectl exec nimbus -- /bin/bash /opt/apache-storm/riot-bench/scripts/run_ETL_taxi.sh $scale Stable
+#kubectl exec nimbus -- /opt/apache-storm/bin/storm rebalance ETLTopologySys -n 3
 
 sleep 120
 #sleep $delay 
 #sleep $delay 
 #
 # for bayasian optimization
-bash schedule_control.sh > data/control_${scale}.log &
+# bash schedule_control.sh > /tmp/control.log &
 # for hill climb algorithm
-#bash schedule_hillclimb.sh > data/contro_hillclimb_${scale}.log &
-#bash schedule_rebalance.sh > data/control_${scale}_rebalance.log &
+bash schedule_hillclimb.sh > data/contro_hillclimb.log &
+#bash schedule_rebalance.sh > data/control_rebalance.log &
 
 exit
 

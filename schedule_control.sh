@@ -13,17 +13,22 @@ bash script/redis-data.sh
 
 python collect_container_cpu.py &
 sleep 120
-for i in {1..361}
+for i in {1..16}
 do
 python collect_container_cpu.py &
-python ui.py ETLTopologySys &
-python ui.py IoTPredictionTopologySYS &
-python ui.py IoTPredictionTopologyTAXI &
-python ui.py ETLTopologyTaxi &
+#python ui.py ETLTopologySys  &
+#python ui.py IoTPredictionTopologySYS & 
+#python ui.py IoTPredictionTopologyTAXI &
+#python ui.py ETLTopologyTaxi &
+
+nohup /usr/bin/time -f "%P %M" python ui.py ETLTopologySys  &
+nohup /usr/bin/time -f "%P %M"  python ui.py IoTPredictionTopologySYS & 
+nohup /usr/bin/time -f "%P %M" python ui.py IoTPredictionTopologyTAXI &
+nohup /usr/bin/time -f "%P %M" python ui.py ETLTopologyTaxi &
 
 sleep 45
-python BO/bayesian_optimization.py >> /tmp/bo.log
-#python BO/no_bayesian_optimization.py >> /tmp/bo.log
+#nohup /usr/bin/time -f "%P %M"  python BO/bayesian_optimization.py >> /tmp/bo.log & 
+python BO/bayesian_optimization.py >> /tmp/bo.log &
 sleep 75
 done
 

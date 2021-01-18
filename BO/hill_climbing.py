@@ -16,9 +16,8 @@ if not sys.warnoptions:
 import helper
 
 
-app_info, keys = helper.read_container_info()
-last_cpu_limit, measured = helper.read_measured_data(app_info, keys)
-
+app_info, keys, latency, throughput = helper.read_container_info()
+last_cpu_limit, measured = helper.read_measured_data2(app_info, keys)
 
 ret_y = 0
 for key, value in app_info.items():
@@ -28,16 +27,32 @@ for key, value in app_info.items():
 if ret_y > 0:
     #increase cpu
     for key, value in app_info.items():
+        break
         if value['latency'] - helper.threshold[key] > 0:
             location = value["container_loc"]
             max_ratio = max([measured[loc]/last_cpu_limit[loc] for loc in location])
             for loc in location:
                 if abs(measured[loc]/last_cpu_limit[loc] - max_ratio) <= 0.01:
                     break
-            last_cpu_limit[loc] += 50
-            print("increase CPU since violation tail-latency")
-            helper.change_cpu(keys[loc], last_cpu_limit[loc]*100)
+
+            if sum(last_cpu_limit) + 200 < 4000:
+                last_cpu_limit[loc] += 200
+                print("increase CPU since violation tail-latency")
+                helper.change_cpu(keys[loc], last_cpu_limit[loc]*100)
+            else:
+                # borrow cpu from other application.
+                min_ratio = min([measured[i]-last_cpu_limit[i] for i in range(len(last_cpu_limit))])
+                for i in range(len(last_cpu_limit)):
+                    if (measured[i]-last_cpu_limit[i] ) == min_ratio:
+                        break
+                if last_cpu_limit[i] - 200 > 100:
+                    last_cpu_limit[i] -= 200
+                    helper.change_cpu(keys[i], last_cpu_limit[i]*100)
+                    last_cpu_limit[loc] += 200
+                    print("borrow cpu and increase CPU since violation tail-latency")
+                    helper.change_cpu(keys[loc], last_cpu_limit[loc]*100)
             print("new cpu limit ", last_cpu_limit)
+            break
 else:
     #decrease cpu
     print("try to decrease CPU to minimize CPU limit")
@@ -47,8 +62,9 @@ else:
         for i in range(len(last_cpu_limit)):
             if (measured[i]-last_cpu_limit[i] ) == min_ratio:
                 break
-        last_cpu_limit[i] -= 50
-        helper.change_cpu(keys[i], last_cpu_limit[i]*100)
+        if last_cpu_limit[i] - 200 > 100:
+            last_cpu_limit[i] -= 200
+            helper.change_cpu(keys[i], last_cpu_limit[i]*100)
         print("new cpu limit ", last_cpu_limit)
     else:
         print("find local best optimal point")

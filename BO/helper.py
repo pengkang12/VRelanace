@@ -90,6 +90,16 @@ def write_history_data(last_cpu_limit, name):
     with open(history_cpu_filename+name, 'a') as f2:
         f2.write(",".join([str(i) for i in last_cpu_limit])+"\n")
 
+def read_last_cpu_limit():
+    cpu_limit = []
+    with open(cpu_limit_filename) as f1:
+        line = None
+        for line in f1:
+            cpu = line.split(",")
+            history_cpu.append([int(i) for i in cpu])
+    # peng's method
+    return cpu_limit 
+
 
 def read_measured_data(app_info, keys):
     history_cpu = []
@@ -117,6 +127,32 @@ def read_measured_data(app_info, keys):
                 measured.append(value['cpu_usage'][key])
     #print("last cpu limit {}, measured cpu {}, ratio is {}".format(history_cpu, measured, sum(measured)/sum(history_cpu[-1])))
     return measured
+
+def read_measured_data2(app_info, keys):
+    history_cpu = []
+    if os.path.exists(cpu_limit_filename) == False:
+        cpu = []
+        for key in threshold.keys():
+            container_number = len(app_info[key]["container_loc"])
+            initial_cpu = [400 for i in range(container_number)]
+            cpu += initial_cpu 
+            write_history_data(initial_cpu, key)
+        history_cpu.append(cpu)
+        write_cpu_limit_file(cpu)
+    history_cpu = []
+    with open(cpu_limit_filename) as f1:
+        line = None
+        for line in f1:
+            cpu = line.split(",")
+            history_cpu.append([int(i) for i in cpu])
+    # peng's method
+    measured = [] 
+    for key in keys:
+        for value in app_info.values():
+            if key in value["cpu_usage"]:
+                measured.append(value['cpu_usage'][key])
+    return history_cpu[-1], measured
+
 
 def read_container_info():
     app_info = {}

@@ -39,20 +39,41 @@ def calculate_latency(appName="ETLTopologySys"):
         # for test 
         #timestamp = 1595026134
         #print(msgs_all)
+        start = timeit.default_timer()
+
         p = r.pipeline()
-        for i in range(60):
+        for i in range(0, 60):
             p.keys(appName+"_"+str(timestamp+i)+"*")
+
+        stop = timeit.default_timer()
+
+        print('EACH10 program Time: ', stop - start)
+        start = timeit.default_timer()
+
         results = p.execute()
         for result in results:
             msgs += result
         #print(msgs)
         #print("msg length is ", len(msgs))
         # use pipeline to improve redis effiency. 
+        stop = timeit.default_timer()
+
+        print('EACH11 program Time: ', stop - start)
+        start = timeit.default_timer()
+
+
+
+
         sink = r.hgetall(appName+"_sink")
+        stop = timeit.default_timer()
+
+        print('EACH1 program Time: ', stop - start)
+        start = timeit.default_timer()
+
         #latency = []
         latency_bucket = [ 0 for i in range(len(bucket))]
         tail_latency = 65536
-        for i in range(len(msgs)):
+        for i in range(0, len(msgs), 10):
             word = msgs[i].split("_") 
             if word[3] in sink:
                 new_latency = int(sink[word[3]])-int(word[1])
@@ -60,6 +81,13 @@ def calculate_latency(appName="ETLTopologySys"):
                 latency_bucket[index] += 1 
                 #latency += new_latency,
         #print(latency_bucket)
+        stop = timeit.default_timer()
+
+        print('EACH2 program Time: ', stop - start)
+
+        start = timeit.default_timer()
+
+
         latency_ratio = []
         count = 0
         throughput = sum(latency_bucket)
@@ -82,13 +110,17 @@ def calculate_latency(appName="ETLTopologySys"):
             tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
         #print(bucket)
         print(len(msgs), tail_latency)
+        stop = timeit.default_timer()
+
+        print('EACH3 program Time: ', stop - start)
+
+        start = timeit.default_timer()
+
         """ 
         if len(latency) > 0:
             latency = sorted(latency)
             tail_latency = latency[int(len(latency)*0.95)-2]
             print(len(msgs), len(latency), tail_latency, latency[int(len(latency)*0.9)])
-         
-     
         #delete redis data 
         timestamp -= 120
         msgs=[]
@@ -104,7 +136,10 @@ def calculate_latency(appName="ETLTopologySys"):
         """ 
         keys = r.keys(appName+"_*")
         r.delete(*keys)
+        stop = timeit.default_timer()
 
+        print('EACH4 program Time: ', stop - start)
+     
     except Exception as e:
         print(e)
     return tail_latency, throughput
@@ -203,7 +238,7 @@ def statistic_info(app_id):
         #print("window {0} emitted {1} transferred {2} acked {3}".format(600, 0, 0, 0))
         pass 
     for each in data['spouts']: 
-        print("spouts emmited {0}".format(each['emitted']))
+        print("{0} spouts emmited {1}".format(app_id, each['emitted']))
  
     print("{0} total capacity is {1}".format(app_id, total_capacity))
 
@@ -230,3 +265,5 @@ if app == "IoT":
 stop = timeit.default_timer()
 
 print('End program Time: ', stop - start)  
+
+
