@@ -68,7 +68,7 @@ def normalized(a):
         t = int(v/50)*50
         end = QUOTA - (3*3*len(threshold.keys()) - 2) * 50
 
-        if t >= QUOTA:
+        if t >= end:
             t = end 
         if t <= 150:
             t = 150
