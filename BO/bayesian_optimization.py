@@ -38,7 +38,7 @@ def bo_function(app_info, app_name, app_cpu_limit):
         ret_val = app_info[app_name]["latency"] * sum(app_cpu_limit)/50
     else:
         ret_val = (helper.threshold[app_name]- app_info[app_name]["latency"])*sum(app_cpu_limit)/50
-    return int(ret_val) + throughput
+    return int(ret_val)
  
 
 def ask_model(opt, capacity, history_cpu, history_latency):

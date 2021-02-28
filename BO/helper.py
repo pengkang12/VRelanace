@@ -22,9 +22,9 @@ cpu_limit_filename="/tmp/bo_cpulimit.txt"
 history_cpu_filename="/tmp/bo_history_"
 threshold = {
     "ETLTopologySys": 100,
-    "ETLTopologyTaxi": 150,
+#    "ETLTopologyTaxi": 150,
     "IoTPredictionTopologySYS" : 100, 
-    "IoTPredictionTopologyTAXI" : 100, 
+#    "IoTPredictionTopologyTAXI" : 100, 
 }
 threshold_range = 25
 QUOTA = 4000

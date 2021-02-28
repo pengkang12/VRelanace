@@ -20,6 +20,7 @@ latency = {}
 throughput = {}
 cpu={}
 measured_cpu={}
+measured_memory={}
 location = {}
 input_filename = "/tmp/latency.log"
 app_name = helper.threshold.keys()
@@ -30,6 +31,7 @@ for name in app_name:
     cpu[name] = []
     measured_cpu[name] = []
     location[name] = []
+    measured_memory[name] = []
 with open(input_filename) as f:
     for line in f:
         try:
@@ -44,9 +46,9 @@ with open(input_filename) as f:
                 latency[name] += int(info[name]['latency']),
             cpu[name] += info[name]['cpu_usage'],
             measured_cpu[name] += sum(info[name]['cpu_usage'].values()),
+            measured_memory[name] +=  sum(info[name]['memory_usage'].values()),
 
 for name in app_name:
-    print("latency{0} = {1}\nthroughput{0} = {2}\nmeasured_cpu{0} = {3}".format(name,latency[name], throughput[name], measured_cpu[name]))
+    print("latency{0} = {1}\nthroughput{0} = {2}\nmeasured_cpu{0} = {3}\nmeasured_memory{0} = {4}".format(name,latency[name], throughput[name], measured_cpu[name], measured_memory[name]))
 print("#*************************************************************************************************************")
-
 

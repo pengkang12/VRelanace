@@ -32,65 +32,50 @@ def calculate_latency(appName="ETLTopologySys"):
     tail_latency = 0
     try:
         r = redis.StrictRedis(host=redis_host, port=redis_port, password=redis_password, decode_responses=True)
-        msgs = []
 
         # calculate latency for 1 minute.
-        timestamp = int(time.time() - 59)
-        # for test 
+        timestamp = int(time.time() - 59) * 1000
         #timestamp = 1595026134
-        #print(msgs_all)
-        start = timeit.default_timer()
-
-        p = r.pipeline()
-        for i in range(0, 60):
-            p.keys(appName+"_"+str(timestamp+i)+"*")
-
-        stop = timeit.default_timer()
-
-        print('EACH10 program Time: ', stop - start)
-        start = timeit.default_timer()
-
-        results = p.execute()
-        for result in results:
-            msgs += result
-        #print(msgs)
-        #print("msg length is ", len(msgs))
+        #start = timeit.default_timer()
+        msgs = []
+        spout = r.hgetall(appName+"_spout")
+        print(len(spout))
+        #stop = timeit.default_timer()
+        #print('EACH10 program Time: ', stop - start)
+        #start = timeit.default_timer()
+        #print("spout ", spout, timestamp)
+        for key, value in spout.items():
+            current = int(value)
+            if current >= timestamp and current < timestamp + 59000:
+                 msgs.append([key, value])
+        #stop = timeit.default_timer()
+        #print('EACH11 program Time: ', stop - start)
+        #start = timeit.default_timer()
         # use pipeline to improve redis effiency. 
-        stop = timeit.default_timer()
-
-        print('EACH11 program Time: ', stop - start)
-        start = timeit.default_timer()
-
-
-
-
         sink = r.hgetall(appName+"_sink")
-        stop = timeit.default_timer()
-
-        print('EACH1 program Time: ', stop - start)
-        start = timeit.default_timer()
-
+        print(len(sink), len(msgs))
+        #stop = timeit.default_timer()
+        #print('EACH1 program Time: ', stop - start)
+        #start = timeit.default_timer()
         #latency = []
         latency_bucket = [ 0 for i in range(len(bucket))]
         tail_latency = 65536
-        for i in range(0, len(msgs), 10):
-            word = msgs[i].split("_") 
-            if word[3] in sink:
-                new_latency = int(sink[word[3]])-int(word[1])
+        for i in range(0, len(msgs)):
+            word = msgs[i][0].split("_")
+            if word[1] in sink:
+                new_latency = int(sink[word[1]])-int(msgs[i][1])
                 index = get_power(new_latency)
                 latency_bucket[index] += 1 
                 #latency += new_latency,
         #print(latency_bucket)
-        stop = timeit.default_timer()
-
-        print('EACH2 program Time: ', stop - start)
-
-        start = timeit.default_timer()
+        #stop = timeit.default_timer()
+        #print('EACH2 program Time: ', stop - start)
+        #start = timeit.default_timer()
 
 
         latency_ratio = []
         count = 0
-        throughput = sum(latency_bucket)
+        throughput = len(msgs)
         for i in range(len(bucket)):
             count += latency_bucket[i]
             if throughput > 0:
@@ -110,12 +95,9 @@ def calculate_latency(appName="ETLTopologySys"):
             tail_latency = bucket[i] + (bucket[i+1] - bucket[i])*(0.95 - latency_ratio[i-1])/(latency_ratio[i] - latency_ratio[i-1])
         #print(bucket)
         print(len(msgs), tail_latency)
-        stop = timeit.default_timer()
-
-        print('EACH3 program Time: ', stop - start)
-
-        start = timeit.default_timer()
-
+        #stop = timeit.default_timer()
+        #print('EACH3 program Time: ', stop - start)
+        #start = timeit.default_timer()
         """ 
         if len(latency) > 0:
             latency = sorted(latency)
@@ -136,9 +118,8 @@ def calculate_latency(appName="ETLTopologySys"):
         """ 
         keys = r.keys(appName+"_*")
         r.delete(*keys)
-        stop = timeit.default_timer()
-
-        print('EACH4 program Time: ', stop - start)
+        #stop = timeit.default_timer()
+        #print('EACH4 program Time: ', stop - start)
      
     except Exception as e:
         print(e)
@@ -167,6 +148,7 @@ def statistic_info(app_id):
     #print("{0}".format(data['bolts']))
     #collect container cpu usage for each minute. we should calculate cpu usage, then run collect_container_cpu.py to produce new data for next minute. 
     cpu = {}
+    memory = {}
     count = 0
     with open("/tmp/kube-cpu.txt") as f:
         for line in f:
@@ -178,10 +160,15 @@ def statistic_info(app_id):
             #cpu[words[0]] = cpu.get(words[0], 0) + int(words[1][:-1])
             if words[0] not in cpu:
                 cpu[words[0]] = []
+            if words[0] not in memory:
+                memory[words[0]] = []
+            
             cpu[words[0]] += int(words[1][:-1]),
+            memory[words[0]] += int(words[2][:-2]),
    
     # calculate cpu usage for application's worker .
     app_cpu = {}
+    app_memory = {}
     capacity_ratio = {}
     for each in data['workers']:
         capacity = 0
@@ -206,9 +193,7 @@ def statistic_info(app_id):
         #cpu[each['host']].sort()
         #print(cpu[each['host']])
         app_cpu[each['host']] = int(sum(cpu[each['host']])/len(cpu[each['host']]))
-        #app_cpu[each['host']] = max(max(cpu[each['host']]), 100)
-#
-#[int(len(cpu[each['host']])*0.9)]
+        app_memory[each['host']] = int(sum(memory[each['host']])/len(memory[each['host']]))
 
     print("The name of application is {0}, count is {1}".format(data['name'], count))
     #for key in app_cpu.keys():
@@ -216,6 +201,7 @@ def statistic_info(app_id):
       
     result['latency'], result['throughput'] = calculate_latency(data['name'])
     result['cpu_usage'] = app_cpu
+    result['memory_usage'] = app_memory
     result['capacity'] = capacity_ratio
  
     with open('/tmp/skopt_input_{0}.txt'.format(data['name']), 'a+') as f: 
@@ -253,7 +239,7 @@ def getTopologySummary():
 print("start program --------------------------")
 import timeit
 
-start = timeit.default_timer()
+start1 = timeit.default_timer()
 
 
 getTopologySummary()
@@ -262,8 +248,8 @@ if app == "IoT":
     #os.system("python BO/bayesian_optimization.py >> /tmp/bo.log")
     pass
 
-stop = timeit.default_timer()
+stop1 = timeit.default_timer()
 
-print('End program Time: ', stop - start)  
+print('End program Time: ', stop1 - start1)  
 
 

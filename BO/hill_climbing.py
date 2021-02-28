@@ -27,7 +27,6 @@ for key, value in app_info.items():
 if ret_y > 0:
     #increase cpu
     for key, value in app_info.items():
-        break
         if value['latency'] - helper.threshold[key] > 0:
             location = value["container_loc"]
             max_ratio = max([measured[loc]/last_cpu_limit[loc] for loc in location])
@@ -35,8 +34,8 @@ if ret_y > 0:
                 if abs(measured[loc]/last_cpu_limit[loc] - max_ratio) <= 0.01:
                     break
 
-            if sum(last_cpu_limit) + 200 < 4000:
-                last_cpu_limit[loc] += 200
+            if sum(last_cpu_limit) + 50 < 4000:
+                last_cpu_limit[loc] += 50
                 print("increase CPU since violation tail-latency")
                 helper.change_cpu(keys[loc], last_cpu_limit[loc]*100)
             else:
@@ -45,10 +44,10 @@ if ret_y > 0:
                 for i in range(len(last_cpu_limit)):
                     if (measured[i]-last_cpu_limit[i] ) == min_ratio:
                         break
-                if last_cpu_limit[i] - 200 > 100:
-                    last_cpu_limit[i] -= 200
+                if last_cpu_limit[i] - 50 > 100:
+                    last_cpu_limit[i] -= 50
                     helper.change_cpu(keys[i], last_cpu_limit[i]*100)
-                    last_cpu_limit[loc] += 200
+                    last_cpu_limit[loc] += 50
                     print("borrow cpu and increase CPU since violation tail-latency")
                     helper.change_cpu(keys[loc], last_cpu_limit[loc]*100)
             print("new cpu limit ", last_cpu_limit)
@@ -62,8 +61,8 @@ else:
         for i in range(len(last_cpu_limit)):
             if (measured[i]-last_cpu_limit[i] ) == min_ratio:
                 break
-        if last_cpu_limit[i] - 200 > 100:
-            last_cpu_limit[i] -= 200
+        if last_cpu_limit[i] - 50 > 100:
+            last_cpu_limit[i] -= 50
             helper.change_cpu(keys[i], last_cpu_limit[i]*100)
         print("new cpu limit ", last_cpu_limit)
     else:
