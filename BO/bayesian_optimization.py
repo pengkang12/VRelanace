@@ -7,6 +7,7 @@ from skopt.learning.gaussian_process.kernels import ConstantKernel, Matern
 from sklearn.gaussian_process.kernels import (RBF, Matern, RationalQuadratic,
                                               ExpSineSquared, DotProduct,
                                               ConstantKernel)
+import math
 import skopt.utils as skopt_utils
 import numpy as np
 import os
@@ -27,7 +28,9 @@ window = 15
 
 def bo_function(app_info, app_name, app_cpu_limit):
     t = [] # measured tail latency 
-    throughput = int(app_info[app_name]["throughput"]/1000)/100.0
+    if app_info[app_name]["throughput"] == 0:
+        app_info[app_name]["throughput"] = 1
+    throughput = app_info[app_name]["throughput"]/100000.0
     motivation = [] # we need to allocate more cpu or less cpu for different application.
     #use x to update the container, and read new tail latency. 
     ret_y = app_info[app_name]["latency"] - helper.threshold[app_name]
@@ -38,6 +41,7 @@ def bo_function(app_info, app_name, app_cpu_limit):
         ret_val = app_info[app_name]["latency"] * sum(app_cpu_limit)/50
     else:
         ret_val = (helper.threshold[app_name]- app_info[app_name]["latency"])*sum(app_cpu_limit)/50
+    print(int(ret_val)+throughput, throughput)
     return int(ret_val)
  
 
@@ -103,21 +107,25 @@ def ask_model(opt, capacity, history_cpu, history_latency):
     return suggested 
 
 def choose_category(throughput):
-    category = 8
+    category = 10
     if throughput < 20000:
         category = 1
-    elif throughput < 45000:
+    elif throughput < 35000:
         category = 2 
-    elif throughput < 55000:
+    elif throughput < 45000:
         category = 3 
-    elif throughput < 65000:
+    elif throughput < 55000:
         category = 4 
+    elif throughput < 65000:
+        category = 5 
     elif throughput < 75000:
-        category = 5
+        category = 6 
     elif throughput < 85000:
-        category = 6
-    elif throughput < 90000:
         category = 7
+    elif throughput < 95000:
+        category = 8
+    elif throughput < 100000:
+        category = 9
     return category
 
 
@@ -147,7 +155,7 @@ def get_bo_model(app_name, throughput, container_number):
            ConstantKernel(0.1, (0.01, 10.0)) * (DotProduct(sigma_0=1.0, sigma_0_bounds=(0.1, 10.0)) ** 2),
            1.0 * Matern(length_scale=1.0, length_scale_bounds=(1e-1, 10.0), nu=2.5)]
      
-        gpr = GaussianProcessRegressor(kernel=kernels[1], alpha=noise_level ** 2,
+        gpr = GaussianProcessRegressor(kernel=kernels[-1], alpha=noise_level ** 2,
                                    normalize_y=True, noise="gaussian",
                                    n_restarts_optimizer=2)
     
@@ -157,7 +165,7 @@ def get_bo_model(app_name, throughput, container_number):
         print("initialize model {}".format(app_name))
     else:
         opt = skopt_utils.load(model_file)
-        print("read model for {}".format(app_name))
+        print("read model for {}".format(model_file))
     return opt             
    
 def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_list, latency, history_cpu): 
@@ -171,21 +179,21 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
  
     next_x = [ int(val/50)for val in app_cpu_limit]
     res  = opt.tell(next_x, y)
-    print("acquisition function ", res.x_iters, res.func_vals)    
+    print("bo function ", res.x_iters, res.func_vals.tolist())    
 
     #print("acquisition function ------", res)    
-    if len(history_cpu) >= 5 and res and len(res.models) > 1:
+    if res and len(res.models) > 5:
         # acquisition 
         gp = res.models[-1]
         curr_x_iters = res.x_iters
         curr_func_vals = res.func_vals
     
-        acq = acquisition.gaussian_ei(curr_x_iters, gp, y_opt=np.min(curr_func_vals))
+        #acq = acquisition.gaussian_ei(curr_x_iters, gp, y_opt=np.min(curr_func_vals))
      
-        print("acquisition function ", acq, curr_x_iters)    
-
-        next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
-        print("next acquistion function ", next_acq)
+        #print("acquisition function ", acq, curr_x_iters)    
+        #print("acq_log ", [ math.log(_) for _ in acq])
+        #next_acq = acquisition.gaussian_ei(res.space.transform([next_x]), gp, y_opt=np.min(curr_func_vals))
+        #print("next acquistion function ", next_acq)
 
     #if app_info[app_name]["latency"] > helper.threshold[app_name]:
     if True:
@@ -210,11 +218,19 @@ def bo_model(app_name, app_info, app_cpu_limit, measured_cpu, container_name_lis
     print("-----------------------------------------------------------------") 
     return app_cpu_limit
 
+def two_continuous_slo_violated(latency, history_cpu):
+    
+    print("two continues", latency[-3:], history_cpu)
+    if len(latency) >= 3 and len(history_cpu)>=3:
+        if latency[-1] > 200 and ((latency[-2] > 200 and history_cpu[-1] == history_cpu[-2] ) or (history_cpu[-1] == history_cpu[-2] and history_cpu[-1] == history_cpu[-3] and latency[-3] > 200)):
+            return True
+    return False
+
 def is_workload_changed(throughput):
     # check historical throughput whether workload is changed.
     # we only check last 4 data
     length = len(throughput)
-    print(throughput)
+    #print(throughput)
     if length < 3:
         return False
     pivot = throughput[-1]
@@ -225,15 +241,36 @@ def is_workload_changed(throughput):
 
 def choose_best_from_model(res, app_name, app_info):
     min_iters = None
-    min_vals = 65536*400
     ratio = 1
     if int(app_info[app_name]["throughput"]) > 50000:
+        ratio = 1
+    if int(app_info[app_name]["throughput"]) > 93000:
         ratio = 2
  
-    for i in range(len(res.func_vals)):
-        if res.func_vals[i] < helper.threshold[app_name]*sum(res.x_iters[i]) and min_vals > sum(res.x_iters[i]):
-            min_vals = sum(res.x_iters[i])
+    res.func_vals = res.func_vals.tolist() 
+    # remove redundant value which they have same config but the value is different.   
+    map_tmp = {}
+    # do not use the last element
+    for i in range(len(res.func_vals)-1):
+       name = ''.join([str(i) for i in res.x_iters[i]])
+       if name not in map_tmp or res.func_vals[map_tmp[name]] < res.func_vals[i]:
+           #if name in map_tmp and res.func_vals[map_tmp[name]] < helper.threshold[app_name]*sum(res.x_iters[i]) and res.func_vals[i] > helper.threshold[app_name]*sum(res.x_iters[i]):
+               #map_tmp[''.join([str(i+1) for i in res.x_iters[i]])] = map_tmp[name]
+           map_tmp[name] = i
+
+    print(map_tmp, res.func_vals)
+    min_vals = 65536*400   
+    min_cpu = 400
+    for key in sorted(map_tmp.keys()):
+        i = map_tmp[key]
+        #if key in ["141414", "151515"] and int(app_info[app_name]["throughput"]) > 85000:
+        #    continue
+        print(i, res.x_iters[i], res.func_vals[i], min_iters, min_vals)
+        if min_cpu > sum(res.x_iters[i]) and res.func_vals[i] < 200*sum(res.x_iters[i]):
+            min_cpu = sum(res.x_iters[i])
             min_iters = res.x_iters[i]
+            min_vals = res.func_vals[i]
+    print(app_info[app_name]["throughput"], min_vals, min_cpu, min_iters)
     # choose best from all case that violate SLO.
     if not min_iters:
         for i in range(len(res.func_vals)):
@@ -243,14 +280,20 @@ def choose_best_from_model(res, app_name, app_info):
                 
 
     # make sure when throuphput is in the upper bound. Our model training in the lower bound. Optimization this situation.
-    throughput_tmp = int(app_info[app_name]["throughput"]/1000)/100.0
-    if min_iters is not None and throughput_tmp > (min_vals - int(min_vals)) :
+    max_throughput = max([ a - int(a) for a in res.func_vals])*100000 
+    throughput_tmp = int(app_info[app_name]["throughput"])
+    print("max throughput is ", max_throughput)
+    if throughput_tmp == 0:
+        throughput_tmp = 10
+    if min_iters is not None and max_throughput / throughput_tmp > 5:
         print("min_iters: {} {}".format(throughput_tmp, min_iters))
         capacity = [ app_info[app_name]['capacity'][key] for key in sorted(app_info[app_name]["capacity"].keys())]
         print(capacity)
         for i in range(len(min_iters)):
-            min_iters[i] += int(ratio*int(capacity[i]))
+            #if capacity[i] > 1:
+            min_iters[i] += int(ratio)
         print("min_iters2: {} {}".format(throughput_tmp, min_iters))
+   
     if min_iters is not None:
         min_iters = [int(val)*50 for val in min_iters]
     return min_iters 
@@ -260,13 +303,19 @@ def system_control():
     app_info, container_name_list, latency, throughput = helper.read_container_info()
   
     measured_cpu = helper.read_measured_data(app_info, container_name_list)
+
+    history_last_three = helper.read_last_three_cpu_limit()
+    #print(history_last_three) 
     # save cpu limit
     final_cpu_limit = []
-    previous_cpu_limit = []
+    #previous_cpu_limit = []
+    previous_cpu_limit = history_last_three[-1]
     # save all app's throughput, using throughput as the rank to decide final cpu usage. 
     all_app_throughput = []
-    
-
+   
+    # store which container need to be config 
+    app_no_update_conf = []
+ 
     for key in sorted(app_info.keys()):
         print("***********************************************************************")
         app_name = key
@@ -281,15 +330,17 @@ def system_control():
 
         opt = get_bo_model(app_name, current_throughput, len(location))    
 
-        history_cpu = helper.read_history_data(app_name) 
-        app_cpu_limit = history_cpu[-1].copy()    
-        previous_cpu_limit += app_cpu_limit
+        #history_cpu = helper.read_history_data(app_name) 
+        history_cpu = [history_last_three[-1][loc] for loc in location]
+        print(history_cpu) 
+        app_cpu_limit = history_cpu.copy()    
+        #previous_cpu_limit += app_cpu_limit
  
         y = bo_function(app_info, app_name, app_cpu_limit)
         print(history_cpu) 
         next_x = [ int(val/50)for val in app_cpu_limit]
         res  = opt.tell(next_x, y)
-        print("acquisition function ", res.x_iters, res.func_vals)    
+        print("BO function ", res.x_iters, res.func_vals)    
 
         if len(history_cpu) >= 5 and res and len(res.models) > 1:
             # acquisition 
@@ -305,8 +356,8 @@ def system_control():
             print("next acquistion function ", next_acq)
         min_iters = None
  
-        if len(res.func_vals) < 10  or (len(res.func_vals) < 15 and is_workload_changed(throughput[app_name])):
-            print("start phase or workload changed")
+        if len(res.func_vals) < 14  or (len(res.func_vals) < 16 and two_continuous_slo_violated(latency[app_name], [[cpu_val[loc] for loc in location  ] for cpu_val in history_last_three])):
+            print("start phase or two continuous slo violated")
             pass
         else:
             # check throughput
@@ -321,19 +372,27 @@ def system_control():
         # first time to training model
         if min_iters:
             app_cpu_limit = min_iters 
-            if app_info[app_name]["latency"] < helper.threshold[app_name] and sum(app_cpu_limit) > sum(history_cpu[-1]): 
-                app_cpu_limit = history_cpu[-1].copy() 
+            #if app_info[app_name]["latency"] < helper.threshold[app_name] and sum(app_cpu_limit) > sum(history_cpu[-1]): 
+            #    app_cpu_limit = history_cpu[-1].copy() 
             helper.write_best_configuration(app_name, current_throughput, app_cpu_limit)
-        else: 
+            app_no_update_conf += [0 for _ in app_cpu_limit]
+        else:
             app_cpu_limit = bo_model(key, app_info, app_cpu_limit, measured_cpu, container_name_list, latency[key], history_cpu) 
-        print("app_cpu_limit {} {}".format(app_cpu_limit, history_cpu[-1]))
+            app_no_update_conf += [1 for _ in app_cpu_limit] 
         final_cpu_limit += app_cpu_limit
+        print("app_cpu_limit {} {}".format(app_cpu_limit, history_cpu[-1]))
         print('{} iteration: update cpu limit is {}'.format(key, final_cpu_limit))
         # todo, make sure the cpu limit shouldn't less than some value if we have low throughput model. 
         # Ex. since we allocate very small cpu limit, this cause the next throughput very low. Then, we will choose wrong model next time. We need to avoid this situation. 
     # using throughput as priority to decide normalized CPU usage.
     print('final cpu limit is {}'.format(final_cpu_limit))
-    if sum(final_cpu_limit) > helper.QUOTA:
+    CPU_remain = helper.QUOTA 
+    for k in range(len(final_cpu_limit)):
+        if app_no_update_conf[k] == 0:
+            CPU_remain -= final_cpu_limit[k]  
+
+    if sum(final_cpu_limit) > CPU_remain and CPU_remain > 0:
+        """
         priority_rank = []
         for value in sorted(all_app_throughput):
             for key in app_info.keys():
@@ -346,11 +405,13 @@ def system_control():
                 # if we don't have enough CPU, give some app more weight to have a more cpu when we do normalization.
                 if app_info[key]["latency"] > helper.threshold[app_name]:
                     final_cpu_limit[l] *= 1 + (len(priority_rank))*0.05 
+        """
+        print('final cpu limit1 is {}'.format(final_cpu_limit))
 
-        print('final cpu limit2 is {}'.format(final_cpu_limit))
-
+        final_cpu_limit = helper.normalized2(final_cpu_limit, CPU_remain, app_no_update_conf)
+    if CPU_remain <= 0:
         final_cpu_limit = helper.normalized(final_cpu_limit)
-        print('final cpu limit2 is {}'.format(final_cpu_limit))
+    print('final cpu limit2 is {}'.format(final_cpu_limit))
 
 
     for key in sorted(app_info.keys()):

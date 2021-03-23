@@ -21,10 +21,10 @@ best_conf_file = "/tmp/bo_best_conf_"
 cpu_limit_filename="/tmp/bo_cpulimit.txt"
 history_cpu_filename="/tmp/bo_history_"
 threshold = {
-    "ETLTopologySys": 100,
-#    "ETLTopologyTaxi": 150,
-    "IoTPredictionTopologySYS" : 100, 
-#    "IoTPredictionTopologyTAXI" : 100, 
+    "ETLTopologySys": 150,
+    "ETLTopologyTaxi": 150,
+    "IoTPredictionTopologySYS" : 150, 
+    "IoTPredictionTopologyTAXI" : 150, 
 }
 threshold_range = 25
 QUOTA = 4000
@@ -51,6 +51,39 @@ def check_cpu(arr):
         if  a< 100 or a > QUOTA:
             return False
     return True
+
+def normalized2(a, REMAIN, conf):
+    ret = []
+    print(a, REMAIN, conf)
+    total = 0
+    for i in range(len(a)):
+        if conf[i] == 1:
+            total += a[i]
+    if total > REMAIN:
+        #total += 50*len(a)
+        for i, val in enumerate(a):
+            if conf[i] == 1:
+                ret.append(int(REMAIN/total*val))
+            else:
+                ret.append(int(val))
+        i = 0
+        while(sum(ret) < REMAIN-50):
+            ret[i] += 50
+        print("normalized, ", sum(ret)) 
+        a = ret
+    ret = []
+    for v in a:
+        t = int(v/50)*50
+        end = QUOTA - (3*3*len(threshold.keys()) - 2) * 50
+
+        if t >= end:
+            t = end 
+        if t <= 150:
+            t = 150
+
+        ret.append(t)
+    print(ret)
+    return ret
 
 
 def normalized(a):
@@ -90,16 +123,16 @@ def write_history_data(last_cpu_limit, name):
     with open(history_cpu_filename+name, 'a') as f2:
         f2.write(",".join([str(i) for i in last_cpu_limit])+"\n")
 
-def read_last_cpu_limit():
+
+def read_last_three_cpu_limit():
     cpu_limit = []
     with open(cpu_limit_filename) as f1:
         line = None
         for line in f1:
             cpu = line.split(",")
-            history_cpu.append([int(i) for i in cpu])
+            cpu_limit.append([int(i) for i in cpu])
     # peng's method
-    return cpu_limit 
-
+    return cpu_limit[-3:]
 
 def read_measured_data(app_info, keys):
     history_cpu = []
@@ -188,7 +221,7 @@ def read_container_info():
         app_info[key]["container_loc"] = location
     print(app_info)
     print(keys)
-    print(throughput)
+    #print(throughput)
     return app_info, keys, latency, throughput
 
 def write_cpu_limit_file(last_cpu_limit):
@@ -220,13 +253,18 @@ def compare_best_configuration(app_name, throughput, recommend_conf):
         for line in f:
             word = line.split(",") 
             ret[word[0]] = word[1:]
-    throughput = int(throughput/1000)
+    throughput = int(throughput/10000)
     #greedy algorithm. Make sure we didn't allocate very small cpu to a huge throughput.  
     for key in ret.keys():   
         if int(key) < throughput:
             for i in range(len(recommend_conf)):
-                if int(recommend_conf[i]) < int(ret[key][i]):
-                    recommend_conf[i] = int(ret[key][i])
+                if int(recommend_conf[i]) < min([ int(a) for a in ret[key]]):
+                    recommend_conf[i] = min([ int(a) for a in ret[key]]) - 1
+    for key in ret.keys():   
+        if int(key) > throughput:
+            for i in range(len(recommend_conf)):
+                if int(recommend_conf[i]) > max([ int(a) for a in ret[key]]):
+                    recommend_conf[i] = max([ int(a) for a in ret[key]]) + 1
     print("recommend conf ", recommend_conf)
     return recommend_conf 
 
@@ -239,7 +277,7 @@ def write_best_configuration(app_name, throughput, conf):
         for line in f:
             word = line.split(",") 
             ret[word[0]] = word[1:]
-    throughput = str(int(throughput/1000))
+    throughput = str(int(throughput/10000))
     if len(ret) == 0 or throughput  not in ret:
         with open(best_conf_file+app_name, "a") as f:
             f.write("{},{}\n".format(throughput, ",".join([str(val) for val in conf])))
